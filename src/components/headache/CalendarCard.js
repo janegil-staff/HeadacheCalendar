@@ -7,7 +7,7 @@ import DayDetails from "@/components/headache/DayDetails";
 import MonthlySummary from "@/components/headache/MonthlySummary";
 import { firstRecordMonth, indexRecords } from "@/components/headache/data";
 
-// The calendar with month navigation, day details and the monthly summary
+// The calendar card: month navigation, day details and the monthly summary card inside it
 export default function CalendarCard({ patient }) {
   const now = new Date();
   const [view, setView] = useState({ year: now.getFullYear(), month: now.getMonth() });
@@ -27,7 +27,7 @@ export default function CalendarCard({ patient }) {
   };
 
   return (
-    <section className="rounded-3xl border border-white/70 bg-white/90 p-4 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:px-5 sm:py-5">
+    <section className="rounded-3xl border border-white/70 bg-white/65 p-4 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:px-5 sm:py-5">
       <HeadacheCalendar
         byDate={byDate}
         year={view.year}
@@ -45,6 +45,8 @@ export default function CalendarCard({ patient }) {
         record={selected ? byDate.get(selected) : null}
         onClose={() => setSelected(null)}
       />
+
+      {/* Monthly summary as a card inside the calendar card, following the month shown */}
       <MonthlySummary patient={patient} byDate={byDate} year={view.year} month={view.month} />
     </section>
   );

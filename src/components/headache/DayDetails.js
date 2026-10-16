@@ -31,9 +31,7 @@ const preventiveName = (patient, m) => (typeof m === "number" ? medicineName(pat
 export default function DayDetails({ patient, dateKey, record, onClose }) {
   const { t, locale } = useHeadacheText();
 
-  if (!dateKey) {
-    return <p className="mt-3 text-center text-sm text-slate-500">{t.CAL_SELECT_DAY}</p>;
-  }
+  if (!dateKey) return null; // nothing selected
 
   const closeButton = onClose && (
     <button
