@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Limbă",
+  "COMMON_LOADING": "Se încarcă…",
+  "ERROR_NETWORK": "A apărut o eroare. Verificați conexiunea la internet.",
+  "LANDING_TITLE": "Calendarul durerilor de cap",
+  "PATIENT_CODE_LABEL": "Cod (din aplicația mobilă):",
+  "PATIENT_CODE_PLACEHOLDER": "Introduceți codul",
+  "PATIENT_CODE_START": "Începe",
+  "PATIENT_CODE_HELP_LINK": "Cum obțin un cod?",
+  "PATIENT_CODE_HELP_TEXT": "Pacientul generează un cod de unică folosință în aplicația Calendarul durerilor de cap. Codul este valabil 10 secunde.",
+  "PATIENT_CODE_INVALID": "Cod nevalid. Încercați din nou.",
+  "PATIENT_CODE_EXPIRED": "Codul a expirat. Rugați pacientul să genereze unul nou."
+}

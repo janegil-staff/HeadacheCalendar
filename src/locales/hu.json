@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Nyelv",
+  "COMMON_LOADING": "Betöltés…",
+  "ERROR_NETWORK": "Hiba történt. Ellenőrizze az internetkapcsolatot.",
+  "LANDING_TITLE": "Fejfájásnaptár",
+  "PATIENT_CODE_LABEL": "Kód (a mobilalkalmazásból):",
+  "PATIENT_CODE_PLACEHOLDER": "Adja meg a kódot",
+  "PATIENT_CODE_START": "Indítás",
+  "PATIENT_CODE_HELP_LINK": "Hogyan kaphatok kódot?",
+  "PATIENT_CODE_HELP_TEXT": "A beteg egyszer használatos kódot hoz létre a Fejfájásnaptár alkalmazásban. A kód 10 másodpercig érvényes.",
+  "PATIENT_CODE_INVALID": "Érvénytelen kód. Próbálja újra.",
+  "PATIENT_CODE_EXPIRED": "A kód lejárt. Kérje meg a beteget, hogy hozzon létre egy újat."
+}

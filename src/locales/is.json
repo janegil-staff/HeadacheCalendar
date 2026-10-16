@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Tungumál",
+  "COMMON_LOADING": "Hleður…",
+  "ERROR_NETWORK": "Eitthvað fór úrskeiðis. Athugaðu nettenginguna.",
+  "LANDING_TITLE": "Höfuðverkjadagatal",
+  "PATIENT_CODE_LABEL": "Kóði (úr farsímaappinu):",
+  "PATIENT_CODE_PLACEHOLDER": "Sláðu inn kóða",
+  "PATIENT_CODE_START": "Byrja",
+  "PATIENT_CODE_HELP_LINK": "Hvernig fæ ég kóða?",
+  "PATIENT_CODE_HELP_TEXT": "Sjúklingurinn býr til einnota kóða í Höfuðverkjadagatal-appinu. Kóðinn gildir í 10 sekúndur.",
+  "PATIENT_CODE_INVALID": "Ógildur kóði. Reyndu aftur.",
+  "PATIENT_CODE_EXPIRED": "Kóðinn er útrunninn. Biddu sjúklinginn að búa til nýjan."
+}

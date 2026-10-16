@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "שפה",
+  "COMMON_LOADING": "טוען…",
+  "ERROR_NETWORK": "משהו השתבש. בדקו את החיבור לאינטרנט.",
+  "LANDING_TITLE": "יומן כאבי ראש",
+  "PATIENT_CODE_LABEL": "קוד (מהאפליקציה בנייד):",
+  "PATIENT_CODE_PLACEHOLDER": "הזינו קוד",
+  "PATIENT_CODE_START": "התחל",
+  "PATIENT_CODE_HELP_LINK": "איך מקבלים קוד?",
+  "PATIENT_CODE_HELP_TEXT": "המטופל יוצר קוד חד־פעמי באפליקציית יומן כאבי ראש. הקוד תקף למשך 10 שניות.",
+  "PATIENT_CODE_INVALID": "קוד לא תקין. נסו שוב.",
+  "PATIENT_CODE_EXPIRED": "תוקף הקוד פג. בקשו מהמטופל ליצור קוד חדש."
+}

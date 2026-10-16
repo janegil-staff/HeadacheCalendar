@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Sprog",
+  "COMMON_LOADING": "Indlæser…",
+  "ERROR_NETWORK": "Noget gik galt. Tjek din internetforbindelse.",
+  "LANDING_TITLE": "Hovedpinekalender",
+  "PATIENT_CODE_LABEL": "Kode (fra mobilappen):",
+  "PATIENT_CODE_PLACEHOLDER": "Indtast kode",
+  "PATIENT_CODE_START": "Start",
+  "PATIENT_CODE_HELP_LINK": "Hvordan får jeg en kode?",
+  "PATIENT_CODE_HELP_TEXT": "Patienten opretter en engangskode i Hovedpinekalender-appen. Koden er gyldig i 10 sekunder.",
+  "PATIENT_CODE_INVALID": "Ugyldig kode. Prøv igen.",
+  "PATIENT_CODE_EXPIRED": "Koden er udløbet. Bed patienten om at oprette en ny."
+}

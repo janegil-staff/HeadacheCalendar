@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "اللغة",
+  "COMMON_LOADING": "جارٍ التحميل…",
+  "ERROR_NETWORK": "حدث خطأ ما. تحقق من اتصالك بالإنترنت.",
+  "LANDING_TITLE": "تقويم الصداع",
+  "PATIENT_CODE_LABEL": "الرمز (من تطبيق الهاتف):",
+  "PATIENT_CODE_PLACEHOLDER": "أدخل الرمز",
+  "PATIENT_CODE_START": "ابدأ",
+  "PATIENT_CODE_HELP_LINK": "كيف أحصل على رمز؟",
+  "PATIENT_CODE_HELP_TEXT": "ينشئ المريض رمزًا لمرة واحدة في تطبيق تقويم الصداع. الرمز صالح لمدة 10 ثوانٍ.",
+  "PATIENT_CODE_INVALID": "رمز غير صالح. حاول مرة أخرى.",
+  "PATIENT_CODE_EXPIRED": "انتهت صلاحية الرمز. اطلب من المريض إنشاء رمز جديد."
+}

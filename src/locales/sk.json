@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Jazyk",
+  "COMMON_LOADING": "Načítava sa…",
+  "ERROR_NETWORK": "Niečo sa pokazilo. Skontrolujte pripojenie na internet.",
+  "LANDING_TITLE": "Kalendár bolesti hlavy",
+  "PATIENT_CODE_LABEL": "Kód (z mobilnej aplikácie):",
+  "PATIENT_CODE_PLACEHOLDER": "Zadajte kód",
+  "PATIENT_CODE_START": "Spustiť",
+  "PATIENT_CODE_HELP_LINK": "Ako získam kód?",
+  "PATIENT_CODE_HELP_TEXT": "Pacient vygeneruje jednorazový kód v aplikácii Kalendár bolesti hlavy. Kód je platný 10 sekúnd.",
+  "PATIENT_CODE_INVALID": "Neplatný kód. Skúste to znova.",
+  "PATIENT_CODE_EXPIRED": "Platnosť kódu vypršala. Požiadajte pacienta, aby vygeneroval nový."
+}

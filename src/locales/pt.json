@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Idioma",
+  "COMMON_LOADING": "A carregar…",
+  "ERROR_NETWORK": "Ocorreu um erro. Verifique a sua ligação à Internet.",
+  "LANDING_TITLE": "Calendário de Dores de Cabeça",
+  "PATIENT_CODE_LABEL": "Código (da aplicação móvel):",
+  "PATIENT_CODE_PLACEHOLDER": "Introduza o código",
+  "PATIENT_CODE_START": "Iniciar",
+  "PATIENT_CODE_HELP_LINK": "Como obtenho um código?",
+  "PATIENT_CODE_HELP_TEXT": "O paciente gera um código de utilização única na aplicação Calendário de Dores de Cabeça. O código é válido durante 10 segundos.",
+  "PATIENT_CODE_INVALID": "Código inválido. Tente novamente.",
+  "PATIENT_CODE_EXPIRED": "O código expirou. Peça ao paciente para gerar um novo."
+}

@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Lingua",
+  "COMMON_LOADING": "Caricamento…",
+  "ERROR_NETWORK": "Si è verificato un errore. Controlla la connessione a Internet.",
+  "LANDING_TITLE": "Calendario del mal di testa",
+  "PATIENT_CODE_LABEL": "Codice (dall'app mobile):",
+  "PATIENT_CODE_PLACEHOLDER": "Inserisci il codice",
+  "PATIENT_CODE_START": "Avvia",
+  "PATIENT_CODE_HELP_LINK": "Come ottengo un codice?",
+  "PATIENT_CODE_HELP_TEXT": "Il paziente genera un codice monouso nell'app Calendario del mal di testa. Il codice è valido per 10 secondi.",
+  "PATIENT_CODE_INVALID": "Codice non valido. Riprova.",
+  "PATIENT_CODE_EXPIRED": "Il codice è scaduto. Chiedi al paziente di generarne uno nuovo."
+}

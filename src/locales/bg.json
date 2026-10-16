@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Език",
+  "COMMON_LOADING": "Зареждане…",
+  "ERROR_NETWORK": "Нещо се обърка. Проверете интернет връзката си.",
+  "LANDING_TITLE": "Календар за главоболие",
+  "PATIENT_CODE_LABEL": "Код (от мобилното приложение):",
+  "PATIENT_CODE_PLACEHOLDER": "Въведете код",
+  "PATIENT_CODE_START": "Старт",
+  "PATIENT_CODE_HELP_LINK": "Как да получа код?",
+  "PATIENT_CODE_HELP_TEXT": "Пациентът генерира еднократен код в приложението Календар за главоболие. Кодът е валиден 10 секунди.",
+  "PATIENT_CODE_INVALID": "Невалиден код. Опитайте отново.",
+  "PATIENT_CODE_EXPIRED": "Кодът е изтекъл. Помолете пациента да генерира нов."
+}

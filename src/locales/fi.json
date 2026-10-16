@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Kieli",
+  "COMMON_LOADING": "Ladataan…",
+  "ERROR_NETWORK": "Jokin meni vikaan. Tarkista internetyhteys.",
+  "LANDING_TITLE": "Päänsärkykalenteri",
+  "PATIENT_CODE_LABEL": "Koodi (mobiilisovelluksesta):",
+  "PATIENT_CODE_PLACEHOLDER": "Syötä koodi",
+  "PATIENT_CODE_START": "Aloita",
+  "PATIENT_CODE_HELP_LINK": "Miten saan koodin?",
+  "PATIENT_CODE_HELP_TEXT": "Potilas luo kertakäyttöisen koodin Päänsärkykalenteri-sovelluksessa. Koodi on voimassa 10 sekuntia.",
+  "PATIENT_CODE_INVALID": "Virheellinen koodi. Yritä uudelleen.",
+  "PATIENT_CODE_EXPIRED": "Koodi on vanhentunut. Pyydä potilasta luomaan uusi."
+}

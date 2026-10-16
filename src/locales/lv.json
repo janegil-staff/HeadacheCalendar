@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Valoda",
+  "COMMON_LOADING": "Ielādē…",
+  "ERROR_NETWORK": "Radās kļūda. Pārbaudiet interneta savienojumu.",
+  "LANDING_TITLE": "Galvassāpju kalendārs",
+  "PATIENT_CODE_LABEL": "Kods (no mobilās lietotnes):",
+  "PATIENT_CODE_PLACEHOLDER": "Ievadiet kodu",
+  "PATIENT_CODE_START": "Sākt",
+  "PATIENT_CODE_HELP_LINK": "Kā iegūt kodu?",
+  "PATIENT_CODE_HELP_TEXT": "Pacients izveido vienreizējo kodu lietotnē Galvassāpju kalendārs. Kods ir derīgs 10 sekundes.",
+  "PATIENT_CODE_INVALID": "Nederīgs kods. Mēģiniet vēlreiz.",
+  "PATIENT_CODE_EXPIRED": "Koda derīgums ir beidzies. Palūdziet pacientam izveidot jaunu."
+}

@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Language",
+  "COMMON_LOADING": "Loading…",
+  "ERROR_NETWORK": "Something went wrong. Check your internet connection.",
+  "LANDING_TITLE": "Headache Calendar",
+  "PATIENT_CODE_LABEL": "Code (from mobile app):",
+  "PATIENT_CODE_PLACEHOLDER": "Enter code",
+  "PATIENT_CODE_START": "Start",
+  "PATIENT_CODE_HELP_LINK": "How do I get a code?",
+  "PATIENT_CODE_HELP_TEXT": "The patient creates a one-time code in the Headache Calendar app. The code is valid for 10 seconds.",
+  "PATIENT_CODE_INVALID": "Invalid code. Please try again.",
+  "PATIENT_CODE_EXPIRED": "The code has expired. Ask the patient to create a new one."
+}

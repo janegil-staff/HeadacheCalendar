@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Dil",
+  "COMMON_LOADING": "Yükleniyor…",
+  "ERROR_NETWORK": "Bir şeyler ters gitti. İnternet bağlantınızı kontrol edin.",
+  "LANDING_TITLE": "Baş Ağrısı Takvimi",
+  "PATIENT_CODE_LABEL": "Kod (mobil uygulamadan):",
+  "PATIENT_CODE_PLACEHOLDER": "Kodu girin",
+  "PATIENT_CODE_START": "Başlat",
+  "PATIENT_CODE_HELP_LINK": "Nasıl kod alabilirim?",
+  "PATIENT_CODE_HELP_TEXT": "Hasta, Baş Ağrısı Takvimi uygulamasında tek kullanımlık bir kod oluşturur. Kod 10 saniye geçerlidir.",
+  "PATIENT_CODE_INVALID": "Geçersiz kod. Lütfen tekrar deneyin.",
+  "PATIENT_CODE_EXPIRED": "Kodun süresi doldu. Hastadan yeni bir kod oluşturmasını isteyin."
+}

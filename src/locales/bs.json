@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Jezik",
+  "COMMON_LOADING": "Učitavanje…",
+  "ERROR_NETWORK": "Nešto nije u redu. Provjerite internetsku konekciju.",
+  "LANDING_TITLE": "Kalendar glavobolje",
+  "PATIENT_CODE_LABEL": "Kod (iz mobilne aplikacije):",
+  "PATIENT_CODE_PLACEHOLDER": "Unesite kod",
+  "PATIENT_CODE_START": "Pokreni",
+  "PATIENT_CODE_HELP_LINK": "Kako mogu dobiti kod?",
+  "PATIENT_CODE_HELP_TEXT": "Pacijent generiše jednokratni kod u aplikaciji Kalendar glavobolje. Kod važi 10 sekundi.",
+  "PATIENT_CODE_INVALID": "Nevažeći kod. Pokušajte ponovo.",
+  "PATIENT_CODE_EXPIRED": "Kod je istekao. Zamolite pacijenta da generiše novi."
+}

@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Sprache",
+  "COMMON_LOADING": "Wird geladen…",
+  "ERROR_NETWORK": "Etwas ist schiefgelaufen. Bitte überprüfen Sie Ihre Internetverbindung.",
+  "LANDING_TITLE": "Kopfschmerzkalender",
+  "PATIENT_CODE_LABEL": "Code (aus der Mobil-App):",
+  "PATIENT_CODE_PLACEHOLDER": "Code eingeben",
+  "PATIENT_CODE_START": "Starten",
+  "PATIENT_CODE_HELP_LINK": "Wie erhalte ich einen Code?",
+  "PATIENT_CODE_HELP_TEXT": "Der Patient erstellt in der App Kopfschmerzkalender einen Einmalcode. Der Code ist 10 Sekunden gültig.",
+  "PATIENT_CODE_INVALID": "Ungültiger Code. Bitte versuchen Sie es erneut.",
+  "PATIENT_CODE_EXPIRED": "Der Code ist abgelaufen. Bitten Sie den Patienten, einen neuen zu erstellen."
+}

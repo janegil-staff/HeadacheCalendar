@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Język",
+  "COMMON_LOADING": "Ładowanie…",
+  "ERROR_NETWORK": "Coś poszło nie tak. Sprawdź połączenie z internetem.",
+  "LANDING_TITLE": "Kalendarz bólu głowy",
+  "PATIENT_CODE_LABEL": "Kod (z aplikacji mobilnej):",
+  "PATIENT_CODE_PLACEHOLDER": "Wpisz kod",
+  "PATIENT_CODE_START": "Rozpocznij",
+  "PATIENT_CODE_HELP_LINK": "Jak uzyskać kod?",
+  "PATIENT_CODE_HELP_TEXT": "Pacjent generuje jednorazowy kod w aplikacji Kalendarz bólu głowy. Kod jest ważny przez 10 sekund.",
+  "PATIENT_CODE_INVALID": "Nieprawidłowy kod. Spróbuj ponownie.",
+  "PATIENT_CODE_EXPIRED": "Kod wygasł. Poproś pacjenta o wygenerowanie nowego."
+}

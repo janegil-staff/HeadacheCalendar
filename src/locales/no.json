@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Språk",
+  "COMMON_LOADING": "Laster…",
+  "ERROR_NETWORK": "Noe gikk galt. Sjekk nettforbindelsen.",
+  "LANDING_TITLE": "Hodepinekalender",
+  "PATIENT_CODE_LABEL": "Kode (fra mobilappen):",
+  "PATIENT_CODE_PLACEHOLDER": "Skriv inn kode",
+  "PATIENT_CODE_START": "Start",
+  "PATIENT_CODE_HELP_LINK": "Hvordan får jeg en kode?",
+  "PATIENT_CODE_HELP_TEXT": "Pasienten lager en engangskode i Hodepinekalender-appen. Koden er gyldig i 10 sekunder.",
+  "PATIENT_CODE_INVALID": "Ugyldig kode. Prøv igjen.",
+  "PATIENT_CODE_EXPIRED": "Koden har utløpt. Be pasienten lage en ny."
+}

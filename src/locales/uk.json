@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Мова",
+  "COMMON_LOADING": "Завантаження…",
+  "ERROR_NETWORK": "Щось пішло не так. Перевірте підключення до інтернету.",
+  "LANDING_TITLE": "Календар головного болю",
+  "PATIENT_CODE_LABEL": "Код (з мобільного застосунку):",
+  "PATIENT_CODE_PLACEHOLDER": "Введіть код",
+  "PATIENT_CODE_START": "Почати",
+  "PATIENT_CODE_HELP_LINK": "Як отримати код?",
+  "PATIENT_CODE_HELP_TEXT": "Пацієнт створює одноразовий код у застосунку «Календар головного болю». Код дійсний 10 секунд.",
+  "PATIENT_CODE_INVALID": "Недійсний код. Спробуйте ще раз.",
+  "PATIENT_CODE_EXPIRED": "Термін дії коду минув. Попросіть пацієнта створити новий."
+}

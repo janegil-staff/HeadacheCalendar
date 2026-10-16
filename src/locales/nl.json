@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Taal",
+  "COMMON_LOADING": "Laden…",
+  "ERROR_NETWORK": "Er is iets misgegaan. Controleer uw internetverbinding.",
+  "LANDING_TITLE": "Hoofdpijnkalender",
+  "PATIENT_CODE_LABEL": "Code (uit de mobiele app):",
+  "PATIENT_CODE_PLACEHOLDER": "Voer code in",
+  "PATIENT_CODE_START": "Starten",
+  "PATIENT_CODE_HELP_LINK": "Hoe krijg ik een code?",
+  "PATIENT_CODE_HELP_TEXT": "De patiënt maakt een eenmalige code aan in de Hoofdpijnkalender-app. De code is 10 seconden geldig.",
+  "PATIENT_CODE_INVALID": "Ongeldige code. Probeer het opnieuw.",
+  "PATIENT_CODE_EXPIRED": "De code is verlopen. Vraag de patiënt een nieuwe aan te maken."
+}

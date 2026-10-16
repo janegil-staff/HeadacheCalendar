@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "言語",
+  "COMMON_LOADING": "読み込み中…",
+  "ERROR_NETWORK": "エラーが発生しました。インターネット接続を確認してください。",
+  "LANDING_TITLE": "頭痛カレンダー",
+  "PATIENT_CODE_LABEL": "コード（モバイルアプリから）：",
+  "PATIENT_CODE_PLACEHOLDER": "コードを入力",
+  "PATIENT_CODE_START": "開始",
+  "PATIENT_CODE_HELP_LINK": "コードの取得方法は？",
+  "PATIENT_CODE_HELP_TEXT": "患者が頭痛カレンダーアプリでワンタイムコードを発行します。コードの有効期間は10秒です。",
+  "PATIENT_CODE_INVALID": "無効なコードです。もう一度お試しください。",
+  "PATIENT_CODE_EXPIRED": "コードの有効期限が切れました。患者に新しいコードを発行してもらってください。"
+}

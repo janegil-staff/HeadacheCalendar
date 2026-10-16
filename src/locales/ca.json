@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Idioma",
+  "COMMON_LOADING": "Carregant…",
+  "ERROR_NETWORK": "Alguna cosa ha anat malament. Comproveu la connexió a Internet.",
+  "LANDING_TITLE": "Calendari de mal de cap",
+  "PATIENT_CODE_LABEL": "Codi (de l'aplicació mòbil):",
+  "PATIENT_CODE_PLACEHOLDER": "Introduïu el codi",
+  "PATIENT_CODE_START": "Inicia",
+  "PATIENT_CODE_HELP_LINK": "Com obtinc un codi?",
+  "PATIENT_CODE_HELP_TEXT": "El pacient genera un codi d'un sol ús a l'aplicació Calendari de mal de cap. El codi és vàlid durant 10 segons.",
+  "PATIENT_CODE_INVALID": "Codi no vàlid. Torneu-ho a provar.",
+  "PATIENT_CODE_EXPIRED": "El codi ha caducat. Demaneu al pacient que en generi un de nou."
+}

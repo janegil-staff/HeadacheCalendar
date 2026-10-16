@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Språk",
+  "COMMON_LOADING": "Laddar…",
+  "ERROR_NETWORK": "Något gick fel. Kontrollera internetanslutningen.",
+  "LANDING_TITLE": "Huvudvärkskalender",
+  "PATIENT_CODE_LABEL": "Kod (från mobilappen):",
+  "PATIENT_CODE_PLACEHOLDER": "Ange kod",
+  "PATIENT_CODE_START": "Starta",
+  "PATIENT_CODE_HELP_LINK": "Hur får jag en kod?",
+  "PATIENT_CODE_HELP_TEXT": "Patienten skapar en engångskod i appen Huvudvärkskalender. Koden är giltig i 10 sekunder.",
+  "PATIENT_CODE_INVALID": "Ogiltig kod. Försök igen.",
+  "PATIENT_CODE_EXPIRED": "Koden har gått ut. Be patienten att skapa en ny."
+}

@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Keel",
+  "COMMON_LOADING": "Laadimine…",
+  "ERROR_NETWORK": "Midagi läks valesti. Kontrollige internetiühendust.",
+  "LANDING_TITLE": "Peavalukalender",
+  "PATIENT_CODE_LABEL": "Kood (mobiilirakendusest):",
+  "PATIENT_CODE_PLACEHOLDER": "Sisestage kood",
+  "PATIENT_CODE_START": "Alusta",
+  "PATIENT_CODE_HELP_LINK": "Kuidas ma koodi saan?",
+  "PATIENT_CODE_HELP_TEXT": "Patsient loob rakenduses Peavalukalender ühekordse koodi. Kood kehtib 10 sekundit.",
+  "PATIENT_CODE_INVALID": "Vigane kood. Proovige uuesti.",
+  "PATIENT_CODE_EXPIRED": "Kood on aegunud. Paluge patsiendil luua uus."
+}

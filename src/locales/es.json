@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Idioma",
+  "COMMON_LOADING": "Cargando…",
+  "ERROR_NETWORK": "Algo salió mal. Compruebe su conexión a Internet.",
+  "LANDING_TITLE": "Calendario de dolor de cabeza",
+  "PATIENT_CODE_LABEL": "Código (de la aplicación móvil):",
+  "PATIENT_CODE_PLACEHOLDER": "Introduzca el código",
+  "PATIENT_CODE_START": "Iniciar",
+  "PATIENT_CODE_HELP_LINK": "¿Cómo obtengo un código?",
+  "PATIENT_CODE_HELP_TEXT": "El paciente genera un código de un solo uso en la aplicación Calendario de dolor de cabeza. El código es válido durante 10 segundos.",
+  "PATIENT_CODE_INVALID": "Código no válido. Inténtelo de nuevo.",
+  "PATIENT_CODE_EXPIRED": "El código ha caducado. Pida al paciente que genere uno nuevo."
+}

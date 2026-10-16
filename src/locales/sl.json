@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Jezik",
+  "COMMON_LOADING": "Nalaganje…",
+  "ERROR_NETWORK": "Prišlo je do napake. Preverite internetno povezavo.",
+  "LANDING_TITLE": "Koledar glavobola",
+  "PATIENT_CODE_LABEL": "Koda (iz mobilne aplikacije):",
+  "PATIENT_CODE_PLACEHOLDER": "Vnesite kodo",
+  "PATIENT_CODE_START": "Začni",
+  "PATIENT_CODE_HELP_LINK": "Kako dobim kodo?",
+  "PATIENT_CODE_HELP_TEXT": "Pacient ustvari enkratno kodo v aplikaciji Koledar glavobola. Koda velja 10 sekund.",
+  "PATIENT_CODE_INVALID": "Neveljavna koda. Poskusite znova.",
+  "PATIENT_CODE_EXPIRED": "Koda je potekla. Prosite pacienta, naj ustvari novo."
+}

@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Kalba",
+  "COMMON_LOADING": "Įkeliama…",
+  "ERROR_NETWORK": "Įvyko klaida. Patikrinkite interneto ryšį.",
+  "LANDING_TITLE": "Galvos skausmo kalendorius",
+  "PATIENT_CODE_LABEL": "Kodas (iš mobiliosios programėlės):",
+  "PATIENT_CODE_PLACEHOLDER": "Įveskite kodą",
+  "PATIENT_CODE_START": "Pradėti",
+  "PATIENT_CODE_HELP_LINK": "Kaip gauti kodą?",
+  "PATIENT_CODE_HELP_TEXT": "Pacientas sukuria vienkartinį kodą programėlėje „Galvos skausmo kalendorius“. Kodas galioja 10 sekundžių.",
+  "PATIENT_CODE_INVALID": "Neteisingas kodas. Bandykite dar kartą.",
+  "PATIENT_CODE_EXPIRED": "Kodo galiojimas baigėsi. Paprašykite paciento sukurti naują."
+}

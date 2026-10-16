@@ -1,0 +1,13 @@
+{
+  "COMMON_LANGUAGE": "Langue",
+  "COMMON_LOADING": "Chargement…",
+  "ERROR_NETWORK": "Une erreur s'est produite. Vérifiez votre connexion Internet.",
+  "LANDING_TITLE": "Calendrier des maux de tête",
+  "PATIENT_CODE_LABEL": "Code (depuis l'application mobile) :",
+  "PATIENT_CODE_PLACEHOLDER": "Saisissez le code",
+  "PATIENT_CODE_START": "Démarrer",
+  "PATIENT_CODE_HELP_LINK": "Comment obtenir un code ?",
+  "PATIENT_CODE_HELP_TEXT": "Le patient génère un code à usage unique dans l'application Calendrier des maux de tête. Le code est valable 10 secondes.",
+  "PATIENT_CODE_INVALID": "Code invalide. Veuillez réessayer.",
+  "PATIENT_CODE_EXPIRED": "Le code a expiré. Demandez au patient d'en générer un nouveau."
+}
