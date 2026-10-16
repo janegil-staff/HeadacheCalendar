@@ -4,6 +4,7 @@
 import Background from "@/components/landing/Background";
 import CodeCard from "@/components/landing/CodeCard";
 import LanguagePicker from "@/components/landing/LanguagePicker";
+import ReadMoreButton from "@/components/landing/ReadMoreButton";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function LandingPage() {
@@ -23,6 +24,10 @@ export default function LandingPage() {
         </h1>
 
         <CodeCard />
+
+        <div className="mt-6 flex justify-center">
+          <ReadMoreButton />
+        </div>
       </div>
     </main>
   );
