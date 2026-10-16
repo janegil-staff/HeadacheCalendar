@@ -46,3 +46,50 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+/* headache-background:start – background for the whole app, always covering the screen */
+html {
+  min-height: 100%;
+  background-color: #c8daed;
+}
+body {
+  min-height: 100%;
+  background: transparent !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("/images/background.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* An existing component that draws the image as <img> or inline background also fills the screen */
+img[src*="background"][src$=".svg"],
+img[src*="background.svg"],
+img[srcset*="background.svg"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  z-index: -1 !important;
+  pointer-events: none;
+}
+[style*="background.svg"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100vh;
+}
+/* headache-background:end */

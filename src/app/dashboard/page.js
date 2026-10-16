@@ -3,9 +3,15 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import CalendarCard from "@/components/headache/CalendarCard";
+import { useHeadacheText } from "@/components/headache/useHeadacheText";
+import { fill, formatUnit } from "@/components/headache/data";
+
+const GENDER_KEYS = { female: "GENDER_FEMALE", male: "GENDER_MALE" };
 
 export default function DashboardPage() {
   const router = useRouter();
+  const { t, locale, dir } = useHeadacheText();
   const [patient, setPatient] = useState(null);
 
   useEffect(() => {
@@ -29,25 +35,37 @@ export default function DashboardPage() {
 
   if (!patient) return null;
 
+  const gender = t[GENDER_KEYS[patient.gender]] ?? (patient.gender ? t.GENDER_OTHER : "");
+  const who = [patient.age ? formatUnit(locale, patient.age, "year") : null, gender].filter(Boolean).join(" · ");
+
   return (
-    <main className="min-h-screen bg-gray-50 px-4 py-8">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="font-serif text-3xl font-bold text-blue-800">Dashboard</h1>
+    <div dir={dir} lang={locale} className="min-h-screen pb-12">
+      {/* Top bar */}
+      <header className="border-b border-white/70 bg-white/70 backdrop-blur">
+        <div className="flex w-full items-center justify-between gap-3 px-4 py-3 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:px-6">
+          <div className="flex min-w-0 items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#8db3ea] text-sm font-bold text-white">
+              {(gender || "?").charAt(0).toUpperCase()}
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-slate-700">{who}</p>
+              <p className="truncate text-xs text-slate-500">{fill(t.DASH_REGISTRATIONS, { n: patient.records?.length ?? 0 })}</p>
+            </div>
+          </div>
+          <h1 className="hidden font-serif text-2xl font-bold text-[#4f7cc0] sm:block">{t.LANDING_TITLE}</h1>
           <button
             type="button"
             onClick={close}
-            className="rounded-lg border border-blue-700 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+            className="shrink-0 justify-self-end whitespace-nowrap rounded-full bg-[#6a9be0] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5b8bd3]"
           >
-            Lukk pasient
+            {t.DASHBOARD_CLOSE}
           </button>
         </div>
+      </header>
 
-        {/* Temporary raw view until the response shape is known */}
-        <pre className="overflow-x-auto rounded-2xl bg-white p-6 text-sm text-gray-800 shadow-sm">
-          {JSON.stringify(patient, null, 2)}
-        </pre>
-      </div>
-    </main>
+      <main className="mx-auto mt-6 max-w-md px-4">
+        <CalendarCard patient={patient} />
+      </main>
+    </div>
   );
 }
