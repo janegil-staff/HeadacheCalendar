@@ -5,9 +5,10 @@ import { useMemo, useState } from "react";
 import HeadacheCalendar from "@/components/headache/HeadacheCalendar";
 import DayDetails from "@/components/headache/DayDetails";
 import MonthlySummary from "@/components/headache/MonthlySummary";
+import { MedicationDropdown, PreviousMedicationDropdown } from "@/components/headache/MedicationLists";
 import { firstRecordMonth, indexRecords } from "@/components/headache/data";
 
-// The calendar card: month navigation, day details and the monthly summary card inside it
+// The calendar card: month navigation, day details, monthly summary and the medication dropdowns
 export default function CalendarCard({ patient }) {
   const now = new Date();
   const [view, setView] = useState({ year: now.getFullYear(), month: now.getMonth() });
@@ -48,6 +49,10 @@ export default function CalendarCard({ patient }) {
 
       {/* Monthly summary as a card inside the calendar card, following the month shown */}
       <MonthlySummary patient={patient} byDate={byDate} year={view.year} month={view.month} />
+
+      {/* Medication and previously used medication, as dropdowns */}
+      <MedicationDropdown patient={patient} />
+      <PreviousMedicationDropdown patient={patient} />
     </section>
   );
 }
