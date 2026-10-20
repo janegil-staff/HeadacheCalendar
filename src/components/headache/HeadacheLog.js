@@ -33,19 +33,33 @@ const parseDate = (key) => {
 };
 const daysBetween = (a, b) => Math.round((b - a) / 86400000);
 
-// "20 minutter", "4 timer", "4,5 timer"
-function durationText(locale, minutes) {
-  const m = Number(minutes) || 0;
-  if (m <= 0) return null;
-  if (m < 60) return formatUnit(locale, Math.round(m), "minute");
-  return formatUnit(locale, Math.round((m / 60) * 2) / 2, "hour");
+// Duration as the app registers it: durationType 1 = short attacks (under 3 h, no time stored),
+// 2 = long (hours in durationMinutes), 3 = both short and long. "4 timer", "Korte (under 3 timer)", …
+function durationText(t, locale, r) {
+  const m = Number(r?.durationMinutes) || 0;
+  const time =
+    m <= 0 ? null : m < 60 ? formatUnit(locale, Math.round(m), "minute") : formatUnit(locale, Math.round((m / 60) * 2) / 2, "hour");
+  if (r?.durationType === 1) return t.LOG_DUR_SHORT;
+  if (r?.durationType === 3) return time ? `${t.LOG_DUR_SHORT_LONG} · ${time}` : t.LOG_DUR_SHORT_LONG;
+  return time;
 }
 
+// "3 dager" – Intl writes "døgn" for Norwegian days, which reads oddly here
+const daysText = (locale, n) => (locale === "no" ? `${n} ${n === 1 ? "dag" : "dager"}` : formatUnit(locale, n, "day"));
+
+// Doses are only trusted when given as { medicineId, dose } (mg); plain numbers in that list are not reliable
+const acuteDose = (r, id) => {
+  const d = (r.acuteMedicinesDoses ?? []).find((x) => x && typeof x === "object" && x.medicineId === id);
+  return d && Number(d.dose) > 0 ? Number(d.dose) : null;
+};
 const acuteList = (patient, r) =>
-  (r.acuteMedicines ?? []).map((id, i) => ({
-    name: medicineName(patient, id),
-    times: (r.acuteMedicinesUsedTimes ?? [])[i] ?? 1,
-  }));
+  (r.acuteMedicines ?? []).map((id, i) => {
+    const dose = acuteDose(r, id);
+    return {
+      name: `${medicineName(patient, id)}${dose ? ` ${dose} mg` : ""}`,
+      times: (r.acuteMedicinesUsedTimes ?? [])[i] ?? 1,
+    };
+  });
 const preventiveList = (patient, r) =>
   (r.preventiveMedicines ?? []).map((m) => (typeof m === "number" ? medicineName(patient, m) : String(m)));
 
@@ -53,7 +67,7 @@ function Stat({ label, value, tone = "default" }) {
   const color = { default: "text-slate-800", good: "text-emerald-600", alert: "text-red-600", accent: "text-[#4f7cc0]" }[tone];
   return (
     <div className="min-w-0">
-      <p className="truncate text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">{label}</p>
+      <p className="text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-500">{label}</p>
       <p className={`mt-0.5 truncate text-lg font-bold ${color}`}>{value}</p>
     </div>
   );
@@ -93,7 +107,7 @@ function Entry({ patient, record: r, open, onToggle, t, locale, showNotes }) {
   const date = parseDate(r.date);
   const acute = acuteList(patient, r);
   const preventive = preventiveList(patient, r);
-  const duration = durationText(locale, r.durationMinutes);
+  const duration = durationText(t, locale, r);
   const note = showNotes ? r.note?.trim() : "";
   const effectKey = acute.length ? EFFECT_KEYS[r.effect] : null;
   const panelId = `log-${r.date}`;
@@ -211,13 +225,12 @@ function Entry({ patient, record: r, open, onToggle, t, locale, showNotes }) {
               )}
             </Section>
 
-            <Section title={t.CAL_PREVENTIVE}>
-              {preventive.length ? (
+            {/* Only when the day itself has preventive medication (it is usually stored on the patient) */}
+            {preventive.length > 0 && (
+              <Section title={t.CAL_PREVENTIVE}>
                 <p className="text-sm text-slate-700">{preventive.join(", ")}</p>
-              ) : (
-                <p className="text-sm text-slate-400">{t.DASH_NONE}</p>
-              )}
-            </Section>
+              </Section>
+            )}
           </div>
 
           {flags.length > 0 && <div className="mt-4 flex flex-wrap gap-1.5">{flags}</div>}
@@ -244,6 +257,7 @@ export default function HeadacheLog({ patient }) {
   const showNotes = !!patient?.shareNotes;
 
   const [query, setQuery] = useState("");
+  const [showNoHeadache, setShowNoHeadache] = useState(false); // days registered as "no headache" are hidden by default
   const [openDates, setOpenDates] = useState(() => new Set());
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [copied, setCopied] = useState(false);
@@ -282,7 +296,7 @@ export default function HeadacheLog({ patient }) {
       .toLowerCase();
     return text.includes(q);
   };
-  const shown = records.filter(matches);
+  const shown = records.filter((r) => (showNoHeadache || intensityOf(r) > 0) && matches(r));
   const visible = shown.slice(0, limit);
   const hasMore = shown.length > limit;
 
@@ -327,7 +341,7 @@ export default function HeadacheLog({ patient }) {
         dateFmt.format(parseDate(r.date)),
         t[INTENSITY[level].key],
         level > 0 ? (r.attacks ?? 0) : "",
-        level > 0 ? durationText(locale, r.durationMinutes) ?? "" : "",
+        level > 0 ? durationText(t, locale, r) ?? "" : "",
         r.isMigraine ? t.CAL_MIGRAINE : "-",
         r.hasAura ? t.CAL_AURA : "-",
         r.hasClusterHeadache ? t.CAL_CLUSTER : "-",
@@ -387,7 +401,7 @@ export default function HeadacheLog({ patient }) {
       <section className={`${card} grid grid-cols-2 gap-4 px-4 py-4 sm:grid-cols-5 sm:px-5`}>
         <Stat
           label={t.LOG_STAT_SINCE}
-          value={since === null ? "–" : since === 0 ? t.LOG_TODAY : formatUnit(locale, since, "day")}
+          value={since === null ? "–" : since === 0 ? t.LOG_TODAY : daysText(locale, since)}
           tone={since === null || since >= 7 ? "good" : "default"}
         />
         <Stat
@@ -403,7 +417,7 @@ export default function HeadacheLog({ patient }) {
       {/* Timeline: one bar per day, coloured by intensity; a red dot under days with acute medication */}
       <section className={`${card} px-4 py-4 sm:px-5`}>
         <h2 className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">
-          {t.LOG_TIMELINE} · {formatUnit(locale, TIMELINE_DAYS, "day")}
+          {t.LOG_TIMELINE} · {daysText(locale, TIMELINE_DAYS)}
         </h2>
         <div className="mt-3 flex gap-px" dir="ltr">
           {timeline.map(({ key, date, record }) => {
@@ -467,6 +481,20 @@ export default function HeadacheLog({ patient }) {
           {copied ? `✓ ${t.SUM_COPIED}` : t.SUM_COPY}
         </button>
       </div>
+
+      <label className="flex w-fit cursor-pointer items-center gap-2 px-1 text-sm text-slate-600">
+        <input
+          type="checkbox"
+          checked={showNoHeadache}
+          onChange={(e) => {
+            setShowNoHeadache(e.target.checked);
+            setLimit(PAGE_SIZE);
+          }}
+          className="h-4 w-4 cursor-pointer rounded border-slate-300 accent-[#6a9be0]"
+        />
+        {t.LOG_SHOW_NO_HEADACHE}
+        <span className="text-xs text-slate-400">({records.filter((r) => intensityOf(r) === 0).length})</span>
+      </label>
 
       {/* Entries */}
       {shown.length ? (
