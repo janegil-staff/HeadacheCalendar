@@ -10,9 +10,9 @@
 #    headache (443)" checkbox; they still count in the key numbers and the timeline
 #  - "3 dager" / "90 dager" instead of "døgn" in Norwegian
 #  - the key-number labels wrap instead of being cut off ("REGISTRERINGER TOTA…")
+#  - entries use fixed columns, so date, intensity, attacks, duration and tags line up row to row
 #  - new texts in all 35 languages in src/components/headache/texts.js
 # Run from the project root:  bash log-update.sh
-
 set -euo pipefail
 
 if [ ! -f src/components/headache/HeadacheLog.js ]; then
@@ -157,8 +157,10 @@ function Entry({ patient, record: r, open, onToggle, t, locale, showNotes }) {
         <span className="w-1 shrink-0 rounded-full" style={{ backgroundColor: LEVEL_COLORS[level] }} />
 
         <span className="min-w-0 flex-1">
-          <span className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span className="min-w-[6.5rem]">
+          {/* Fixed columns, so date, intensity, attacks, duration and tags line up from row to row.
+              Phones: date | intensity, then attacks | duration, then the tags */}
+          <span className="grid grid-cols-[6.5rem_minmax(0,1fr)] items-center gap-x-3 gap-y-2 md:grid-cols-[7.5rem_7.5rem_4.5rem_12.5rem_minmax(0,1fr)] md:gap-x-4">
+            <span>
               <span className="block text-sm font-bold text-[#4f7cc0]">
                 {new Intl.DateTimeFormat(loc, { day: "numeric", month: "numeric", year: "numeric" }).format(date)}
               </span>
@@ -172,36 +174,37 @@ function Entry({ patient, record: r, open, onToggle, t, locale, showNotes }) {
               {t[INTENSITY[level].key]}
             </span>
 
-            {level > 0 && (
-              <span className="flex gap-4">
-                <span>
+            <span>
+              {level > 0 && (
+                <>
                   <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">{t.CAL_ATTACKS}</span>
                   <span className="block text-sm font-bold text-slate-700">{r.attacks ?? 0}</span>
-                </span>
-                {duration && (
-                  <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">{t.CAL_DURATION}</span>
-                    <span className="block whitespace-nowrap text-sm font-bold text-slate-700">{duration}</span>
-                  </span>
-                )}
-              </span>
-            )}
+                </>
+              )}
+            </span>
 
-            {(flags.length > 0 || acute.length > 0 || note) && (
-              <span className="flex flex-wrap items-center gap-1.5">
-                {flags}
-                {acute.length > 0 && (
-                  <Chip icon={<AcuteIcon size={14} />} className="bg-red-50 text-red-700">
-                    {acute.length}
-                  </Chip>
-                )}
-                {note && (
-                  <span className="rounded-full bg-blue-50 px-1.5 py-0.5 text-[11px]" aria-label={t.CAL_NOTE}>
-                    💬
-                  </span>
-                )}
-              </span>
-            )}
+            <span className="min-w-0">
+              {level > 0 && duration && (
+                <>
+                  <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">{t.CAL_DURATION}</span>
+                  <span className="block text-sm font-bold leading-snug text-slate-700">{duration}</span>
+                </>
+              )}
+            </span>
+
+            <span className="col-span-2 flex flex-wrap items-center gap-1.5 empty:hidden md:col-span-1">
+              {flags}
+              {acute.length > 0 && (
+                <Chip icon={<AcuteIcon size={14} />} className="bg-red-50 text-red-700">
+                  {acute.length}
+                </Chip>
+              )}
+              {note && (
+                <span className="rounded-full bg-blue-50 px-1.5 py-0.5 text-[11px]" aria-label={t.CAL_NOTE}>
+                  💬
+                </span>
+              )}
+            </span>
           </span>
 
           {note && !open && <span className="mt-2 block truncate text-xs italic text-slate-500">“{note}”</span>}
