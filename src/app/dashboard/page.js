@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CalendarCard from "@/components/headache/CalendarCard";
 import { useHeadacheText } from "@/components/headache/useHeadacheText";
+import { useLocale } from "@/components/LocaleProvider";
 import { fill, formatUnit } from "@/components/headache/data";
 
 const GENDER_KEYS = { female: "GENDER_FEMALE", male: "GENDER_MALE" };
@@ -12,6 +13,7 @@ const GENDER_KEYS = { female: "GENDER_FEMALE", male: "GENDER_MALE" };
 export default function DashboardPage() {
   const router = useRouter();
   const { t, locale, dir } = useHeadacheText();
+  const { t: siteText } = useLocale();
   const [patient, setPatient] = useState(null);
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function DashboardPage() {
               <p className="truncate text-xs text-slate-500">{fill(t.DASH_REGISTRATIONS, { n: patient.records?.length ?? 0 })}</p>
             </div>
           </div>
-          <h1 className="hidden font-serif text-2xl font-bold text-[#4f7cc0] sm:block">{t.LANDING_TITLE}</h1>
+          <h1 className="hidden font-serif text-2xl font-bold text-[#4f7cc0] sm:block">{siteText.HEADACHE_DIARY}</h1>
           <button
             type="button"
             onClick={close}

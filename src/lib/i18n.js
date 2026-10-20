@@ -1,91 +1,117 @@
 // src/lib/i18n.js
-import ar from "@/locales/ar.json";
-import bg from "@/locales/bg.json";
-import bs from "@/locales/bs.json";
-import ca from "@/locales/ca.json";
-import cs from "@/locales/cs.json";
-import da from "@/locales/da.json";
-import de from "@/locales/de.json";
-import el from "@/locales/el.json";
-import en from "@/locales/en.json";
-import es from "@/locales/es.json";
-import et from "@/locales/et.json";
-import fi from "@/locales/fi.json";
-import fr from "@/locales/fr.json";
-import he from "@/locales/he.json";
-import hr from "@/locales/hr.json";
-import hu from "@/locales/hu.json";
-import is from "@/locales/is.json";
-import it from "@/locales/it.json";
-import ja from "@/locales/ja.json";
-import lt from "@/locales/lt.json";
-import lv from "@/locales/lv.json";
-import mk from "@/locales/mk.json";
-import nl from "@/locales/nl.json";
-import no from "@/locales/no.json";
-import pl from "@/locales/pl.json";
-import pt from "@/locales/pt.json";
+import arSA from "@/locales/ar-SA.json";
+import bgBG from "@/locales/bg-BG.json";
+import bsBA from "@/locales/bs-BA.json";
+import caES from "@/locales/ca-ES.json";
+import csCZ from "@/locales/cs-CZ.json";
+import daDK from "@/locales/da-DK.json";
+import deDE from "@/locales/de-DE.json";
+import elGR from "@/locales/el-GR.json";
+import enUS from "@/locales/en-US.json";
+import esES from "@/locales/es-ES.json";
+import etEE from "@/locales/et-EE.json";
+import fiFI from "@/locales/fi-FI.json";
+import frFR from "@/locales/fr-FR.json";
+import heIL from "@/locales/he-IL.json";
+import hrHR from "@/locales/hr-HR.json";
+import huHU from "@/locales/hu-HU.json";
+import isIS from "@/locales/is-IS.json";
+import itIT from "@/locales/it-IT.json";
+import jaJP from "@/locales/ja-JP.json";
+import ltLT from "@/locales/lt-LT.json";
+import lvLV from "@/locales/lv-LV.json";
+import mkMK from "@/locales/mk-MK.json";
+import nbNO from "@/locales/nb-NO.json";
+import nlNL from "@/locales/nl-NL.json";
+import plPL from "@/locales/pl-PL.json";
 import ptBR from "@/locales/pt-BR.json";
-import ro from "@/locales/ro.json";
-import ru from "@/locales/ru.json";
-import sk from "@/locales/sk.json";
-import sl from "@/locales/sl.json";
-import sr from "@/locales/sr.json";
-import sv from "@/locales/sv.json";
-import tr from "@/locales/tr.json";
-import uk from "@/locales/uk.json";
+import ptPT from "@/locales/pt-PT.json";
+import roRO from "@/locales/ro-RO.json";
+import ruRU from "@/locales/ru-RU.json";
+import skSK from "@/locales/sk-SK.json";
+import slSI from "@/locales/sl-SI.json";
+import srRS from "@/locales/sr-RS.json";
+import svSE from "@/locales/sv-SE.json";
+import trTR from "@/locales/tr-TR.json";
+import ukUA from "@/locales/uk-UA.json";
 
-export const DEFAULT_LOCALE = "no";
+export const DEFAULT_LOCALE = "nb-NO";
 export const LOCALE_COOKIE = "locale";
 
 export const DICTIONARIES = {
-  ar, bg, bs, ca, cs, da, de, el, en, es, et, fi, fr, he, hr, hu, is, it, ja,
-  lt, lv, mk, nl, no, pl, pt, "pt-BR": ptBR, ro, ru, sk, sl, sr, sv, tr, uk,
+  "ar-SA": arSA, "bg-BG": bgBG, "bs-BA": bsBA, "ca-ES": caES, "cs-CZ": csCZ,
+  "da-DK": daDK, "de-DE": deDE, "el-GR": elGR, "en-US": enUS, "es-ES": esES,
+  "et-EE": etEE, "fi-FI": fiFI, "fr-FR": frFR, "he-IL": heIL, "hr-HR": hrHR,
+  "hu-HU": huHU, "is-IS": isIS, "it-IT": itIT, "ja-JP": jaJP, "lt-LT": ltLT,
+  "lv-LV": lvLV, "mk-MK": mkMK, "nb-NO": nbNO, "nl-NL": nlNL, "pl-PL": plPL,
+  "pt-BR": ptBR, "pt-PT": ptPT, "ro-RO": roRO, "ru-RU": ruRU, "sk-SK": skSK,
+  "sl-SI": slSI, "sr-RS": srRS, "sv-SE": svSE, "tr-TR": trTR, "uk-UA": ukUA,
 };
 
-// Shown in the language picker, sorted by native name at render time
+// Shown in the language picker, sorted by native name at render time.
+// `images` is the folder under /public/images/about-app/
 export const LANGUAGES = [
-  { code: "ar", name: "العربية", flag: "🇸🇦", dir: "rtl" },
-  { code: "bg", name: "Български", flag: "🇧🇬" },
-  { code: "bs", name: "Bosanski", flag: "🇧🇦" },
-  { code: "ca", name: "Català", flag: "" },
-  { code: "cs", name: "Čeština", flag: "🇨🇿" },
-  { code: "da", name: "Dansk", flag: "🇩🇰" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "el", name: "Ελληνικά", flag: "🇬🇷" },
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "et", name: "Eesti", flag: "🇪🇪" },
-  { code: "fi", name: "Suomi", flag: "🇫🇮" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "he", name: "עברית", flag: "🇮🇱", dir: "rtl" },
-  { code: "hr", name: "Hrvatski", flag: "🇭🇷" },
-  { code: "hu", name: "Magyar", flag: "🇭🇺" },
-  { code: "is", name: "Íslenska", flag: "🇮🇸" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "ja", name: "日本語", flag: "🇯🇵" },
-  { code: "lt", name: "Lietuvių", flag: "🇱🇹" },
-  { code: "lv", name: "Latviešu", flag: "🇱🇻" },
-  { code: "mk", name: "Македонски", flag: "🇲🇰" },
-  { code: "nl", name: "Nederlands", flag: "🇳🇱" },
-  { code: "no", name: "Norsk", flag: "🇳🇴" },
-  { code: "pl", name: "Polski", flag: "🇵🇱" },
-  { code: "pt", name: "Português", flag: "🇵🇹" },
-  { code: "pt-BR", name: "Português (Brasil)", flag: "🇧🇷" },
-  { code: "ro", name: "Română", flag: "🇷🇴" },
-  { code: "ru", name: "Русский", flag: "🇷🇺" },
-  { code: "sk", name: "Slovenčina", flag: "🇸🇰" },
-  { code: "sl", name: "Slovenščina", flag: "🇸🇮" },
-  { code: "sr", name: "Српски", flag: "🇷🇸" },
-  { code: "sv", name: "Svenska", flag: "🇸🇪" },
-  { code: "tr", name: "Türkçe", flag: "🇹🇷" },
-  { code: "uk", name: "Українська", flag: "🇺🇦" },
+  { code: "ar-SA", name: "العربية", flag: "🇸🇦", images: "ar", dir: "rtl" },
+  { code: "bg-BG", name: "Български", flag: "🇧🇬", images: "bg" },
+  { code: "bs-BA", name: "Bosanski", flag: "🇧🇦", images: "bs" },
+  { code: "ca-ES", name: "Català", flag: "", images: "ca" },
+  { code: "cs-CZ", name: "Čeština", flag: "🇨🇿", images: "cs" },
+  { code: "da-DK", name: "Dansk", flag: "🇩🇰", images: "da" },
+  { code: "de-DE", name: "Deutsch", flag: "🇩🇪", images: "de" },
+  { code: "el-GR", name: "Ελληνικά", flag: "🇬🇷", images: "el" },
+  { code: "en-US", name: "English", flag: "🇬🇧", images: "en" },
+  { code: "es-ES", name: "Español", flag: "🇪🇸", images: "es" },
+  { code: "et-EE", name: "Eesti", flag: "🇪🇪", images: "et" },
+  { code: "fi-FI", name: "Suomi", flag: "🇫🇮", images: "fi" },
+  { code: "fr-FR", name: "Français", flag: "🇫🇷", images: "fr" },
+  { code: "he-IL", name: "עברית", flag: "🇮🇱", images: "he", dir: "rtl" },
+  { code: "hr-HR", name: "Hrvatski", flag: "🇭🇷", images: "hr" },
+  { code: "hu-HU", name: "Magyar", flag: "🇭🇺", images: "hu" },
+  { code: "is-IS", name: "Íslenska", flag: "🇮🇸", images: "is" },
+  { code: "it-IT", name: "Italiano", flag: "🇮🇹", images: "it" },
+  { code: "ja-JP", name: "日本語", flag: "🇯🇵", images: "ja" },
+  { code: "lt-LT", name: "Lietuvių", flag: "🇱🇹", images: "lt" },
+  { code: "lv-LV", name: "Latviešu", flag: "🇱🇻", images: "lv" },
+  { code: "mk-MK", name: "Македонски", flag: "🇲🇰", images: "mk" },
+  { code: "nb-NO", name: "Norsk", flag: "🇳🇴", images: "no" },
+  { code: "nl-NL", name: "Nederlands", flag: "🇳🇱", images: "nl" },
+  { code: "pl-PL", name: "Polski", flag: "🇵🇱", images: "pl" },
+  { code: "pt-BR", name: "Português (Brasil)", flag: "🇧🇷", images: "br" },
+  { code: "pt-PT", name: "Português", flag: "🇵🇹", images: "pt" },
+  { code: "ro-RO", name: "Română", flag: "🇷🇴", images: "ro" },
+  { code: "ru-RU", name: "Русский", flag: "🇷🇺", images: "ru" },
+  { code: "sk-SK", name: "Slovenčina", flag: "🇸🇰", images: "sk" },
+  { code: "sl-SI", name: "Slovenščina", flag: "🇸🇮", images: "sl" },
+  { code: "sr-RS", name: "Српски", flag: "🇷🇸", images: "sr" },
+  { code: "sv-SE", name: "Svenska", flag: "🇸🇪", images: "se" },
+  { code: "tr-TR", name: "Türkçe", flag: "🇹🇷", images: "tr" },
+  { code: "uk-UA", name: "Українська", flag: "🇺🇦", images: "uk" },
 ];
 
 export const isSupported = (code) => Object.hasOwn(DICTIONARIES, code ?? "");
 
-export const getDir = (code) =>
-  LANGUAGES.find((l) => l.code === code)?.dir ?? "ltr";
+const findLanguage = (code) => LANGUAGES.find((l) => l.code === code);
+
+export const getDir = (code) => findLanguage(code)?.dir ?? "ltr";
+
+// Folder with the "About the app" screenshots for a locale
+export const getImageFolder = (code) =>
+  findLanguage(code)?.images ?? findLanguage(DEFAULT_LOCALE).images;
+
+// Language part only ("pt-PT" → "pt"); the first code listed wins for a shared language
+const BY_LANGUAGE = {};
+for (const { code } of LANGUAGES) BY_LANGUAGE[code.split("-")[0].toLowerCase()] ??= code;
+BY_LANGUAGE.no = BY_LANGUAGE.nn = "nb-NO";
+BY_LANGUAGE.pt = "pt-PT";
+
+// Maps any tag ("en", "en-GB", "no", "sv", "pt_br", the old short codes) to a supported locale, or null
+export function normalizeLocale(code) {
+  if (!code) return null;
+  const tag = String(code).trim().replace("_", "-");
+  const exact = Object.keys(DICTIONARIES).find((c) => c.toLowerCase() === tag.toLowerCase());
+  if (exact) return exact;
+  return BY_LANGUAGE[tag.split("-")[0].toLowerCase()] ?? null;
+}
 
 // Missing keys fall back to Norwegian
 export const getDictionary = (code) => ({
@@ -101,11 +127,8 @@ export function matchAcceptLanguage(header = "") {
     .filter(Boolean);
 
   for (const tag of wanted) {
-    const lower = tag.toLowerCase();
-    if (lower === "pt-br") return "pt-BR";
-    if (["nb", "nn", "no"].includes(lower.split("-")[0])) return "no";
-    const base = lower.split("-")[0];
-    if (isSupported(base)) return base;
+    const match = normalizeLocale(tag);
+    if (match) return match;
   }
   return DEFAULT_LOCALE;
 }

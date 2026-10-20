@@ -3,11 +3,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
+import { DEFAULT_LOCALE, getImageFolder } from "@/lib/i18n";
 
 export const ABOUT_PAGE_COUNT = 9;
-const FALLBACK_IMAGE_LOCALE = "no";
+const FALLBACK_IMAGE_LOCALE = DEFAULT_LOCALE;
 
-const imageSrc = (locale, page) => `/images/about-app/${locale}/${String(page).padStart(2, "0")}.webp`;
+const imageSrc = (locale, page) => `/images/about-app/${getImageFolder(locale)}/${String(page).padStart(2, "0")}.webp`;
 
 export default function AboutAppModal({ open, onClose }) {
   const { t, locale, dir } = useLocale();

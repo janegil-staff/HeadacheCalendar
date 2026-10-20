@@ -20,7 +20,7 @@ export default function LandingPage() {
 
       <div className="w-full max-w-md">
         <h1 className="mb-8 text-center font-serif text-4xl font-bold text-blue-800 sm:text-5xl">
-          {t.LANDING_TITLE}
+          {t.HEADACHE_DIARY}
         </h1>
 
         <CodeCard />

@@ -4,12 +4,12 @@ import LocaleGate from "@/components/LocaleGate";
 import "./globals.css";
 
 export const metadata = {
-  title: "Headache Calendar",
+  title: "Hodepinedagboken",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="no" suppressHydrationWarning>
+    <html lang="nb-NO" suppressHydrationWarning>
       <body>
         {/* Locale is read from the request (cookie / browser), so it lives inside Suspense */}
         <Suspense fallback={null}>
