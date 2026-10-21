@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useHeadacheText } from "@/components/headache/useHeadacheText";
 import { COLORS, fill, indexRecords, intlLocale, monthStats } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ClusterIcon, MigraineIcon } from "@/components/headache/icons";
+import LogModal from "@/components/headache/LogModal";
 
 const MONTH_COUNT = 4; // current month + the three before it
 const OPTIONS_KEY = "headache-summary-options";
@@ -47,35 +48,114 @@ function monthLabel(locale, year, month, short = false) {
   return name.charAt(0).toLocaleUpperCase(loc) + name.slice(1);
 }
 
-// Plain text with aligned columns, like the old summary – for pasting into the patient record
+// Width of a string in a monospace font: CJK and full-width characters take two cells
+const WIDE = /[ᄀ-ᅟ⺀-〾ぁ-㏿㐀-䶿一-鿿ꀀ-꓏가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
+const textWidth = (s) => [...String(s)].reduce((n, ch) => n + (WIDE.test(ch) ? 2 : /\p{Mn}/u.test(ch) ? 0 : 1), 0);
+const padEnd = (s, w) => s + " ".repeat(Math.max(0, w - textWidth(s)));
+const padStart = (s, w) => " ".repeat(Math.max(0, w - textWidth(s))) + s;
+const center = (s, w) => {
+  const space = Math.max(0, w - textWidth(s));
+  const left = Math.ceil(space / 2);
+  return " ".repeat(left) + s + " ".repeat(space - left);
+};
+const escapeHtml = (s) =>
+  String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+
+// Headings and rows of the text-view table: [month, value, value, …]
+function tableData({ rows, columns, t, locale }) {
+  return {
+    head: [t.SUM_DAYS_WITH.replace(/[:：]\s*$/, ""), ...columns.map((c) => c.text)],
+    body: rows.map((r) => [
+      `${monthLabel(locale, r.year, r.month)}${r.current ? ` (${t.SUM_SO_FAR})` : ""}`,
+      ...columns.map((c) => {
+        const v = c.get(r);
+        return v === null ? "-" : String(v);
+      }),
+    ]),
+  };
+}
+
+// Plain text for pasting where tables aren't supported. Every value sits centred under its
+// heading and the numbers in a column are right-aligned to each other (ones under ones):
+//   Number of days with   | Headache | Mild | Moderate | … | Sum*
+//   ----------------------+----------+------+----------+---+------
+//   July 2026             |    13    |  1   |    6     | … |  31
 function buildText({ intro, rows, columns, t, locale, footnote }) {
-  const label = (r) => `${monthLabel(locale, r.year, r.month)}${r.current ? ` (${t.SUM_SO_FAR})` : ""}:`;
-  const labelWidth = Math.max(t.SUM_DAYS_WITH.length, ...rows.map((r) => label(r).length)) + 3;
+  const { head, body } = tableData({ rows, columns, t, locale });
+  const widths = head.map((h, i) => Math.max(textWidth(h), ...body.map((row) => textWidth(row[i]))));
+  const digits = head.map((_, i) => Math.max(...body.map((row) => textWidth(row[i]))));
 
-  const cells = columns.map((c) => {
-    const head = `${c.open ? "(" : ""}${c.text}${c.close ? ")" : ""}`;
-    const values = rows.map((r) => {
-      const v = c.get(r);
-      return v === null ? "-" : String(v);
-    });
-    const width = Math.max(head.length, ...values.map((v) => v.length + (c.open || c.close ? 1 : 0)));
-    const cell = (v) => {
-      if (c.open) return `(${v.padStart(width - 1)}`;
-      if (c.close) return `${v.padStart(width - 1)})`;
-      return v.padStart(width);
-    };
-    return { head: head.padStart(width), cells: values.map(cell) };
-  });
+  const cell = (value, i) => (i === 0 ? padEnd(value, widths[0]) : center(padStart(value, digits[i]), widths[i]));
+  const line = (cells) => cells.map(cell).join(" | ").trimEnd();
 
-  const lines = [
+  return [
     intro,
     "",
-    t.SUM_DAYS_WITH.padEnd(labelWidth) + cells.map((c) => c.head).join("   "),
-    ...rows.map((r, i) => label(r).padEnd(labelWidth) + cells.map((c) => c.cells[i]).join("   ")),
+    line(head.map((h, i) => (i === 0 ? h : center(h, widths[i])))),
+    widths.map((w) => "-".repeat(w)).join("-+-"),
+    ...body.map(line),
     "",
     footnote,
-  ];
-  return lines.join("\n");
+  ].join("\n");
+}
+
+// The same table as HTML, so it pastes as a real table into the patient record, Word or email
+function buildHtml({ intro, rows, columns, t, locale, footnote }) {
+  const { head, body } = tableData({ rows, columns, t, locale });
+  const td = "border:1px solid #cbd5e1;padding:3px 8px;";
+  const cells = (row, tag) =>
+    row
+      .map((v, i) => `<${tag} style="${td}text-align:${i === 0 ? "left" : "center"};white-space:nowrap">${escapeHtml(v)}</${tag}>`)
+      .join("");
+  return [
+    `<p>${escapeHtml(intro)}</p>`,
+    `<table style="border-collapse:collapse;font-variant-numeric:tabular-nums">`,
+    `<thead><tr>${cells(head, "th")}</tr></thead>`,
+    `<tbody>${body.map((row) => `<tr>${cells(row, "td")}</tr>`).join("")}</tbody>`,
+    `</table>`,
+    `<p><i>${escapeHtml(footnote)}</i></p>`,
+  ].join("");
+}
+
+// What the "text view" shows on screen: the intro, a plain bordered table and the footnote
+function TextTable({ intro, rows, columns, t, locale, footnote }) {
+  const { head, body } = tableData({ rows, columns, t, locale });
+  return (
+    <div className="text-xs text-slate-700 sm:text-[13px]">
+      <p className="leading-relaxed">{intro}</p>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full border-collapse tabular-nums">
+          <thead>
+            <tr>
+              {head.map((h, i) => (
+                <th
+                  key={i}
+                  className={`border border-slate-300 bg-slate-50 px-2 py-1 font-semibold ${i === 0 ? "text-start" : "text-center"}`}
+                >
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {body.map((row, r) => (
+              <tr key={r}>
+                {row.map((v, i) => (
+                  <td
+                    key={i}
+                    className={`whitespace-nowrap border border-slate-300 px-2 py-1 ${i === 0 ? "text-start" : "text-center"}`}
+                  >
+                    {v}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 italic text-slate-500">{footnote}</p>
+    </div>
+  );
 }
 
 function Checkbox({ checked, onChange, children }) {
@@ -97,6 +177,7 @@ export default function SummaryCard({ patient }) {
   const { t, locale } = useHeadacheText();
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   const [copied, setCopied] = useState(false);
+  const [logOpen, setLogOpen] = useState(false);
 
   // Remember the doctor's choices in this browser
   useEffect(() => {
@@ -143,7 +224,17 @@ export default function SummaryCard({ patient }) {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      const html = buildHtml({ intro, rows, columns, t, locale, footnote });
+      try {
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/plain": new Blob([text], { type: "text/plain" }),
+            "text/html": new Blob([html], { type: "text/html" }),
+          }),
+        ]);
+      } catch {
+        await navigator.clipboard.writeText(text); // browsers without rich clipboard support
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {}
@@ -156,7 +247,7 @@ export default function SummaryCard({ patient }) {
       <div className="rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)] sm:p-4">
         {options.textView ? (
           <>
-            <pre className="overflow-x-auto whitespace-pre font-mono text-[10.5px] leading-relaxed text-slate-700 sm:text-[11.5px]">{text}</pre>
+            <TextTable intro={intro} rows={rows} columns={columns} t={t} locale={locale} footnote={footnote} />
             <div className="mt-3 flex justify-end">
               <button
                 type="button"
@@ -258,6 +349,23 @@ export default function SummaryCard({ patient }) {
           {t.SUM_SHOW_CLUSTER}
         </Checkbox>
       </div>
+      {/* Opens the log in a modal – same look as the Medication / Previously used medication panels */}
+      <button
+        type="button"
+        onClick={() => setLogOpen(true)}
+        aria-haspopup="dialog"
+        className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 text-start shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)] transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#6a9be0]/40"
+      >
+        <span className="flex-1 text-xs font-bold uppercase tracking-[0.14em] text-[#4f7cc0]">{t.LOG_SHOW}</span>
+        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#6a9be0] px-1.5 text-[11px] font-bold text-white">
+          {patient?.records?.length ?? 0}
+        </span>
+        <svg className="h-3.5 w-3.5 text-[#6a9be0] rtl:-scale-x-100" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l9-7z" />
+        </svg>
+      </button>
+
+      <LogModal open={logOpen} onClose={() => setLogOpen(false)} patient={patient} />
     </section>
   );
 }
