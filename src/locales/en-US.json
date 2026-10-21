@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Invalid code. Please try again.",
 	"PATIENT_CODE_EXPIRED": "The code has expired. Ask the patient to create a new one.",
 	"LANDING_READ_MORE": "Read more about the app",
+	"LANDING_INTRO": "Get a full overview with simple logging and a daily reminder. Easily import your data on this page. Developed in collaboration with headache specialists and neurologists.",
 	"ABOUT_TITLE": "About the app",
 	"ABOUT_INTRO": "A clear overview of headache days, intensity and medication use makes it easier to find the right treatment together with your doctor. The app helps you keep track.",
 	"ABOUT_STEP_OF": "{current} of {total}",

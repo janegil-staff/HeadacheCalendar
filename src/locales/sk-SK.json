@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Neplatný kód. Skúste to znova.",
 	"PATIENT_CODE_EXPIRED": "Platnosť kódu vypršala. Požiadajte pacienta, aby vygeneroval nový.",
 	"LANDING_READ_MORE": "Viac o aplikácii",
+	"LANDING_INTRO": "Získajte úplný prehľad vďaka jednoduchému zaznamenávaniu a dennému pripomenutiu. Jednoduchý import údajov na tejto stránke. Vyvinuté v spolupráci so špecialistami na bolesti hlavy a neurológmi.",
 	"ABOUT_TITLE": "O aplikácii",
 	"ABOUT_INTRO": "Prehľad o dňoch s bolesťou hlavy, jej intenzite a užívaní liekov uľahčuje nájsť spolu s lekárom správnu liečbu. Aplikácia vám pomôže mať všetko pod kontrolou.",
 	"ABOUT_STEP_OF": "{current} z {total}",

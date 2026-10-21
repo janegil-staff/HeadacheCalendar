@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Ogiltig kod. Försök igen.",
 	"PATIENT_CODE_EXPIRED": "Koden har gått ut. Be patienten att skapa en ny.",
 	"LANDING_READ_MORE": "Läs mer om appen",
+	"LANDING_INTRO": "Få full överblick med enkel registrering och daglig påminnelse. Enkel import av data på den här sidan. Utvecklad i samarbete med huvudvärksspecialister och neurologer.",
 	"ABOUT_TITLE": "Om appen",
 	"ABOUT_INTRO": "En tydlig överblick över huvudvärksdagar, intensitet och läkemedelsanvändning gör det lättare att hitta rätt behandling tillsammans med din läkare. Appen hjälper dig att hålla koll.",
 	"ABOUT_STEP_OF": "{current} av {total}",

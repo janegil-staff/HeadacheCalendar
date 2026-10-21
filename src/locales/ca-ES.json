@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Codi no vàlid. Torneu-ho a provar.",
 	"PATIENT_CODE_EXPIRED": "El codi ha caducat. Demaneu al pacient que en generi un de nou.",
 	"LANDING_READ_MORE": "Més informació sobre l'aplicació",
+	"LANDING_INTRO": "Obtén una visió completa amb un registre senzill i un recordatori diari. Importa les teves dades fàcilment en aquesta pàgina. Desenvolupat en col·laboració amb especialistes en cefalea i neuròlegs.",
 	"ABOUT_TITLE": "Sobre l'aplicació",
 	"ABOUT_INTRO": "Tenir una visió clara dels dies amb mal de cap, la intensitat i l'ús de medicació facilita trobar el tractament adequat juntament amb el vostre metge. L'aplicació us ajuda a fer-ne el seguiment.",
 	"ABOUT_STEP_OF": "{current} de {total}",

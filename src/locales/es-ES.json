@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Código no válido. Inténtelo de nuevo.",
 	"PATIENT_CODE_EXPIRED": "El código ha caducado. Pida al paciente que genere uno nuevo.",
 	"LANDING_READ_MORE": "Más información sobre la aplicación",
+	"LANDING_INTRO": "Obtén una visión completa con un registro sencillo y un recordatorio diario. Importa tus datos fácilmente en esta página. Desarrollado en colaboración con especialistas en cefalea y neurólogos.",
 	"ABOUT_TITLE": "Acerca de la aplicación",
 	"ABOUT_INTRO": "Tener una visión clara de los días con dolor de cabeza, su intensidad y el uso de medicación facilita encontrar el tratamiento adecuado junto con su médico. La aplicación le ayuda a llevar el control.",
 	"ABOUT_STEP_OF": "{current} de {total}",

@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Vigane kood. Proovige uuesti.",
 	"PATIENT_CODE_EXPIRED": "Kood on aegunud. Paluge patsiendil luua uus.",
 	"LANDING_READ_MORE": "Loe rakendusest lähemalt",
+	"LANDING_INTRO": "Saa täielik ülevaade lihtsa registreerimise ja igapäevase meeldetuletusega. Lihtne andmete importimine sellel lehel. Välja töötatud koostöös peavalu spetsialistide ja neuroloogidega.",
 	"ABOUT_TITLE": "Rakendusest",
 	"ABOUT_INTRO": "Selge ülevaade peavalupäevadest, valu tugevusest ja ravimite kasutamisest aitab koos arstiga leida sobiva ravi. Rakendus aitab teil ülevaadet hoida.",
 	"ABOUT_STEP_OF": "{current} / {total}",

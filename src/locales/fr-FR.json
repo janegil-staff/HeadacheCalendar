@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Code invalide. Veuillez réessayer.",
 	"PATIENT_CODE_EXPIRED": "Le code a expiré. Demandez au patient d'en générer un nouveau.",
 	"LANDING_READ_MORE": "En savoir plus sur l'application",
+	"LANDING_INTRO": "Gardez une vue d'ensemble complète grâce à un enregistrement simple et un rappel quotidien. Importez facilement vos données sur cette page. Développé en collaboration avec des spécialistes des céphalées et des neurologues.",
 	"ABOUT_TITLE": "À propos de l'application",
 	"ABOUT_INTRO": "Avoir une vue claire des jours de céphalée, de leur intensité et de la prise de médicaments permet de trouver plus facilement le bon traitement avec votre médecin. L'application vous aide à faire le suivi.",
 	"ABOUT_STEP_OF": "{current} sur {total}",

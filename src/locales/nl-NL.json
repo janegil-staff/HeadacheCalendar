@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Ongeldige code. Probeer het opnieuw.",
 	"PATIENT_CODE_EXPIRED": "De code is verlopen. Vraag de patiënt een nieuwe aan te maken.",
 	"LANDING_READ_MORE": "Lees meer over de app",
+	"LANDING_INTRO": "Krijg volledig overzicht met eenvoudige registratie en een dagelijkse herinnering. Eenvoudig gegevens importeren op deze pagina. Ontwikkeld in samenwerking met hoofdpijnspecialisten en neurologen.",
 	"ABOUT_TITLE": "Over de app",
 	"ABOUT_INTRO": "Een duidelijk overzicht van hoofdpijndagen, intensiteit en medicijngebruik maakt het makkelijker om samen met uw arts de juiste behandeling te vinden. De app helpt u het overzicht te houden.",
 	"ABOUT_STEP_OF": "{current} van {total}",

@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Ungültiger Code. Bitte versuchen Sie es erneut.",
 	"PATIENT_CODE_EXPIRED": "Der Code ist abgelaufen. Bitten Sie den Patienten, einen neuen zu erstellen.",
 	"LANDING_READ_MORE": "Mehr über die App erfahren",
+	"LANDING_INTRO": "Behalten Sie den vollen Überblick mit einfacher Erfassung und täglicher Erinnerung. Einfacher Datenimport auf dieser Seite. Entwickelt in Zusammenarbeit mit Kopfschmerzspezialisten und Neurologen.",
 	"ABOUT_TITLE": "Über die App",
 	"ABOUT_INTRO": "Ein klarer Überblick über Kopfschmerztage, Intensität und Medikamenteneinnahme erleichtert es, gemeinsam mit Ihrer Ärztin oder Ihrem Arzt die passende Behandlung zu finden. Die App hilft Ihnen dabei.",
 	"ABOUT_STEP_OF": "{current} von {total}",

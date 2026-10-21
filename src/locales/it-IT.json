@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Codice non valido. Riprova.",
 	"PATIENT_CODE_EXPIRED": "Il codice è scaduto. Chiedi al paziente di generarne uno nuovo.",
 	"LANDING_READ_MORE": "Scopri di più sull'app",
+	"LANDING_INTRO": "Ottieni una visione completa con una registrazione semplice e un promemoria quotidiano. Importa facilmente i tuoi dati in questa pagina. Sviluppato in collaborazione con specialisti delle cefalee e neurologi.",
 	"ABOUT_TITLE": "Informazioni sull'app",
 	"ABOUT_INTRO": "Una visione chiara dei giorni di mal di testa, della loro intensità e dell'uso di farmaci rende più facile trovare la terapia giusta insieme al Suo medico. L'app La aiuta a tenere tutto sotto controllo.",
 	"ABOUT_STEP_OF": "{current} di {total}",

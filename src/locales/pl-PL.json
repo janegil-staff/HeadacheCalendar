@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Nieprawidłowy kod. Spróbuj ponownie.",
 	"PATIENT_CODE_EXPIRED": "Kod wygasł. Poproś pacjenta o wygenerowanie nowego.",
 	"LANDING_READ_MORE": "Dowiedz się więcej o aplikacji",
+	"LANDING_INTRO": "Zyskaj pełny przegląd dzięki prostej rejestracji i codziennemu przypomnieniu. Łatwy import danych na tej stronie. Opracowane we współpracy ze specjalistami od bólów głowy i neurologami.",
 	"ABOUT_TITLE": "O aplikacji",
 	"ABOUT_INTRO": "Przejrzysty obraz dni z bólem głowy, jego nasilenia i przyjmowanych leków ułatwia dobranie właściwego leczenia razem z lekarzem. Aplikacja pomoże Ci to wszystko śledzić.",
 	"ABOUT_STEP_OF": "{current} z {total}",

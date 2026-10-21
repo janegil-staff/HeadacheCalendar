@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Neteisingas kodas. Bandykite dar kartą.",
 	"PATIENT_CODE_EXPIRED": "Kodo galiojimas baigėsi. Paprašykite paciento sukurti naują.",
 	"LANDING_READ_MORE": "Sužinokite daugiau apie programėlę",
+	"LANDING_INTRO": "Gaukite visą apžvalgą paprastai registruodami ir gaudami kasdienį priminimą. Paprastas duomenų importavimas šiame puslapyje. Sukurta bendradarbiaujant su galvos skausmo specialistais ir neurologais.",
 	"ABOUT_TITLE": "Apie programėlę",
 	"ABOUT_INTRO": "Aiški galvos skausmo dienų, intensyvumo ir vaistų vartojimo apžvalga padeda kartu su gydytoju rasti tinkamą gydymą. Programėlė padeda jums viską stebėti.",
 	"ABOUT_STEP_OF": "{current} iš {total}",

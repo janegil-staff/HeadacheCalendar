@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Érvénytelen kód. Próbálja újra.",
 	"PATIENT_CODE_EXPIRED": "A kód lejárt. Kérje meg a beteget, hogy hozzon létre egy újat.",
 	"LANDING_READ_MORE": "Bővebben az alkalmazásról",
+	"LANDING_INTRO": "Teljes áttekintés egyszerű rögzítéssel és napi emlékeztetővel. Egyszerű adatimportálás ezen az oldalon. Fejfájás-specialistákkal és neurológusokkal együttműködésben fejlesztve.",
 	"ABOUT_TITLE": "Az alkalmazásról",
 	"ABOUT_INTRO": "A fejfájásos napok, a fájdalom erőssége és a gyógyszerhasználat áttekinthető nyilvántartása megkönnyíti, hogy orvosával közösen megtalálják a megfelelő kezelést. Az alkalmazás segít mindent nyomon követni.",
 	"ABOUT_STEP_OF": "{current} / {total}",

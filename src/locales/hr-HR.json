@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Nevažeći kod. Pokušajte ponovno.",
 	"PATIENT_CODE_EXPIRED": "Kod je istekao. Zamolite pacijenta da generira novi.",
 	"LANDING_READ_MORE": "Saznajte više o aplikaciji",
+	"LANDING_INTRO": "Dobijte potpuni pregled uz jednostavno bilježenje i dnevni podsjetnik. Jednostavan uvoz podataka na ovoj stranici. Razvijeno u suradnji sa specijalistima za glavobolju i neurolozima.",
 	"ABOUT_TITLE": "O aplikaciji",
 	"ABOUT_INTRO": "Jasan pregled dana s glavoboljom, njezina intenziteta i uzimanja lijekova olakšava pronalaženje prave terapije zajedno s Vašim liječnikom. Aplikacija Vam pomaže da sve pratite.",
 	"ABOUT_STEP_OF": "{current} od {total}",

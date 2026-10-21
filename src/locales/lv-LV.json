@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Nederīgs kods. Mēģiniet vēlreiz.",
 	"PATIENT_CODE_EXPIRED": "Koda derīgums ir beidzies. Palūdziet pacientam izveidot jaunu.",
 	"LANDING_READ_MORE": "Uzziniet vairāk par lietotni",
+	"LANDING_INTRO": "Iegūstiet pilnu pārskatu ar vienkāršu reģistrēšanu un ikdienas atgādinājumu. Vienkārša datu importēšana šajā lapā. Izstrādāts sadarbībā ar galvassāpju speciālistiem un neirologiem.",
 	"ABOUT_TITLE": "Par lietotni",
 	"ABOUT_INTRO": "Skaidrs pārskats par galvassāpju dienām, intensitāti un medikamentu lietošanu palīdz kopā ar ārstu atrast piemērotāko ārstēšanu. Lietotne palīdz Jums saglabāt pārskatu.",
 	"ABOUT_STEP_OF": "{current} no {total}",

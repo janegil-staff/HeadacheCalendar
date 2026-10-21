@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Virheellinen koodi. Yritä uudelleen.",
 	"PATIENT_CODE_EXPIRED": "Koodi on vanhentunut. Pyydä potilasta luomaan uusi.",
 	"LANDING_READ_MORE": "Lue lisää sovelluksesta",
+	"LANDING_INTRO": "Saat täyden kokonaiskuvan helpon kirjaamisen ja päivittäisen muistutuksen avulla. Tietojen tuonti onnistuu helposti tällä sivulla. Kehitetty yhteistyössä päänsärkyyn erikoistuneiden lääkärien ja neurologien kanssa.",
 	"ABOUT_TITLE": "Tietoa sovelluksesta",
 	"ABOUT_INTRO": "Selkeä kokonaiskuva päänsärkypäivistä, kivun voimakkuudesta ja lääkkeiden käytöstä helpottaa oikean hoidon löytämistä yhdessä lääkärisi kanssa. Sovellus auttaa sinua pysymään kärryillä.",
 	"ABOUT_STEP_OF": "{current} / {total}",

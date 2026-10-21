@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Código inválido. Tente novamente.",
 	"PATIENT_CODE_EXPIRED": "O código expirou. Peça ao paciente para gerar um novo.",
 	"LANDING_READ_MORE": "Saiba mais sobre a aplicação",
+	"LANDING_INTRO": "Tenha uma visão completa com um registo simples e um lembrete diário. Importe facilmente os seus dados nesta página. Desenvolvido em colaboração com especialistas em cefaleias e neurologistas.",
 	"ABOUT_TITLE": "Sobre a aplicação",
 	"ABOUT_INTRO": "Uma visão clara dos dias com dor de cabeça, da intensidade e do uso de medicação facilita encontrar o tratamento certo em conjunto com o seu médico. A aplicação ajuda a manter tudo registado.",
 	"ABOUT_STEP_OF": "{current} de {total}",

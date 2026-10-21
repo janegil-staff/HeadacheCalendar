@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Cod nevalid. Încercați din nou.",
 	"PATIENT_CODE_EXPIRED": "Codul a expirat. Rugați pacientul să genereze unul nou.",
 	"LANDING_READ_MORE": "Aflați mai multe despre aplicație",
+	"LANDING_INTRO": "Obțineți o imagine completă prin înregistrare simplă și memento zilnic. Importați ușor datele pe această pagină. Dezvoltat în colaborare cu specialiști în cefalee și neurologi.",
 	"ABOUT_TITLE": "Despre aplicație",
 	"ABOUT_INTRO": "O imagine clară asupra zilelor cu durere de cap, a intensității și a medicației folosite vă ajută să găsiți, împreună cu medicul dumneavoastră, tratamentul potrivit. Aplicația vă ajută să țineți evidența.",
 	"ABOUT_STEP_OF": "{current} din {total}",

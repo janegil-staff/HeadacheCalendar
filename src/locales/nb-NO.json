@@ -527,6 +527,7 @@
 	"PATIENT_CODE_INVALID": "Ugyldig kode. Prøv igjen.",
 	"PATIENT_CODE_EXPIRED": "Koden har utløpt. Be pasienten lage en ny.",
 	"LANDING_READ_MORE": "Les mer om appen",
+	"LANDING_INTRO": "Få full oversikt med enkel registrering og daglig påminnelse. Enkel import av data på denne siden. Utviklet i samarbeid med hodepinespesialister og nevrologer.",
 	"ABOUT_TITLE": "Om appen",
 	"ABOUT_INTRO": "God oversikt over hodepinedager, intensitet og medisinbruk gjør det lettere å finne riktig behandling sammen med legen din. Appen hjelper deg å holde oversikten.",
 	"ABOUT_STEP_OF": "{current} av {total}",
