@@ -12,7 +12,7 @@ export default function LandingPage() {
   const { t } = useLocale();
 
   return (
-    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20">
+    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 pb-28 pt-20 lg:pb-28 lg:pt-8">
       <Background />
 
       {/* Phone/tablet: headline, text, card, read more (no image).

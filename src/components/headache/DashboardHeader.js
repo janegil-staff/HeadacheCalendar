@@ -1,27 +1,19 @@
 // src/components/headache/DashboardHeader.js
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useHeadacheText } from "@/components/headache/useHeadacheText";
 import { useLocale } from "@/components/LocaleProvider";
 import { fill, formatUnit } from "@/components/headache/data";
 
 const GENDER_KEYS = { female: "GENDER_FEMALE", male: "GENDER_MALE" };
 
-// Top bar (patient, title, close) with the Calendar / Log tabs underneath
+// Top bar: patient, title, close
 export default function DashboardHeader({ patient, onClose }) {
   const { t, locale } = useHeadacheText();
   const { t: siteText } = useLocale();
-  const pathname = usePathname();
 
   const gender = t[GENDER_KEYS[patient.gender]] ?? (patient.gender ? t.GENDER_OTHER : "");
   const who = [patient.age ? formatUnit(locale, patient.age, "year") : null, gender].filter(Boolean).join(" · ");
-
-  const tabs = [
-    { href: "/dashboard", label: t.TAB_CALENDAR },
-    { href: "/dashboard/log", label: t.LOG_TITLE },
-  ];
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/70 bg-white/80 backdrop-blur">
@@ -44,24 +36,6 @@ export default function DashboardHeader({ patient, onClose }) {
           {t.DASHBOARD_CLOSE}
         </button>
       </div>
-
-      <nav className="flex gap-1 px-2 sm:px-4" aria-label={siteText.HEADACHE_DIARY}>
-        {tabs.map((tab) => {
-          const active = pathname === tab.href;
-          return (
-            <Link
-              key={tab.href}
-              href={tab.href}
-              aria-current={active ? "page" : undefined}
-              className={`-mb-px border-b-2 px-3 py-2 text-sm font-semibold transition ${
-                active ? "border-[#6a9be0] text-[#4f7cc0]" : "border-transparent text-slate-500 hover:text-slate-700"
-              }`}
-            >
-              {tab.label}
-            </Link>
-          );
-        })}
-      </nav>
     </header>
   );
 }
