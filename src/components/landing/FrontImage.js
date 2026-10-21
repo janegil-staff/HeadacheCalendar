@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
 import { DEFAULT_LOCALE, getImageFolder } from "@/lib/i18n";
 
-const frontSrc = (locale) => `/images/about-app/${getImageFolder(locale)}/front.png`;
+const frontSrc = (locale) => `/images/about-app/${getImageFolder(locale)}/front.webp`;
 
 function Picture({ locale, alt, className }) {
   const fallback = frontSrc(DEFAULT_LOCALE);
