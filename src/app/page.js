@@ -18,13 +18,13 @@ export default function LandingPage() {
       {/* Phone/tablet: headline, text, card, read more (no image).
           Desktop (lg+), like kolskalender: headline + text top-left, the image under it with
           "Read more" below, and the code card to the right of the image. */}
-      <div className="grid w-full max-w-6xl grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-x-10 xl:gap-x-14">
-        <header className="max-w-2xl text-center lg:col-start-1 lg:row-start-1 lg:text-start">
-          <h1 className="font-serif text-4xl font-bold text-blue-800 sm:text-5xl xl:text-6xl">
+      <div className="grid w-full max-w-6xl grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-x-6 xl:gap-x-8">
+        <header className="max-w-2xl text-center lg:col-start-1 lg:row-start-1 lg:w-[75%] lg:max-w-none lg:justify-self-end lg:text-start">
+          <h1 className="font-serif text-4xl font-bold text-blue-800 sm:text-5xl">
             {t.HEADACHE_DIARY}
           </h1>
           {t.LANDING_INTRO && (
-            <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg xl:text-xl">
+            <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
               {t.LANDING_INTRO}
             </p>
           )}
@@ -32,17 +32,17 @@ export default function LandingPage() {
 
         {/* Phone/tablet: top corner of the page. Desktop (like kolskalender): top of the right
             column, level with the bottom of the headline, right edge in line with the card */}
-        <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:static lg:col-start-2 lg:row-start-1 lg:mt-11 lg:self-start lg:justify-self-end xl:mt-14">
+        <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:static lg:col-start-2 lg:row-start-1 lg:mt-11 lg:self-start lg:justify-self-end">
           <LanguagePicker />
         </div>
 
-        <FrontImage className="hidden h-auto max-h-[72vh] w-full object-contain drop-shadow-2xl ltr:object-left rtl:object-right lg:col-start-1 lg:row-start-2 lg:block" />
+        <FrontImage className="hidden h-auto w-[75%] drop-shadow-2xl lg:col-start-1 lg:row-start-2 lg:block lg:justify-self-end" />
 
         <div className="mx-auto w-full max-w-md self-start lg:col-start-2 lg:row-start-2 lg:mx-0 lg:max-w-none">
           <CodeCard />
         </div>
 
-        <div className="flex justify-center lg:col-start-1 lg:row-start-3 lg:justify-start">
+        <div className="flex justify-center lg:col-start-1 lg:row-start-3 lg:w-[75%] lg:justify-self-end lg:justify-start">
           <ReadMoreButton />
         </div>
       </div>
