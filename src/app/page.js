@@ -6,6 +6,7 @@ import CodeCard from "@/components/landing/CodeCard";
 import FrontImage from "@/components/landing/FrontImage";
 import LanguagePicker from "@/components/landing/LanguagePicker";
 import ReadMoreButton from "@/components/landing/ReadMoreButton";
+import StoreLinks from "@/components/landing/StoreLinks";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function LandingPage() {
@@ -42,9 +43,29 @@ export default function LandingPage() {
           <CodeCard />
         </div>
 
-        <div className="flex justify-center lg:col-start-1 lg:row-start-3 lg:w-[75%] lg:justify-self-end lg:justify-start">
+        <div className="flex flex-col items-center lg:col-start-1 lg:row-start-3 lg:w-[75%] lg:items-start lg:justify-self-end">
           <ReadMoreButton />
+          {t.LANDING_DISCLAIMER && (
+            <p className="mt-4 max-w-2xl text-center text-[13px] italic leading-relaxed text-slate-600 lg:text-start">
+              {t.LANDING_DISCLAIMER}
+            </p>
+          )}
         </div>
+
+        {/* App Store / Google Play, centred under everything */}
+        <div className="mt-6 lg:col-span-2 lg:row-start-4">
+          <StoreLinks />
+        </div>
+
+        {/* Copyright and contact, centred at the very bottom */}
+        <footer className="mt-2 text-center text-sm leading-relaxed text-slate-600 lg:col-span-2 lg:row-start-5">
+          <p>Copyright {new Date().getFullYear()} - KBB Medic AS (org: 912 372 022)</p>
+          <p>
+            <a href="mailto:post@kbbmedic.com" className="hover:text-blue-800 hover:underline">
+              <span aria-hidden="true">✉</span> post@kbbmedic.com
+            </a>
+          </p>
+        </footer>
       </div>
     </main>
   );
