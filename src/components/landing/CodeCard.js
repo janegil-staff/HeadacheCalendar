@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "@/components/LocaleProvider";
+import CodeHelpModal from "@/components/landing/CodeHelpModal";
 
 export default function CodeCard() {
   const router = useRouter();
@@ -121,8 +122,8 @@ export default function CodeCard() {
 
       <button
         type="button"
-        onClick={() => setShowHelp((v) => !v)}
-        aria-expanded={showHelp}
+        onClick={() => setShowHelp(true)}
+        aria-haspopup="dialog"
         className="mt-3 inline-flex items-center gap-1.5 text-sm text-gray-700 underline underline-offset-2 hover:text-blue-800"
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -132,9 +133,7 @@ export default function CodeCard() {
         {t.PATIENT_CODE_HELP_LINK}
       </button>
 
-      {showHelp && (
-        <p className="mt-2 text-sm leading-relaxed text-gray-600">{t.PATIENT_CODE_HELP_TEXT}</p>
-      )}
+      <CodeHelpModal open={showHelp} onClose={() => setShowHelp(false)} />
     </form>
   );
 }
