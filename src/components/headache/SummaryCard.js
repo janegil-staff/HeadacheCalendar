@@ -6,6 +6,7 @@ import { useHeadacheText } from "@/components/headache/useHeadacheText";
 import { COLORS, fill, indexRecords, intlLocale, monthStats } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ClusterIcon, MigraineIcon } from "@/components/headache/icons";
 import LogModal from "@/components/headache/LogModal";
+import Hit6Card from "@/components/headache/Hit6Card";
 
 const MONTH_COUNT = 4; // current month + the three before it
 const OPTIONS_KEY = "headache-summary-options";
@@ -364,6 +365,9 @@ export default function SummaryCard({ patient }) {
           <path d="M8 5v14l9-7z" />
         </svg>
       </button>
+
+      {/* HIT-6 right under Show log (not shown when the patient has no HIT-6) */}
+      <Hit6Card patient={patient} />
 
       <LogModal open={logOpen} onClose={() => setLogOpen(false)} patient={patient} />
     </section>
