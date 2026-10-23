@@ -3,24 +3,32 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useHeadacheText } from "@/components/headache/useHeadacheText";
-import { COLORS, fill, indexRecords, intlLocale, monthStats } from "@/components/headache/data";
+import { COLORS, fill, indexRecords, intlLocale, isoWeek, monthStats, rangeStats } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ClusterIcon, MigraineIcon } from "@/components/headache/icons";
 import LogModal from "@/components/headache/LogModal";
 import Hit6Card from "@/components/headache/Hit6Card";
 
 const MONTH_COUNT = 4; // current month + the three before it
+const WEEK_COUNT = 4; // current week + the three before it (weeks start on Monday, like the calendar)
 const OPTIONS_KEY = "headache-summary-options";
-const DEFAULT_OPTIONS = { textView: false, migraine: false, aura: false, cluster: false };
+const DEFAULT_OPTIONS = { period: "months", textView: false, migraine: false, aura: false, cluster: false };
 
-// Per-month numbers for the last MONTH_COUNT months, oldest first
-function summaryRows(byDate) {
+// Per-month (or per-week) numbers for the chosen period, oldest first
+function summaryRows(byDate, period) {
   const now = new Date();
+  const weeks = period === "weeks";
+  const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7));
   const rows = [];
-  for (let i = MONTH_COUNT - 1; i >= 0; i--) {
-    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const s = monthStats(byDate, d.getFullYear(), d.getMonth());
+  for (let i = (weeks ? WEEK_COUNT : MONTH_COUNT) - 1; i >= 0; i--) {
+    const d = weeks
+      ? new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - 7 * i)
+      : new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const s = weeks ? rangeStats(byDate, d, 7) : monthStats(byDate, d.getFullYear(), d.getMonth());
     const [, mild, moderate, strong, extreme] = s.intensity;
     rows.push({
+      key: weeks ? `w-${d.toDateString()}` : `${d.getFullYear()}-${d.getMonth()}`,
+      start: d,
+      weeks,
       year: d.getFullYear(),
       month: d.getMonth(),
       current: i === 0,
@@ -49,6 +57,20 @@ function monthLabel(locale, year, month, short = false) {
   return name.charAt(0).toLocaleUpperCase(loc) + name.slice(1);
 }
 
+// "20.–26. okt." for the week starting on `start`
+function weekRange(locale, start) {
+  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 6);
+  const fmt = new Intl.DateTimeFormat(intlLocale(locale), { day: "numeric", month: "short" });
+  return fmt.formatRange ? fmt.formatRange(start, end) : `${fmt.format(start)} – ${fmt.format(end)}`;
+}
+
+// Row heading: the month name, or "Week 43" with its dates
+function rowLabel(t, locale, r, short = false) {
+  if (!r.weeks) return monthLabel(locale, r.year, r.month, short);
+  const week = fill(t.SUM_WEEK, { n: isoWeek(r.start) });
+  return short ? week : `${week} (${weekRange(locale, r.start)})`;
+}
+
 // Width of a string in a monospace font: CJK and full-width characters take two cells
 const WIDE = /[ᄀ-ᅟ⺀-〾ぁ-㏿㐀-䶿一-鿿ꀀ-꓏가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
 const textWidth = (s) => [...String(s)].reduce((n, ch) => n + (WIDE.test(ch) ? 2 : /\p{Mn}/u.test(ch) ? 0 : 1), 0);
@@ -67,7 +89,7 @@ function tableData({ rows, columns, t, locale }) {
   return {
     head: [t.SUM_DAYS_WITH.replace(/[:：]\s*$/, ""), ...columns.map((c) => c.text)],
     body: rows.map((r) => [
-      `${monthLabel(locale, r.year, r.month)}${r.current ? ` (${t.SUM_SO_FAR})` : ""}`,
+      `${rowLabel(t, locale, r)}${r.current ? ` (${t.SUM_SO_FAR})` : ""}`,
       ...columns.map((c) => {
         const v = c.get(r);
         return v === null ? "-" : String(v);
@@ -173,7 +195,39 @@ function Checkbox({ checked, onChange, children }) {
   );
 }
 
-// "Summary" in the right sidebar: the last four months per month, as a table or as copyable text
+// Slider with a green dot: last 4 months ⇄ last 4 weeks
+function PeriodSwitch({ value, onChange, t }) {
+  const weeks = value === "weeks";
+  const months = fill(t.SUM_LAST_MONTHS, { n: MONTH_COUNT });
+  const lastWeeks = fill(t.SUM_LAST_WEEKS, { n: WEEK_COUNT });
+  const label = (active) => `cursor-pointer transition ${active ? "font-semibold text-slate-800" : "text-slate-500 hover:text-slate-700"}`;
+  return (
+    // Three columns so the switch sits exactly in the middle, whatever the length of the labels
+    <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 pb-2 pt-1.5 text-sm">
+      <button type="button" onClick={() => onChange("months")} className={`text-end ${label(!weeks)}`}>
+        {months}
+      </button>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={weeks}
+        aria-label={weeks ? lastWeeks : months}
+        onClick={() => onChange(weeks ? "months" : "weeks")}
+        className="relative h-6 w-11 shrink-0 cursor-pointer rounded-full border border-slate-300 bg-white shadow-inner transition focus:outline-none focus:ring-2 focus:ring-[#6a9be0]/40"
+      >
+        <span
+          className={`absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full shadow-sm transition-all duration-200 ${weeks ? "start-[22px]" : "start-[3px]"}`}
+          style={{ backgroundColor: COLORS.mild }}
+        />
+      </button>
+      <button type="button" onClick={() => onChange("weeks")} className={`text-start ${label(weeks)}`}>
+        {lastWeeks}
+      </button>
+    </div>
+  );
+}
+
+// "Summary" in the right sidebar: the last four months (or weeks), as a table or as copyable text
 export default function SummaryCard({ patient }) {
   const { t, locale } = useHeadacheText();
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
@@ -198,12 +252,19 @@ export default function SummaryCard({ patient }) {
     setCopied(false);
   };
 
-  const rows = useMemo(() => summaryRows(indexRecords(patient?.records)), [patient]);
+  const period = options.period === "weeks" ? "weeks" : "months";
+  const rows = useMemo(() => summaryRows(indexRecords(patient?.records), period), [patient, period]);
   const total = (key) => rows.reduce((n, r) => n + r[key], 0);
   const hasData = rows.some((r) => r.registered > 0);
 
   const intro = hasData
-    ? fill(t.SUM_INTRO, { months: MONTH_COUNT, days: total("headache"), migraine: total("migraine"), acute: total("acute") })
+    ? fill(period === "weeks" ? t.SUM_INTRO_WEEKS : t.SUM_INTRO, {
+        months: MONTH_COUNT,
+        weeks: WEEK_COUNT,
+        days: total("headache"),
+        migraine: total("migraine"),
+        acute: total("acute"),
+      })
     : t.SUM_NONE;
   const footnote = `*${t.SUM_SUM} = (${t.CAL_MILD} × 1) + (${t.CAL_MODERATE} × 2) + (${t.CAL_STRONG}/${t.CAL_EXTREME} × 3)`;
 
@@ -286,10 +347,11 @@ export default function SummaryCard({ patient }) {
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {rows.map((r) => (
-                        <tr key={`${r.year}-${r.month}`}>
+                        <tr key={r.key}>
                           <td className="px-0.5 py-2 text-start text-slate-700 sm:px-1">
-                            <span className="block whitespace-nowrap sm:hidden">{monthLabel(locale, r.year, r.month, true)}</span>
-                            <span className="hidden whitespace-nowrap sm:block">{monthLabel(locale, r.year, r.month)}</span>
+                            <span className="block whitespace-nowrap sm:hidden">{rowLabel(t, locale, r, true)}</span>
+                            <span className="hidden whitespace-nowrap sm:block">{r.weeks ? rowLabel(t, locale, r, true) : rowLabel(t, locale, r)}</span>
+                            {r.weeks && <span className="block whitespace-nowrap text-[11px] text-slate-400">{weekRange(locale, r.start)}</span>}
                             {r.current && <span className="block text-[11px] text-slate-400">{t.SUM_SO_FAR}</span>}
                           </td>
                           {columns.map((c) => {
@@ -337,6 +399,7 @@ export default function SummaryCard({ patient }) {
       </div>
 
       <div className="mt-4 border-t border-slate-200/80 pt-3">
+        <PeriodSwitch value={period} onChange={(v) => setOption("period", v)} t={t} />
         <Checkbox checked={options.textView} onChange={(v) => setOption("textView", v)}>
           {t.SUM_TEXT_VIEW}
         </Checkbox>

@@ -63,9 +63,8 @@ export function monthGrid(year, month) {
   return cells;
 }
 
-export function monthStats(byDate, year, month) {
-  const prefix = monthKey(year, month);
-  const stats = {
+function emptyStats() {
+  return {
     attacks: 0,
     minutes: 0,
     intensity: [0, 0, 0, 0, 0],
@@ -77,20 +76,45 @@ export function monthStats(byDate, year, month) {
     injectionDays: 0,
     registered: 0,
   };
-  for (const [date, r] of byDate) {
-    if (!date.startsWith(prefix)) continue;
-    stats.registered++;
-    stats.attacks += Number(r.attacks) || 0;
-    stats.minutes += Number(r.durationMinutes) || 0;
-    stats.intensity[intensityOf(r)]++;
-    if (r.isMigraine) stats.migraine++;
-    if (r.hasAura) stats.aura++;
-    if (r.hasClusterHeadache) stats.cluster++;
-    if (r.hasPeriod) stats.period++;
-    if (hasAcute(r)) stats.acuteDays++;
-    if (hasInjection(r)) stats.injectionDays++;
+}
+
+function addRecord(stats, r) {
+  stats.registered++;
+  stats.attacks += Number(r.attacks) || 0;
+  stats.minutes += Number(r.durationMinutes) || 0;
+  stats.intensity[intensityOf(r)]++;
+  if (r.isMigraine) stats.migraine++;
+  if (r.hasAura) stats.aura++;
+  if (r.hasClusterHeadache) stats.cluster++;
+  if (r.hasPeriod) stats.period++;
+  if (hasAcute(r)) stats.acuteDays++;
+  if (hasInjection(r)) stats.injectionDays++;
+}
+
+export function monthStats(byDate, year, month) {
+  const prefix = monthKey(year, month);
+  const stats = emptyStats();
+  for (const [date, r] of byDate) if (date.startsWith(prefix)) addRecord(stats, r);
+  return stats;
+}
+
+// Same numbers as monthStats, for `days` days starting at `from` (a Date)
+export function rangeStats(byDate, from, days) {
+  const stats = emptyStats();
+  for (let i = 0; i < days; i++) {
+    const d = new Date(from.getFullYear(), from.getMonth(), from.getDate() + i);
+    const r = byDate.get(toDateKey(d.getFullYear(), d.getMonth(), d.getDate()));
+    if (r) addRecord(stats, r);
   }
   return stats;
+}
+
+// ISO 8601 week number (weeks start on Monday, week 1 holds the first Thursday)
+export function isoWeek(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  d.setUTCDate(d.getUTCDate() + 3 - ((d.getUTCDay() + 6) % 7));
+  const yearStart = Date.UTC(d.getUTCFullYear(), 0, 1);
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
 }
 
 // headacheScores is keyed by the first day of the month, e.g. "2026-09-01"

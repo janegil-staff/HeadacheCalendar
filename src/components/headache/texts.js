@@ -69,6 +69,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "عدد الأيام مع:",
     "SUM_HEADACHE": "الصداع",
     "SUM_INTRO": "آخر {months} أشهر: عانى المريض من الصداع في {days} يومًا، منها {migraine} يومًا كانت صداعًا نصفيًا. استخدم المريض دواء النوبة في {acute} يومًا.",
+    "SUM_INTRO_WEEKS": "آخر {weeks} أسابيع: عانى المريض من الصداع في {days} يومًا، منها {migraine} يومًا كانت صداعًا نصفيًا. استخدم المريض دواء النوبة في {acute} يومًا.",
+    "SUM_LAST_MONTHS": "آخر {n} أشهر",
+    "SUM_LAST_WEEKS": "آخر {n} أسابيع",
     "SUM_NONE": "لا توجد تسجيلات في هذه الفترة.",
     "SUM_SHOW_AURA": "إظهار الأورة",
     "SUM_SHOW_CLUSTER": "إظهار الصداع العنقودي",
@@ -77,6 +80,7 @@ export const TEXTS = {
     "SUM_SUM": "المجموع",
     "SUM_TEXT_VIEW": "عرض نصي (الأفضل للنسخ إلى السجل الطبي)",
     "SUM_TITLE": "ملخص",
+    "SUM_WEEK": "الأسبوع {n}",
     "TAB_CALENDAR": "التقويم"
   },
   "bg": {
@@ -147,6 +151,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Брой дни с:",
     "SUM_HEADACHE": "Главоболие",
     "SUM_INTRO": "Последните {months} месеца: дни с главоболие – {days}, от тях с мигрена – {migraine}. Дни с лекарства при пристъп – {acute}.",
+    "SUM_INTRO_WEEKS": "Последните {weeks} седмици: дни с главоболие – {days}, от тях с мигрена – {migraine}. Дни с лекарства при пристъп – {acute}.",
+    "SUM_LAST_MONTHS": "Последните {n} месеца",
+    "SUM_LAST_WEEKS": "Последните {n} седмици",
     "SUM_NONE": "Няма записи за този период.",
     "SUM_SHOW_AURA": "Покажи аура",
     "SUM_SHOW_CLUSTER": "Покажи кластерно главоболие",
@@ -155,6 +162,7 @@ export const TEXTS = {
     "SUM_SUM": "Сума",
     "SUM_TEXT_VIEW": "Текстов изглед (най-подходящ за копиране в медицинското досие)",
     "SUM_TITLE": "Обобщение",
+    "SUM_WEEK": "Седмица {n}",
     "TAB_CALENDAR": "Календар"
   },
   "bs": {
@@ -225,6 +233,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Broj dana sa:",
     "SUM_HEADACHE": "Glavobolja",
     "SUM_INTRO": "Posljednja {months} mjeseca: dana s glavoboljom – {days}, od toga s migrenom – {migraine}. Dana s akutnim lijekovima – {acute}.",
+    "SUM_INTRO_WEEKS": "Posljednje {weeks} sedmice: dana s glavoboljom – {days}, od toga s migrenom – {migraine}. Dana s akutnim lijekovima – {acute}.",
+    "SUM_LAST_MONTHS": "Posljednja {n} mjeseca",
+    "SUM_LAST_WEEKS": "Posljednje {n} sedmice",
     "SUM_NONE": "Nema zapisa u ovom periodu.",
     "SUM_SHOW_AURA": "Prikaži auru",
     "SUM_SHOW_CLUSTER": "Prikaži klaster glavobolju",
@@ -233,6 +244,7 @@ export const TEXTS = {
     "SUM_SUM": "Zbir",
     "SUM_TEXT_VIEW": "Tekstualni prikaz (najbolje za kopiranje u medicinski karton)",
     "SUM_TITLE": "Sažetak",
+    "SUM_WEEK": "Sedmica {n}",
     "TAB_CALENDAR": "Kalendar"
   },
   "ca": {
@@ -303,6 +315,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Nombre de dies amb:",
     "SUM_HEADACHE": "Mal de cap",
     "SUM_INTRO": "Últims {months} mesos: el pacient ha tingut {days} dies amb mal de cap, dels quals {migraine} amb migranya. El pacient ha pres medicació aguda {acute} dies.",
+    "SUM_INTRO_WEEKS": "Últimes {weeks} setmanes: el pacient ha tingut {days} dies amb mal de cap, dels quals {migraine} amb migranya. El pacient ha pres medicació aguda {acute} dies.",
+    "SUM_LAST_MONTHS": "Últims {n} mesos",
+    "SUM_LAST_WEEKS": "Últimes {n} setmanes",
     "SUM_NONE": "No hi ha registres en aquest període.",
     "SUM_SHOW_AURA": "Mostra l'aura",
     "SUM_SHOW_CLUSTER": "Mostra la cefalea en raïm",
@@ -311,6 +326,7 @@ export const TEXTS = {
     "SUM_SUM": "Suma",
     "SUM_TEXT_VIEW": "Vista de text (ideal per copiar a la història clínica)",
     "SUM_TITLE": "Resum",
+    "SUM_WEEK": "Setmana {n}",
     "TAB_CALENDAR": "Calendari"
   },
   "cs": {
@@ -381,6 +397,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Počet dní s:",
     "SUM_HEADACHE": "Bolest hlavy",
     "SUM_INTRO": "Poslední {months} měsíce: dny s bolestí hlavy – {days}, z toho s migrénou – {migraine}. Dny s akutními léky – {acute}.",
+    "SUM_INTRO_WEEKS": "Poslední {weeks} týdny: dny s bolestí hlavy – {days}, z toho s migrénou – {migraine}. Dny s akutními léky – {acute}.",
+    "SUM_LAST_MONTHS": "Poslední {n} měsíce",
+    "SUM_LAST_WEEKS": "Poslední {n} týdny",
     "SUM_NONE": "V tomto období nejsou žádné záznamy.",
     "SUM_SHOW_AURA": "Zobrazit auru",
     "SUM_SHOW_CLUSTER": "Zobrazit clusterovou bolest hlavy",
@@ -389,6 +408,7 @@ export const TEXTS = {
     "SUM_SUM": "Součet",
     "SUM_TEXT_VIEW": "Textové zobrazení (nejlepší pro kopírování do zdravotnické dokumentace)",
     "SUM_TITLE": "Souhrn",
+    "SUM_WEEK": "Týden {n}",
     "TAB_CALENDAR": "Kalendář"
   },
   "da": {
@@ -459,6 +479,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Antal dage med:",
     "SUM_HEADACHE": "Hovedpine",
     "SUM_INTRO": "Seneste {months} måneder: Patienten har haft {days} dage med hovedpine, heraf {migraine} med migræne. Patienten har brugt anfaldsmedicin {acute} dage.",
+    "SUM_INTRO_WEEKS": "Seneste {weeks} uger: Patienten har haft {days} dage med hovedpine, heraf {migraine} med migræne. Patienten har brugt anfaldsmedicin {acute} dage.",
+    "SUM_LAST_MONTHS": "Seneste {n} måneder",
+    "SUM_LAST_WEEKS": "Seneste {n} uger",
     "SUM_NONE": "Ingen registreringer i perioden.",
     "SUM_SHOW_AURA": "Vis aura",
     "SUM_SHOW_CLUSTER": "Vis klyngehovedpine",
@@ -467,6 +490,7 @@ export const TEXTS = {
     "SUM_SUM": "Sum",
     "SUM_TEXT_VIEW": "Tekstvisning (bedst til kopiering til journalen)",
     "SUM_TITLE": "Sammendrag",
+    "SUM_WEEK": "Uge {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "de": {
@@ -537,6 +561,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Anzahl Tage mit:",
     "SUM_HEADACHE": "Kopfschmerz",
     "SUM_INTRO": "Letzte {months} Monate: Der Patient hatte {days} Tage mit Kopfschmerzen, davon {migraine} mit Migräne. Akutmedikation wurde an {acute} Tagen eingenommen.",
+    "SUM_INTRO_WEEKS": "Letzte {weeks} Wochen: Der Patient hatte {days} Tage mit Kopfschmerzen, davon {migraine} mit Migräne. Akutmedikation wurde an {acute} Tagen eingenommen.",
+    "SUM_LAST_MONTHS": "Letzte {n} Monate",
+    "SUM_LAST_WEEKS": "Letzte {n} Wochen",
     "SUM_NONE": "Keine Einträge in diesem Zeitraum.",
     "SUM_SHOW_AURA": "Aura anzeigen",
     "SUM_SHOW_CLUSTER": "Clusterkopfschmerz anzeigen",
@@ -545,6 +572,7 @@ export const TEXTS = {
     "SUM_SUM": "Summe",
     "SUM_TEXT_VIEW": "Textansicht (ideal zum Kopieren in die Patientenakte)",
     "SUM_TITLE": "Zusammenfassung",
+    "SUM_WEEK": "Woche {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "el": {
@@ -615,6 +643,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Αριθμός ημερών με:",
     "SUM_HEADACHE": "Πονοκέφαλος",
     "SUM_INTRO": "Τελευταίοι {months} μήνες: ο ασθενής είχε {days} ημέρες με πονοκέφαλο, από τις οποίες {migraine} με ημικρανία. Φάρμακα κρίσης χρησιμοποιήθηκαν σε {acute} ημέρες.",
+    "SUM_INTRO_WEEKS": "Τελευταίες {weeks} εβδομάδες: ο ασθενής είχε {days} ημέρες με πονοκέφαλο, από τις οποίες {migraine} με ημικρανία. Φάρμακα κρίσης χρησιμοποιήθηκαν σε {acute} ημέρες.",
+    "SUM_LAST_MONTHS": "Τελευταίοι {n} μήνες",
+    "SUM_LAST_WEEKS": "Τελευταίες {n} εβδομάδες",
     "SUM_NONE": "Δεν υπάρχουν καταγραφές σε αυτή την περίοδο.",
     "SUM_SHOW_AURA": "Εμφάνιση αύρας",
     "SUM_SHOW_CLUSTER": "Εμφάνιση αθροιστικής κεφαλαλγίας",
@@ -623,6 +654,7 @@ export const TEXTS = {
     "SUM_SUM": "Άθροισμα",
     "SUM_TEXT_VIEW": "Προβολή κειμένου (ιδανική για αντιγραφή στον ιατρικό φάκελο)",
     "SUM_TITLE": "Σύνοψη",
+    "SUM_WEEK": "Εβδομάδα {n}",
     "TAB_CALENDAR": "Ημερολόγιο"
   },
   "en": {
@@ -693,6 +725,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Number of days with:",
     "SUM_HEADACHE": "Headache",
     "SUM_INTRO": "Last {months} months: The patient has had {days} days with headache, of which {migraine} were experienced as migraine. The patient used acute medication on {acute} days.",
+    "SUM_INTRO_WEEKS": "Last {weeks} weeks: The patient has had {days} days with headache, of which {migraine} were experienced as migraine. The patient used acute medication on {acute} days.",
+    "SUM_LAST_MONTHS": "Last {n} months",
+    "SUM_LAST_WEEKS": "Last {n} weeks",
     "SUM_NONE": "No registrations in this period.",
     "SUM_SHOW_AURA": "Show aura",
     "SUM_SHOW_CLUSTER": "Show cluster headache",
@@ -701,6 +736,7 @@ export const TEXTS = {
     "SUM_SUM": "Sum",
     "SUM_TEXT_VIEW": "Text view (best for copying into the patient record)",
     "SUM_TITLE": "Summary",
+    "SUM_WEEK": "Week {n}",
     "TAB_CALENDAR": "Calendar"
   },
   "es": {
@@ -771,6 +807,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Número de días con:",
     "SUM_HEADACHE": "Dolor de cabeza",
     "SUM_INTRO": "Últimos {months} meses: el paciente ha tenido {days} días con dolor de cabeza, de los cuales {migraine} fueron migraña. El paciente tomó medicación aguda {acute} días.",
+    "SUM_INTRO_WEEKS": "Últimas {weeks} semanas: el paciente ha tenido {days} días con dolor de cabeza, de los cuales {migraine} fueron migraña. El paciente tomó medicación aguda {acute} días.",
+    "SUM_LAST_MONTHS": "Últimos {n} meses",
+    "SUM_LAST_WEEKS": "Últimas {n} semanas",
     "SUM_NONE": "No hay registros en este periodo.",
     "SUM_SHOW_AURA": "Mostrar aura",
     "SUM_SHOW_CLUSTER": "Mostrar cefalea en racimos",
@@ -779,6 +818,7 @@ export const TEXTS = {
     "SUM_SUM": "Suma",
     "SUM_TEXT_VIEW": "Vista de texto (ideal para copiar en la historia clínica)",
     "SUM_TITLE": "Resumen",
+    "SUM_WEEK": "Semana {n}",
     "TAB_CALENDAR": "Calendario"
   },
   "et": {
@@ -849,6 +889,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Päevade arv:",
     "SUM_HEADACHE": "Peavalu",
     "SUM_INTRO": "Viimased {months} kuud: peavaluga päevi – {days}, neist migreeniga – {migraine}. Hooravimeid kasutati {acute} päeval.",
+    "SUM_INTRO_WEEKS": "Viimased {weeks} nädalat: peavaluga päevi – {days}, neist migreeniga – {migraine}. Hooravimeid kasutati {acute} päeval.",
+    "SUM_LAST_MONTHS": "Viimased {n} kuud",
+    "SUM_LAST_WEEKS": "Viimased {n} nädalat",
     "SUM_NONE": "Selles perioodis registreeringuid pole.",
     "SUM_SHOW_AURA": "Näita aurat",
     "SUM_SHOW_CLUSTER": "Näita kobarpeavalu",
@@ -857,6 +900,7 @@ export const TEXTS = {
     "SUM_SUM": "Summa",
     "SUM_TEXT_VIEW": "Tekstivaade (parim haigusloosse kopeerimiseks)",
     "SUM_TITLE": "Kokkuvõte",
+    "SUM_WEEK": "Nädal {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "fi": {
@@ -927,6 +971,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Päivien määrä:",
     "SUM_HEADACHE": "Päänsärky",
     "SUM_INTRO": "Viimeiset {months} kuukautta: potilaalla on ollut {days} päänsärkypäivää, joista {migraine} migreeninä. Kohtauslääkitystä käytettiin {acute} päivänä.",
+    "SUM_INTRO_WEEKS": "Viimeiset {weeks} viikkoa: potilaalla on ollut {days} päänsärkypäivää, joista {migraine} migreeninä. Kohtauslääkitystä käytettiin {acute} päivänä.",
+    "SUM_LAST_MONTHS": "Viimeiset {n} kuukautta",
+    "SUM_LAST_WEEKS": "Viimeiset {n} viikkoa",
     "SUM_NONE": "Tältä ajalta ei ole kirjauksia.",
     "SUM_SHOW_AURA": "Näytä aura",
     "SUM_SHOW_CLUSTER": "Näytä sarjoittainen päänsärky",
@@ -935,6 +982,7 @@ export const TEXTS = {
     "SUM_SUM": "Summa",
     "SUM_TEXT_VIEW": "Tekstinäkymä (paras potilaskertomukseen kopiointiin)",
     "SUM_TITLE": "Yhteenveto",
+    "SUM_WEEK": "Viikko {n}",
     "TAB_CALENDAR": "Kalenteri"
   },
   "fr": {
@@ -1005,6 +1053,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Nombre de jours avec :",
     "SUM_HEADACHE": "Céphalée",
     "SUM_INTRO": "{months} derniers mois : le patient a eu {days} jours de céphalée, dont {migraine} vécus comme une migraine. Le patient a pris un traitement de crise {acute} jours.",
+    "SUM_INTRO_WEEKS": "{weeks} dernières semaines : le patient a eu {days} jours de céphalée, dont {migraine} vécus comme une migraine. Le patient a pris un traitement de crise {acute} jours.",
+    "SUM_LAST_MONTHS": "{n} derniers mois",
+    "SUM_LAST_WEEKS": "{n} dernières semaines",
     "SUM_NONE": "Aucun enregistrement sur cette période.",
     "SUM_SHOW_AURA": "Afficher l'aura",
     "SUM_SHOW_CLUSTER": "Afficher l'algie vasculaire de la face",
@@ -1013,6 +1064,7 @@ export const TEXTS = {
     "SUM_SUM": "Somme",
     "SUM_TEXT_VIEW": "Vue texte (idéale pour copier dans le dossier patient)",
     "SUM_TITLE": "Résumé",
+    "SUM_WEEK": "Semaine {n}",
     "TAB_CALENDAR": "Calendrier"
   },
   "he": {
@@ -1083,6 +1135,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "מספר ימים עם:",
     "SUM_HEADACHE": "כאב ראש",
     "SUM_INTRO": "{months} החודשים האחרונים: למטופל היו {days} ימים עם כאב ראש, מתוכם {migraine} עם מיגרנה. המטופל השתמש בתרופה להתקף ב־{acute} ימים.",
+    "SUM_INTRO_WEEKS": "{weeks} השבועות האחרונים: למטופל היו {days} ימים עם כאב ראש, מתוכם {migraine} עם מיגרנה. המטופל השתמש בתרופה להתקף ב־{acute} ימים.",
+    "SUM_LAST_MONTHS": "{n} החודשים האחרונים",
+    "SUM_LAST_WEEKS": "{n} השבועות האחרונים",
     "SUM_NONE": "אין רישומים בתקופה זו.",
     "SUM_SHOW_AURA": "הצג הילה",
     "SUM_SHOW_CLUSTER": "הצג כאב ראש מקבצי",
@@ -1091,6 +1146,7 @@ export const TEXTS = {
     "SUM_SUM": "סכום",
     "SUM_TEXT_VIEW": "תצוגת טקסט (מתאימה להעתקה לרשומה הרפואית)",
     "SUM_TITLE": "סיכום",
+    "SUM_WEEK": "שבוע {n}",
     "TAB_CALENDAR": "לוח שנה"
   },
   "hr": {
@@ -1161,6 +1217,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Broj dana s:",
     "SUM_HEADACHE": "Glavobolja",
     "SUM_INTRO": "Posljednja {months} mjeseca: dana s glavoboljom – {days}, od toga s migrenom – {migraine}. Dana s akutnim lijekovima – {acute}.",
+    "SUM_INTRO_WEEKS": "Posljednja {weeks} tjedna: dana s glavoboljom – {days}, od toga s migrenom – {migraine}. Dana s akutnim lijekovima – {acute}.",
+    "SUM_LAST_MONTHS": "Posljednja {n} mjeseca",
+    "SUM_LAST_WEEKS": "Posljednja {n} tjedna",
     "SUM_NONE": "Nema zapisa u ovom razdoblju.",
     "SUM_SHOW_AURA": "Prikaži auru",
     "SUM_SHOW_CLUSTER": "Prikaži klaster glavobolju",
@@ -1169,6 +1228,7 @@ export const TEXTS = {
     "SUM_SUM": "Zbroj",
     "SUM_TEXT_VIEW": "Tekstualni prikaz (najbolje za kopiranje u medicinsku dokumentaciju)",
     "SUM_TITLE": "Sažetak",
+    "SUM_WEEK": "Tjedan {n}",
     "TAB_CALENDAR": "Kalendar"
   },
   "hu": {
@@ -1239,6 +1299,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Napok száma:",
     "SUM_HEADACHE": "Fejfájás",
     "SUM_INTRO": "Az utolsó {months} hónap: fejfájásos napok száma: {days}, ebből migrénes: {migraine}. Rohamoldó gyógyszert {acute} napon használt.",
+    "SUM_INTRO_WEEKS": "Az utolsó {weeks} hét: fejfájásos napok száma: {days}, ebből migrénes: {migraine}. Rohamoldó gyógyszert {acute} napon használt.",
+    "SUM_LAST_MONTHS": "Az utolsó {n} hónap",
+    "SUM_LAST_WEEKS": "Az utolsó {n} hét",
     "SUM_NONE": "Ebben az időszakban nincs bejegyzés.",
     "SUM_SHOW_AURA": "Aura megjelenítése",
     "SUM_SHOW_CLUSTER": "Cluster fejfájás megjelenítése",
@@ -1247,6 +1310,7 @@ export const TEXTS = {
     "SUM_SUM": "Összeg",
     "SUM_TEXT_VIEW": "Szöveges nézet (kórlapba másoláshoz a legjobb)",
     "SUM_TITLE": "Összefoglaló",
+    "SUM_WEEK": "{n}. hét",
     "TAB_CALENDAR": "Naptár"
   },
   "is": {
@@ -1317,6 +1381,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Fjöldi daga með:",
     "SUM_HEADACHE": "Höfuðverkur",
     "SUM_INTRO": "Síðustu {months} mánuðir: Sjúklingurinn hefur haft {days} daga með höfuðverk, þar af {migraine} með mígreni. Bráðalyf voru notuð {acute} daga.",
+    "SUM_INTRO_WEEKS": "Síðustu {weeks} vikur: Sjúklingurinn hefur haft {days} daga með höfuðverk, þar af {migraine} með mígreni. Bráðalyf voru notuð {acute} daga.",
+    "SUM_LAST_MONTHS": "Síðustu {n} mánuðir",
+    "SUM_LAST_WEEKS": "Síðustu {n} vikur",
     "SUM_NONE": "Engar skráningar á þessu tímabili.",
     "SUM_SHOW_AURA": "Sýna áru",
     "SUM_SHOW_CLUSTER": "Sýna klasahöfuðverk",
@@ -1325,6 +1392,7 @@ export const TEXTS = {
     "SUM_SUM": "Summa",
     "SUM_TEXT_VIEW": "Textasýn (best til að afrita í sjúkraskrá)",
     "SUM_TITLE": "Samantekt",
+    "SUM_WEEK": "Vika {n}",
     "TAB_CALENDAR": "Dagatal"
   },
   "it": {
@@ -1395,6 +1463,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Numero di giorni con:",
     "SUM_HEADACHE": "Cefalea",
     "SUM_INTRO": "Ultimi {months} mesi: il paziente ha avuto {days} giorni con cefalea, di cui {migraine} vissuti come emicrania. Il paziente ha usato farmaci per l'attacco in {acute} giorni.",
+    "SUM_INTRO_WEEKS": "Ultime {weeks} settimane: il paziente ha avuto {days} giorni con cefalea, di cui {migraine} vissuti come emicrania. Il paziente ha usato farmaci per l'attacco in {acute} giorni.",
+    "SUM_LAST_MONTHS": "Ultimi {n} mesi",
+    "SUM_LAST_WEEKS": "Ultime {n} settimane",
     "SUM_NONE": "Nessuna registrazione in questo periodo.",
     "SUM_SHOW_AURA": "Mostra aura",
     "SUM_SHOW_CLUSTER": "Mostra cefalea a grappolo",
@@ -1403,6 +1474,7 @@ export const TEXTS = {
     "SUM_SUM": "Somma",
     "SUM_TEXT_VIEW": "Vista testo (ideale per copiare nella cartella clinica)",
     "SUM_TITLE": "Riepilogo",
+    "SUM_WEEK": "Settimana {n}",
     "TAB_CALENDAR": "Calendario"
   },
   "ja": {
@@ -1473,6 +1545,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "日数：",
     "SUM_HEADACHE": "頭痛",
     "SUM_INTRO": "過去{months}か月：頭痛のあった日は{days}日、そのうち片頭痛は{migraine}日でした。急性期治療薬の使用は{acute}日でした。",
+    "SUM_INTRO_WEEKS": "過去{weeks}週間：頭痛のあった日は{days}日、そのうち片頭痛は{migraine}日でした。急性期治療薬の使用は{acute}日でした。",
+    "SUM_LAST_MONTHS": "過去{n}か月",
+    "SUM_LAST_WEEKS": "過去{n}週間",
     "SUM_NONE": "この期間の記録はありません。",
     "SUM_SHOW_AURA": "前兆を表示",
     "SUM_SHOW_CLUSTER": "群発頭痛を表示",
@@ -1481,6 +1556,7 @@ export const TEXTS = {
     "SUM_SUM": "合計",
     "SUM_TEXT_VIEW": "テキスト表示（カルテへのコピーに最適）",
     "SUM_TITLE": "サマリー",
+    "SUM_WEEK": "第{n}週",
     "TAB_CALENDAR": "カレンダー"
   },
   "lt": {
@@ -1551,6 +1627,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Dienų skaičius:",
     "SUM_HEADACHE": "Galvos skausmas",
     "SUM_INTRO": "Paskutiniai {months} mėnesiai: dienų su galvos skausmu – {days}, iš jų su migrena – {migraine}. Dienų, kai vartoti priepuolio vaistai – {acute}.",
+    "SUM_INTRO_WEEKS": "Paskutinės {weeks} savaitės: dienų su galvos skausmu – {days}, iš jų su migrena – {migraine}. Dienų, kai vartoti priepuolio vaistai – {acute}.",
+    "SUM_LAST_MONTHS": "Paskutiniai {n} mėnesiai",
+    "SUM_LAST_WEEKS": "Paskutinės {n} savaitės",
     "SUM_NONE": "Šiuo laikotarpiu įrašų nėra.",
     "SUM_SHOW_AURA": "Rodyti aurą",
     "SUM_SHOW_CLUSTER": "Rodyti klasterinį galvos skausmą",
@@ -1559,6 +1638,7 @@ export const TEXTS = {
     "SUM_SUM": "Suma",
     "SUM_TEXT_VIEW": "Tekstinis rodinys (geriausia kopijuoti į ligos istoriją)",
     "SUM_TITLE": "Santrauka",
+    "SUM_WEEK": "{n} savaitė",
     "TAB_CALENDAR": "Kalendorius"
   },
   "lv": {
@@ -1629,6 +1709,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Dienu skaits:",
     "SUM_HEADACHE": "Galvassāpes",
     "SUM_INTRO": "Pēdējie {months} mēneši: dienas ar galvassāpēm – {days}, no tām ar migrēnu – {migraine}. Dienas, kad lietoti lēkmes medikamenti – {acute}.",
+    "SUM_INTRO_WEEKS": "Pēdējās {weeks} nedēļas: dienas ar galvassāpēm – {days}, no tām ar migrēnu – {migraine}. Dienas, kad lietoti lēkmes medikamenti – {acute}.",
+    "SUM_LAST_MONTHS": "Pēdējie {n} mēneši",
+    "SUM_LAST_WEEKS": "Pēdējās {n} nedēļas",
     "SUM_NONE": "Šajā periodā ierakstu nav.",
     "SUM_SHOW_AURA": "Rādīt auru",
     "SUM_SHOW_CLUSTER": "Rādīt klasteru galvassāpes",
@@ -1637,6 +1720,7 @@ export const TEXTS = {
     "SUM_SUM": "Summa",
     "SUM_TEXT_VIEW": "Teksta skats (vislabāk kopēšanai pacienta kartē)",
     "SUM_TITLE": "Kopsavilkums",
+    "SUM_WEEK": "{n}. nedēļa",
     "TAB_CALENDAR": "Kalendārs"
   },
   "mk": {
@@ -1707,6 +1791,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Број на денови со:",
     "SUM_HEADACHE": "Главоболка",
     "SUM_INTRO": "Последните {months} месеци: денови со главоболка – {days}, од нив со мигрена – {migraine}. Денови со акутни лекови – {acute}.",
+    "SUM_INTRO_WEEKS": "Последните {weeks} недели: денови со главоболка – {days}, од нив со мигрена – {migraine}. Денови со акутни лекови – {acute}.",
+    "SUM_LAST_MONTHS": "Последните {n} месеци",
+    "SUM_LAST_WEEKS": "Последните {n} недели",
     "SUM_NONE": "Нема записи во овој период.",
     "SUM_SHOW_AURA": "Прикажи аура",
     "SUM_SHOW_CLUSTER": "Прикажи кластер главоболка",
@@ -1715,6 +1802,7 @@ export const TEXTS = {
     "SUM_SUM": "Збир",
     "SUM_TEXT_VIEW": "Текстуален приказ (најдобро за копирање во медицинскиот картон)",
     "SUM_TITLE": "Резиме",
+    "SUM_WEEK": "Недела {n}",
     "TAB_CALENDAR": "Календар"
   },
   "nl": {
@@ -1785,6 +1873,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Aantal dagen met:",
     "SUM_HEADACHE": "Hoofdpijn",
     "SUM_INTRO": "Laatste {months} maanden: de patiënt had {days} dagen met hoofdpijn, waarvan {migraine} als migraine. De patiënt gebruikte aanvalsmedicatie op {acute} dagen.",
+    "SUM_INTRO_WEEKS": "Laatste {weeks} weken: de patiënt had {days} dagen met hoofdpijn, waarvan {migraine} als migraine. De patiënt gebruikte aanvalsmedicatie op {acute} dagen.",
+    "SUM_LAST_MONTHS": "Laatste {n} maanden",
+    "SUM_LAST_WEEKS": "Laatste {n} weken",
     "SUM_NONE": "Geen registraties in deze periode.",
     "SUM_SHOW_AURA": "Toon aura",
     "SUM_SHOW_CLUSTER": "Toon clusterhoofdpijn",
@@ -1793,6 +1884,7 @@ export const TEXTS = {
     "SUM_SUM": "Som",
     "SUM_TEXT_VIEW": "Tekstweergave (het beste om naar het patiëntdossier te kopiëren)",
     "SUM_TITLE": "Samenvatting",
+    "SUM_WEEK": "Week {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "no": {
@@ -1863,6 +1955,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Antall dager med:",
     "SUM_HEADACHE": "Hodepine",
     "SUM_INTRO": "Siste {months} måneder: Pasienten har hatt {days} dager med hodepine, hvorav {migraine} opplevdes som migrene. Pasienten brukte anfallskuperende behandling ved {acute} tilfeller.",
+    "SUM_INTRO_WEEKS": "Siste {weeks} uker: Pasienten har hatt {days} dager med hodepine, hvorav {migraine} opplevdes som migrene. Pasienten brukte anfallskuperende behandling ved {acute} tilfeller.",
+    "SUM_LAST_MONTHS": "Siste {n} måneder",
+    "SUM_LAST_WEEKS": "Siste {n} uker",
     "SUM_NONE": "Ingen registreringer i perioden.",
     "SUM_SHOW_AURA": "Vis aura",
     "SUM_SHOW_CLUSTER": "Vis klasehodepine",
@@ -1871,6 +1966,7 @@ export const TEXTS = {
     "SUM_SUM": "Sum",
     "SUM_TEXT_VIEW": "Tekstvisning (best for Pridok-import o.l.)",
     "SUM_TITLE": "Sammendrag",
+    "SUM_WEEK": "Uke {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "pl": {
@@ -1941,6 +2037,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Liczba dni z:",
     "SUM_HEADACHE": "Ból głowy",
     "SUM_INTRO": "Ostatnie {months} miesiące: dni z bólem głowy – {days}, w tym z migreną – {migraine}. Dni z lekami doraźnymi – {acute}.",
+    "SUM_INTRO_WEEKS": "Ostatnie {weeks} tygodnie: dni z bólem głowy – {days}, w tym z migreną – {migraine}. Dni z lekami doraźnymi – {acute}.",
+    "SUM_LAST_MONTHS": "Ostatnie {n} miesiące",
+    "SUM_LAST_WEEKS": "Ostatnie {n} tygodnie",
     "SUM_NONE": "Brak wpisów w tym okresie.",
     "SUM_SHOW_AURA": "Pokaż aurę",
     "SUM_SHOW_CLUSTER": "Pokaż klasterowy ból głowy",
@@ -1949,6 +2048,7 @@ export const TEXTS = {
     "SUM_SUM": "Suma",
     "SUM_TEXT_VIEW": "Widok tekstowy (najlepszy do kopiowania do dokumentacji medycznej)",
     "SUM_TITLE": "Podsumowanie",
+    "SUM_WEEK": "Tydzień {n}",
     "TAB_CALENDAR": "Kalendarz"
   },
   "pt-BR": {
@@ -2019,6 +2119,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Número de dias com:",
     "SUM_HEADACHE": "Cefaleia",
     "SUM_INTRO": "Últimos {months} meses: o paciente teve {days} dias com cefaleia, dos quais {migraine} com enxaqueca. O paciente usou medicação para crise em {acute} dias.",
+    "SUM_INTRO_WEEKS": "Últimas {weeks} semanas: o paciente teve {days} dias com cefaleia, dos quais {migraine} com enxaqueca. O paciente usou medicação para crise em {acute} dias.",
+    "SUM_LAST_MONTHS": "Últimos {n} meses",
+    "SUM_LAST_WEEKS": "Últimas {n} semanas",
     "SUM_NONE": "Nenhum registro neste período.",
     "SUM_SHOW_AURA": "Mostrar aura",
     "SUM_SHOW_CLUSTER": "Mostrar cefaleia em salvas",
@@ -2027,6 +2130,7 @@ export const TEXTS = {
     "SUM_SUM": "Soma",
     "SUM_TEXT_VIEW": "Visualização em texto (ideal para copiar para o prontuário)",
     "SUM_TITLE": "Resumo",
+    "SUM_WEEK": "Semana {n}",
     "TAB_CALENDAR": "Calendário"
   },
   "pt": {
@@ -2097,6 +2201,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Número de dias com:",
     "SUM_HEADACHE": "Cefaleia",
     "SUM_INTRO": "Últimos {months} meses: o doente teve {days} dias com cefaleia, dos quais {migraine} com enxaqueca. O doente usou medicação de crise em {acute} dias.",
+    "SUM_INTRO_WEEKS": "Últimas {weeks} semanas: o doente teve {days} dias com cefaleia, dos quais {migraine} com enxaqueca. O doente usou medicação de crise em {acute} dias.",
+    "SUM_LAST_MONTHS": "Últimos {n} meses",
+    "SUM_LAST_WEEKS": "Últimas {n} semanas",
     "SUM_NONE": "Sem registos neste período.",
     "SUM_SHOW_AURA": "Mostrar aura",
     "SUM_SHOW_CLUSTER": "Mostrar cefaleia em salvas",
@@ -2105,6 +2212,7 @@ export const TEXTS = {
     "SUM_SUM": "Soma",
     "SUM_TEXT_VIEW": "Vista de texto (ideal para copiar para o processo clínico)",
     "SUM_TITLE": "Resumo",
+    "SUM_WEEK": "Semana {n}",
     "TAB_CALENDAR": "Calendário"
   },
   "ro": {
@@ -2175,6 +2283,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Număr de zile cu:",
     "SUM_HEADACHE": "Cefalee",
     "SUM_INTRO": "Ultimele {months} luni: pacientul a avut {days} zile cu cefalee, dintre care {migraine} cu migrenă. Pacientul a folosit medicație pentru criză în {acute} zile.",
+    "SUM_INTRO_WEEKS": "Ultimele {weeks} săptămâni: pacientul a avut {days} zile cu cefalee, dintre care {migraine} cu migrenă. Pacientul a folosit medicație pentru criză în {acute} zile.",
+    "SUM_LAST_MONTHS": "Ultimele {n} luni",
+    "SUM_LAST_WEEKS": "Ultimele {n} săptămâni",
     "SUM_NONE": "Nu există înregistrări în această perioadă.",
     "SUM_SHOW_AURA": "Afișează aura",
     "SUM_SHOW_CLUSTER": "Afișează cefaleea în ciorchine",
@@ -2183,6 +2294,7 @@ export const TEXTS = {
     "SUM_SUM": "Sumă",
     "SUM_TEXT_VIEW": "Vizualizare text (ideală pentru copierea în fișa medicală)",
     "SUM_TITLE": "Rezumat",
+    "SUM_WEEK": "Săptămâna {n}",
     "TAB_CALENDAR": "Calendar"
   },
   "ru": {
@@ -2253,6 +2365,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Количество дней с:",
     "SUM_HEADACHE": "Головная боль",
     "SUM_INTRO": "Последние {months} мес.: дней с головной болью – {days}, из них с мигренью – {migraine}. Дней с приёмом экстренных лекарств – {acute}.",
+    "SUM_INTRO_WEEKS": "Последние {weeks} недели: дней с головной болью – {days}, из них с мигренью – {migraine}. Дней с приёмом экстренных лекарств – {acute}.",
+    "SUM_LAST_MONTHS": "Последние {n} мес.",
+    "SUM_LAST_WEEKS": "Последние {n} недели",
     "SUM_NONE": "За этот период записей нет.",
     "SUM_SHOW_AURA": "Показать ауру",
     "SUM_SHOW_CLUSTER": "Показать кластерную головную боль",
@@ -2261,6 +2376,7 @@ export const TEXTS = {
     "SUM_SUM": "Сумма",
     "SUM_TEXT_VIEW": "Текстовый вид (лучше всего для копирования в медкарту)",
     "SUM_TITLE": "Сводка",
+    "SUM_WEEK": "Неделя {n}",
     "TAB_CALENDAR": "Календарь"
   },
   "sk": {
@@ -2331,6 +2447,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Počet dní s:",
     "SUM_HEADACHE": "Bolesť hlavy",
     "SUM_INTRO": "Posledné {months} mesiace: dni s bolesťou hlavy – {days}, z toho s migrénou – {migraine}. Dni s akútnymi liekmi – {acute}.",
+    "SUM_INTRO_WEEKS": "Posledné {weeks} týždne: dni s bolesťou hlavy – {days}, z toho s migrénou – {migraine}. Dni s akútnymi liekmi – {acute}.",
+    "SUM_LAST_MONTHS": "Posledné {n} mesiace",
+    "SUM_LAST_WEEKS": "Posledné {n} týždne",
     "SUM_NONE": "V tomto období nie sú žiadne záznamy.",
     "SUM_SHOW_AURA": "Zobraziť auru",
     "SUM_SHOW_CLUSTER": "Zobraziť klastrovú bolesť hlavy",
@@ -2339,6 +2458,7 @@ export const TEXTS = {
     "SUM_SUM": "Súčet",
     "SUM_TEXT_VIEW": "Textové zobrazenie (najlepšie na kopírovanie do zdravotnej dokumentácie)",
     "SUM_TITLE": "Súhrn",
+    "SUM_WEEK": "Týždeň {n}",
     "TAB_CALENDAR": "Kalendár"
   },
   "sl": {
@@ -2409,6 +2529,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Število dni z:",
     "SUM_HEADACHE": "Glavobol",
     "SUM_INTRO": "Zadnji {months} meseci: dnevi z glavobolom – {days}, od tega z migreno – {migraine}. Dnevi z akutnimi zdravili – {acute}.",
+    "SUM_INTRO_WEEKS": "Zadnji {weeks} tedni: dnevi z glavobolom – {days}, od tega z migreno – {migraine}. Dnevi z akutnimi zdravili – {acute}.",
+    "SUM_LAST_MONTHS": "Zadnji {n} meseci",
+    "SUM_LAST_WEEKS": "Zadnji {n} tedni",
     "SUM_NONE": "V tem obdobju ni zapisov.",
     "SUM_SHOW_AURA": "Prikaži avro",
     "SUM_SHOW_CLUSTER": "Prikaži glavobol v skupkih",
@@ -2417,6 +2540,7 @@ export const TEXTS = {
     "SUM_SUM": "Vsota",
     "SUM_TEXT_VIEW": "Besedilni prikaz (najboljši za kopiranje v zdravstveni karton)",
     "SUM_TITLE": "Povzetek",
+    "SUM_WEEK": "Teden {n}",
     "TAB_CALENDAR": "Koledar"
   },
   "sr": {
@@ -2487,6 +2611,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Број дана са:",
     "SUM_HEADACHE": "Главобоља",
     "SUM_INTRO": "Последња {months} месеца: дана са главобољом – {days}, од тога са мигреном – {migraine}. Дана са акутним лековима – {acute}.",
+    "SUM_INTRO_WEEKS": "Последње {weeks} недеље: дана са главобољом – {days}, од тога са мигреном – {migraine}. Дана са акутним лековима – {acute}.",
+    "SUM_LAST_MONTHS": "Последња {n} месеца",
+    "SUM_LAST_WEEKS": "Последње {n} недеље",
     "SUM_NONE": "Нема записа у овом периоду.",
     "SUM_SHOW_AURA": "Прикажи ауру",
     "SUM_SHOW_CLUSTER": "Прикажи кластер главобољу",
@@ -2495,6 +2622,7 @@ export const TEXTS = {
     "SUM_SUM": "Збир",
     "SUM_TEXT_VIEW": "Текстуални приказ (најбоље за копирање у медицински картон)",
     "SUM_TITLE": "Резиме",
+    "SUM_WEEK": "Недеља {n}",
     "TAB_CALENDAR": "Календар"
   },
   "sv": {
@@ -2565,6 +2693,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Antal dagar med:",
     "SUM_HEADACHE": "Huvudvärk",
     "SUM_INTRO": "Senaste {months} månaderna: Patienten har haft {days} dagar med huvudvärk, varav {migraine} upplevdes som migrän. Patienten använde anfallsmedicin {acute} dagar.",
+    "SUM_INTRO_WEEKS": "Senaste {weeks} veckorna: Patienten har haft {days} dagar med huvudvärk, varav {migraine} upplevdes som migrän. Patienten använde anfallsmedicin {acute} dagar.",
+    "SUM_LAST_MONTHS": "Senaste {n} månaderna",
+    "SUM_LAST_WEEKS": "Senaste {n} veckorna",
     "SUM_NONE": "Inga registreringar under perioden.",
     "SUM_SHOW_AURA": "Visa aura",
     "SUM_SHOW_CLUSTER": "Visa klusterhuvudvärk",
@@ -2573,6 +2704,7 @@ export const TEXTS = {
     "SUM_SUM": "Summa",
     "SUM_TEXT_VIEW": "Textvy (bäst för kopiering till journalen)",
     "SUM_TITLE": "Sammanfattning",
+    "SUM_WEEK": "Vecka {n}",
     "TAB_CALENDAR": "Kalender"
   },
   "tr": {
@@ -2643,6 +2775,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Gün sayısı:",
     "SUM_HEADACHE": "Baş ağrısı",
     "SUM_INTRO": "Son {months} ay: hastanın {days} gün baş ağrısı oldu, bunların {migraine} günü migrendi. Hasta {acute} gün atak ilacı kullandı.",
+    "SUM_INTRO_WEEKS": "Son {weeks} hafta: hastanın {days} gün baş ağrısı oldu, bunların {migraine} günü migrendi. Hasta {acute} gün atak ilacı kullandı.",
+    "SUM_LAST_MONTHS": "Son {n} ay",
+    "SUM_LAST_WEEKS": "Son {n} hafta",
     "SUM_NONE": "Bu dönemde kayıt yok.",
     "SUM_SHOW_AURA": "Aurayı göster",
     "SUM_SHOW_CLUSTER": "Küme baş ağrısını göster",
@@ -2651,6 +2786,7 @@ export const TEXTS = {
     "SUM_SUM": "Toplam",
     "SUM_TEXT_VIEW": "Metin görünümü (hasta dosyasına kopyalamak için en iyisi)",
     "SUM_TITLE": "Özet",
+    "SUM_WEEK": "{n}. hafta",
     "TAB_CALENDAR": "Takvim"
   },
   "uk": {
@@ -2721,6 +2857,9 @@ export const TEXTS = {
     "SUM_DAYS_WITH": "Кількість днів із:",
     "SUM_HEADACHE": "Головний біль",
     "SUM_INTRO": "Останні {months} міс.: днів із головним болем – {days}, з них із мігренню – {migraine}. Днів із прийомом екстрених ліків – {acute}.",
+    "SUM_INTRO_WEEKS": "Останні {weeks} тижні: днів із головним болем – {days}, з них із мігренню – {migraine}. Днів із прийомом екстрених ліків – {acute}.",
+    "SUM_LAST_MONTHS": "Останні {n} міс.",
+    "SUM_LAST_WEEKS": "Останні {n} тижні",
     "SUM_NONE": "За цей період записів немає.",
     "SUM_SHOW_AURA": "Показати ауру",
     "SUM_SHOW_CLUSTER": "Показати кластерний головний біль",
@@ -2729,6 +2868,7 @@ export const TEXTS = {
     "SUM_SUM": "Сума",
     "SUM_TEXT_VIEW": "Текстовий вигляд (найкраще для копіювання в медичну картку)",
     "SUM_TITLE": "Підсумок",
+    "SUM_WEEK": "Тиждень {n}",
     "TAB_CALENDAR": "Календар"
   }
 };
