@@ -39,6 +39,7 @@ export default function CalendarCard({ patient }) {
         onNext={() => move(1)}
         selected={selected}
         onSelect={(key) => setSelected((cur) => (cur === key ? null : key))}
+        showNotes={!!patient?.shareNotes}
       />
       <DayDetails
         patient={patient}

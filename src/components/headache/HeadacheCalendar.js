@@ -7,13 +7,14 @@ import {
   COLORS,
   INTENSITY,
   hasAcute,
+  hasNote,
   intensityOf,
   intlLocale,
   monthGrid,
   toDateKey,
   todayKey,
 } from "@/components/headache/data";
-import { AcuteIcon, AuraIcon, ChevronIcon, ClusterIcon } from "@/components/headache/icons";
+import { AcuteIcon, AuraIcon, ChevronIcon, ClusterIcon, NoteIcon } from "@/components/headache/icons";
 
 const FILL = { 1: COLORS.mild, 2: COLORS.moderate, 3: COLORS.strong, 4: COLORS.extreme };
 
@@ -27,6 +28,7 @@ export default function HeadacheCalendar({
   onNext,
   selected,
   onSelect,
+  showNotes = false,
 }) {
   const { t, locale } = useHeadacheText();
   const loc = intlLocale(locale);
@@ -92,6 +94,7 @@ export default function HeadacheCalendar({
             const isToday = key === today;
             const isFuture = key > today;
             const isSelected = key === selected;
+            const note = showNotes && hasNote(r);
 
             let box = "border border-dashed border-slate-200 text-slate-400"; // past, nothing registered
             let style;
@@ -115,6 +118,7 @@ export default function HeadacheCalendar({
               r?.hasAura && t.CAL_AURA,
               r?.hasClusterHeadache && t.CAL_CLUSTER,
               r?.isMigraine && t.CAL_MIGRAINE,
+              note && t.CAL_NOTE,
             ]
               .filter(Boolean)
               .join(", ");
@@ -159,6 +163,13 @@ export default function HeadacheCalendar({
                         <ClusterIcon size={12} />
                       </span>
                     )}
+                  </span>
+                )}
+
+                {/* Written note – bottom right */}
+                {note && (
+                  <span className="pointer-events-none absolute -bottom-1 -end-1">
+                    <NoteIcon size={12} />
                   </span>
                 )}
               </div>

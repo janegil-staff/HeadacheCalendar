@@ -21,6 +21,7 @@ export const COLORS = {
   acute: "#e5484d",
   aura: "#f2c230",
   cluster: "#6b2fb3",
+  note: "#4f7cc0",
 };
 
 export const EFFECT_KEYS = { 1: "EFFECT_NONE", 2: "EFFECT_MODERATE", 3: "EFFECT_GOOD" };
@@ -43,6 +44,9 @@ export function indexRecords(records = []) {
   for (const r of records) if (r?.date) map.set(r.date, r);
   return map;
 }
+
+// A written note on the day (only shown when the patient shares notes)
+export const hasNote = (r) => typeof r?.note === "string" && r.note.trim() !== "";
 
 export const hasAcute = (r) => (r?.acuteMedicines?.length ?? 0) > 0;
 

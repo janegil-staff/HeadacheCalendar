@@ -54,6 +54,18 @@ export function AcuteIcon({ size = 20 }) {
   );
 }
 
+// Note sheet with lines in a blue ring – the day has a written note
+export function NoteIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" fill="#fff" stroke={COLORS.note} strokeWidth="1.6" />
+      <path d="M8 5.8h5.6l2.6 2.6v9.8H8z" fill={COLORS.note} />
+      <path d="M13.6 5.8v2.6h2.6" fill="#cfe0f7" />
+      <path d="M9.8 11.3h4.6M9.8 13.6h4.6M9.8 15.9h3" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 // Lightning in a yellow ring – aura
 export function AuraIcon({ size = 20 }) {
   return (
