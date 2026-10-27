@@ -289,3 +289,67 @@ export function adviceTopics(patient, byDate) {
 export const fill = (text = "", values = {}) =>
   Object.entries(values).reduce((s, [k, v]) => s.replaceAll(`{${k}}`, String(v)), text);
 
+
+// ---------- Before / after a reference date (e.g. the start of a treatment) ----------
+
+export const REF_PERIOD_DAYS = 30;
+export const REF_PERIOD_COUNT = 3;
+
+const periodRow = (byDate, from, index, today) => {
+  const s = rangeStats(byDate, from, REF_PERIOD_DAYS);
+  const [, mild, moderate, strong, extreme] = s.intensity;
+  const end = new Date(from.getFullYear(), from.getMonth(), from.getDate() + REF_PERIOD_DAYS - 1);
+  return {
+    index, // -3, -2, -1 before; 1, 2, 3 after
+    from,
+    end,
+    finished: end < today, // the last day is before today
+    started: from <= today,
+    registered: s.registered,
+    mild,
+    moderate,
+    strong,
+    extreme,
+    headache: mild + moderate + strong + extreme,
+    modPlus: moderate + strong + extreme, // moderate, strong and extreme
+    acute: s.acuteDays,
+  };
+};
+
+export const REF_VALUES = ["mild", "moderate", "strong", "extreme", "headache", "modPlus", "acute"];
+
+const average = (rows) =>
+  rows.length ? Object.fromEntries(REF_VALUES.map((k) => [k, rows.reduce((n, r) => n + r[k], 0) / rows.length])) : null;
+
+// 3 × 30 days before and after `ref` (a Date), the baseline and the change from before to after.
+// Baseline = average of the periods before with registrations. Periods after count only when
+// they have ended and have registrations. Change = (average after − baseline) / baseline.
+export function referenceComparison(byDate, ref) {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const day = (offset) => new Date(ref.getFullYear(), ref.getMonth(), ref.getDate() + offset);
+
+  const before = [];
+  for (let i = REF_PERIOD_COUNT; i >= 1; i--) before.push(periodRow(byDate, day(-REF_PERIOD_DAYS * i), -i, today));
+  const after = [];
+  for (let i = 1; i <= REF_PERIOD_COUNT; i++) after.push(periodRow(byDate, day(REF_PERIOD_DAYS * (i - 1)), i, today));
+
+  const counted = (r) => r.registered > 0 && r.finished;
+  const baselineRows = before.filter((r) => r.registered > 0);
+  const baseline = average(baselineRows);
+
+  // "Month 1–3", "Month 2–3", "Month 3"
+  const change = [];
+  for (let first = 1; first <= REF_PERIOD_COUNT; first++) {
+    const rows = after.filter((r) => r.index >= first && counted(r));
+    const needed = REF_PERIOD_COUNT - first + 1;
+    const avg = rows.length === needed ? average(rows) : null; // all periods in the span must count
+    const values = {};
+    for (const k of REF_VALUES) {
+      values[k] = !avg || !baseline || baseline[k] === 0 ? null : (avg[k] - baseline[k]) / baseline[k];
+    }
+    change.push({ first, last: REF_PERIOD_COUNT, values, average: avg });
+  }
+
+  return { before, after, baseline, baselineCount: baselineRows.length, change };
+}

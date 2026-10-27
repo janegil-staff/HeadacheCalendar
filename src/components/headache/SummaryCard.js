@@ -6,6 +6,7 @@ import { useHeadacheText } from "@/components/headache/useHeadacheText";
 import { COLORS, fill, indexRecords, intlLocale, isoWeek, monthStats, rangeStats } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ClusterIcon, MigraineIcon } from "@/components/headache/icons";
 import LogModal from "@/components/headache/LogModal";
+import ReferenceModal from "@/components/headache/ReferenceModal";
 import Hit6Card from "@/components/headache/Hit6Card";
 
 const MONTH_COUNT = 4; // current month + the three before it
@@ -233,6 +234,7 @@ export default function SummaryCard({ patient }) {
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   const [copied, setCopied] = useState(false);
   const [logOpen, setLogOpen] = useState(false);
+  const [refOpen, setRefOpen] = useState(false);
 
   // Remember the doctor's choices in this browser
   useEffect(() => {
@@ -398,7 +400,19 @@ export default function SummaryCard({ patient }) {
         )}
       </div>
 
-      <div className="mt-4 border-t border-slate-200/80 pt-3">
+      {/* Link-style button: before / after a reference date, in a modal */}
+      <div className="mt-2 text-center">
+        <button
+          type="button"
+          onClick={() => setRefOpen(true)}
+          aria-haspopup="dialog"
+          className="rounded text-sm font-semibold text-[#4f7cc0] underline decoration-[#6a9be0]/40 underline-offset-4 transition hover:text-[#3d68a8] hover:decoration-[#4f7cc0] focus:outline-none focus:ring-2 focus:ring-[#6a9be0]/40"
+        >
+          {t.REF_OPEN}
+        </button>
+      </div>
+
+      <div className="mt-3 border-t border-slate-200/80 pt-3">
         <PeriodSwitch value={period} onChange={(v) => setOption("period", v)} t={t} />
         <Checkbox checked={options.textView} onChange={(v) => setOption("textView", v)}>
           {t.SUM_TEXT_VIEW}
@@ -433,6 +447,7 @@ export default function SummaryCard({ patient }) {
       <Hit6Card patient={patient} />
 
       <LogModal open={logOpen} onClose={() => setLogOpen(false)} patient={patient} />
+      <ReferenceModal open={refOpen} onClose={() => setRefOpen(false)} patient={patient} />
     </section>
   );
 }
