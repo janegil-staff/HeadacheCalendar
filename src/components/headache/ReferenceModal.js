@@ -129,12 +129,45 @@ function buildCopy({ tables, t, refText }) {
 
   const text = [
     `${t.REF_DATE}: ${refText}`,
-    ...sections.flatMap((s) => ["", s.title, head(s.withReg).join("\t"), ...s.rows.map((r) => line(r, s.withReg).join("\t"))]),
+    ...sections.flatMap((s) => ["", s.title, ...textTable(head(s.withReg), s.rows.map((r) => line(r, s.withReg)))]),
     "",
     t.REF_NOTE,
   ].join("\n");
 
   return { html, text };
+}
+
+// Width of a string in a monospace font: combining marks take no space, CJK/fullwidth take two
+const textWidth = (s) =>
+  [...String(s)].reduce((w, ch) => {
+    if (/\p{M}/u.test(ch)) return w;
+    const cp = ch.codePointAt(0);
+    const wide =
+      (cp >= 0x1100 && cp <= 0x115f) ||
+      (cp >= 0x2e80 && cp <= 0xa4cf) ||
+      (cp >= 0xac00 && cp <= 0xd7a3) ||
+      (cp >= 0xf900 && cp <= 0xfaff) ||
+      (cp >= 0xfe30 && cp <= 0xfe4f) ||
+      (cp >= 0xff00 && cp <= 0xff60) ||
+      (cp >= 0xffe0 && cp <= 0xffe6);
+    return w + (wide ? 2 : 1);
+  }, 0);
+
+const pad = (s, width, alignLeft) => {
+  const space = " ".repeat(Math.max(0, width - textWidth(s)));
+  return alignLeft ? s + space : space + s;
+};
+
+// Plain-text table with aligned columns, for places that don't accept HTML (journal systems, Notepad, SMS)
+//   | Periode         | Lett | Moderat | … |
+//   |-----------------|------|---------|---|
+//   | Dag −60 til −30 |    1 |       4 | … |
+function textTable(header, rows) {
+  const all = [header, ...rows].map((r) => r.map((v) => String(v ?? "")));
+  const widths = header.map((_, i) => Math.max(...all.map((r) => textWidth(r[i] ?? ""))));
+  const row = (r) => `| ${widths.map((w, i) => pad(r[i] ?? "", w, i === 0)).join(" | ")} |`;
+  const rule = `|${widths.map((w) => "-".repeat(w + 2)).join("|")}|`;
+  return [row(all[0]), rule, ...all.slice(1).map(row)];
 }
 
 function Table({ title, columns, rows, showRegistered, isChange, t }) {
