@@ -355,5 +355,25 @@ export function referenceComparison(byDate, ref) {
     change.push({ first, last: REF_PERIOD_COUNT, values, average: avg });
   }
 
-  return { before, after, baseline, baselineCount: baselineRows.length, change };
+  // Average of all counted periods after the date, and its change from the baseline
+  const afterRows = after.filter(counted);
+  const afterAverage = average(afterRows);
+  let averageChange = null;
+  if (afterAverage && baseline) {
+    averageChange = {};
+    for (const k of REF_VALUES) {
+      averageChange[k] = baseline[k] === 0 ? null : (afterAverage[k] - baseline[k]) / baseline[k];
+    }
+  }
+
+  return {
+    before,
+    after,
+    baseline,
+    baselineCount: baselineRows.length,
+    afterAverage,
+    afterCount: afterRows.length,
+    averageChange,
+    change,
+  };
 }

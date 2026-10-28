@@ -82,13 +82,31 @@ function buildTables(cmp, t, locale) {
     });
   }
 
-  const change = cmp.change.map((c) => ({
-    label: c.first === c.last ? fill(t.REF_MONTH, { n: c.last }) : fill(t.REF_MONTHS, { from: c.first, to: c.last }),
-    cells: columns.map((col) => (c.values[col.id] === null ? "–" : f.pct(c.values[col.id]))),
-    raw: columns.map((col) => c.values[col.id]),
-  }));
+  const after = periodRows(cmp.after);
+  if (cmp.afterAverage) {
+    after.push({
+      label: t.REF_AFTER_AVG,
+      summary: true,
+      cells: columns.map((c) => f.avg(cmp.afterAverage[c.id])),
+      registered: "",
+    });
+  }
 
-  return { columns, before, after: periodRows(cmp.after), change };
+  const changeRow = (label, values, summary) => ({
+    label,
+    summary,
+    cells: columns.map((col) => (values[col.id] === null ? "–" : f.pct(values[col.id]))),
+    raw: columns.map((col) => values[col.id]),
+  });
+  const change = cmp.change.map((c) =>
+    changeRow(
+      c.first === c.last ? fill(t.REF_MONTH, { n: c.last }) : fill(t.REF_MONTHS, { from: c.first, to: c.last }),
+      c.values
+    )
+  );
+  if (cmp.averageChange) change.push(changeRow(t.REF_AVERAGE, cmp.averageChange, true));
+
+  return { columns, before, after, change };
 }
 
 const escapeHtml = (s) =>
