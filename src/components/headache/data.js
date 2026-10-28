@@ -78,6 +78,7 @@ function emptyStats() {
     period: 0,
     acuteDays: 0,
     injectionDays: 0,
+    notes: 0, // days with a written note
     registered: 0,
   };
 }
@@ -93,6 +94,7 @@ function addRecord(stats, r) {
   if (r.hasPeriod) stats.period++;
   if (hasAcute(r)) stats.acuteDays++;
   if (hasInjection(r)) stats.injectionDays++;
+  if (hasNote(r)) stats.notes++;
 }
 
 export function monthStats(byDate, year, month) {

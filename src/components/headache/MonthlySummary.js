@@ -12,6 +12,7 @@ import {
   FaceIcon,
   HoursIcon,
   MigraineIcon,
+  NoteIcon,
   PeriodIcon,
 } from "@/components/headache/icons";
 
@@ -106,6 +107,8 @@ export default function MonthlySummary({ patient, byDate, year, month }) {
         <Row icon={<AuraIcon size={18} />} label={t.CAL_AURA} value={s.aura} />
         <Row icon={<PeriodIcon size={18} />} label={t.CAL_PERIOD} value={s.period} />
         <Row icon={<ClusterIcon size={18} />} label={t.CAL_CLUSTER} value={s.cluster} />
+        {/* Days with a written note – only when the patient shares notes, like in the calendar */}
+        <Row icon={<NoteIcon size={18} />} label={t.CAL_NOTES} value={patient?.shareNotes ? s.notes : null} />
         {s.registered === 0 && <li className="px-4 py-3 text-sm italic text-slate-400">{t.CAL_NO_REGISTRATION}</li>}
       </ul>
     </section>
