@@ -16,6 +16,12 @@ import {
 } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ChevronIcon, ClusterIcon, NoteIcon } from "@/components/headache/icons";
 
+// Day icons: size in px, centred on the corner of the date box (the cell has 3 px padding)
+const DAY_ICON_SIZE = 18;
+// How far the icons are moved from the corner towards the centre of the date (px)
+const ICON_INSET = 3;
+const ICON_OFFSET = 3 - DAY_ICON_SIZE / 2 + ICON_INSET;
+
 const FILL = { 1: COLORS.mild, 2: COLORS.moderate, 3: COLORS.strong, 4: COLORS.extreme };
 
 export default function HeadacheCalendar({
@@ -145,31 +151,23 @@ export default function HeadacheCalendar({
 
                 {/* Acute medication – top right */}
                 {r && hasAcute(r) && (
-                  <span className="pointer-events-none absolute -end-1 -top-1">
-                    <AcuteIcon size={12} />
+                  <span className="pointer-events-none absolute z-10 flex" style={{ top: ICON_OFFSET, insetInlineEnd: ICON_OFFSET }}>
+                    <AcuteIcon size={DAY_ICON_SIZE} />
                   </span>
                 )}
 
                 {/* Aura and cluster headache – bottom left */}
                 {(r?.hasAura || r?.hasClusterHeadache) && (
-                  <span className="pointer-events-none absolute -bottom-1 -start-1 flex">
-                    {r.hasAura && (
-                      <span>
-                        <AuraIcon size={12} />
-                      </span>
-                    )}
-                    {r.hasClusterHeadache && (
-                      <span>
-                        <ClusterIcon size={12} />
-                      </span>
-                    )}
+                  <span className="pointer-events-none absolute z-10 flex" style={{ bottom: ICON_OFFSET, insetInlineStart: ICON_OFFSET }}>
+                    {r.hasAura && <AuraIcon size={DAY_ICON_SIZE} />}
+                    {r.hasClusterHeadache && <ClusterIcon size={DAY_ICON_SIZE} />}
                   </span>
                 )}
 
                 {/* Written note – bottom right */}
                 {note && (
-                  <span className="pointer-events-none absolute -bottom-1 -end-1">
-                    <NoteIcon size={12} />
+                  <span className="pointer-events-none absolute z-10 flex" style={{ bottom: ICON_OFFSET, insetInlineEnd: ICON_OFFSET }}>
+                    <NoteIcon size={DAY_ICON_SIZE} />
                   </span>
                 )}
               </div>
