@@ -98,13 +98,14 @@ function buildTables(cmp, t, locale) {
     cells: columns.map((col) => (values[col.id] === null ? "–" : f.pct(values[col.id]))),
     raw: columns.map((col) => values[col.id]),
   });
+  // Each row compares the average from period `first` to the end with the average before:
+  // "Dag 0 til 90", "Dag 30 til 90", "Dag 60 til 90"
   const change = cmp.change.map((c) =>
     changeRow(
-      c.first === c.last ? fill(t.REF_MONTH, { n: c.last }) : fill(t.REF_MONTHS, { from: c.first, to: c.last }),
+      fill(t.REF_DAYS, { from: minus((c.first - 1) * REF_PERIOD_DAYS), to: minus(c.last * REF_PERIOD_DAYS) }),
       c.values
     )
   );
-  if (cmp.averageChange) change.push(changeRow(t.REF_AVERAGE, cmp.averageChange, true));
 
   return { columns, before, after, change };
 }
