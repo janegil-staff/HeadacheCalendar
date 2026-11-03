@@ -24,6 +24,11 @@ const ICON_OFFSET = 3 - DAY_ICON_SIZE / 2 + ICON_INSET;
 
 const FILL = { 1: COLORS.mild, 2: COLORS.moderate, 3: COLORS.strong, 4: COLORS.extreme };
 
+// Blinded: every registered day in one flat light blue, so only *whether* a day was
+// registered shows – not intensity, medication, aura, cluster, period or notes
+const BLIND_BG = "#DCEBF7";
+const BLIND_TEXT = "#14324a";
+
 export default function HeadacheCalendar({
   byDate,
   year,
@@ -35,6 +40,7 @@ export default function HeadacheCalendar({
   selected,
   onSelect,
   showNotes = false,
+  blinded = false,
 }) {
   const { t, locale } = useHeadacheText();
   const loc = intlLocale(locale);
@@ -101,6 +107,33 @@ export default function HeadacheCalendar({
             const isFuture = key > today;
             const isSelected = key === selected;
             const note = showNotes && hasNote(r);
+
+            if (blinded) {
+              // Read-only and nothing but registered / not registered – also in the screen-reader label
+              return (
+                <div
+                  key={i}
+                  role="gridcell"
+                  aria-label={`${longDate.format(new Date(year, month, day))}, ${r ? t.CAL_REGISTERED : t.CAL_NO_REGISTRATION}`}
+                  className="h-8 rounded-md p-[3px]"
+                >
+                  <span
+                    className={`flex h-full w-full items-center justify-center rounded-md text-xs font-semibold tabular-nums ${
+                      r
+                        ? ""
+                        : isToday
+                          ? "ring-2 ring-[#6b93d1] ring-offset-1 text-slate-500"
+                          : isFuture
+                            ? "text-slate-300"
+                            : "border border-dashed border-slate-200 text-slate-400"
+                    }`}
+                    style={r ? { backgroundColor: BLIND_BG, color: BLIND_TEXT } : undefined}
+                  >
+                    {day}
+                  </span>
+                </div>
+              );
+            }
 
             let box = "border border-dashed border-slate-200 text-slate-400"; // past, nothing registered
             let style;

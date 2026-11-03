@@ -24,6 +24,7 @@ export function usePatient() {
   const close = useCallback(() => {
     try {
       sessionStorage.removeItem("patient");
+      sessionStorage.removeItem("screening"); // opened from a /[lang]/screening link
     } catch {}
     router.replace("/"); // replace: Back shouldn't return to a closed patient
   }, [router]);
