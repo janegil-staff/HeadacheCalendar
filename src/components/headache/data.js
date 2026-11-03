@@ -344,17 +344,16 @@ export function referenceComparison(byDate, ref) {
   const baselineRows = before.filter((r) => r.registered > 0);
   const baseline = average(baselineRows);
 
-  // "Month 1–3", "Month 2–3", "Month 3"
+  // One row per period after the date, each compared with the average before:
+  // "Day 0 to 30", "Day 30 to 60", "Day 60 to 90"
   const change = [];
-  for (let first = 1; first <= REF_PERIOD_COUNT; first++) {
-    const rows = after.filter((r) => r.index >= first && counted(r));
-    const needed = REF_PERIOD_COUNT - first + 1;
-    const avg = rows.length === needed ? average(rows) : null; // all periods in the span must count
+  for (let i = 1; i <= REF_PERIOD_COUNT; i++) {
+    const row = after.find((r) => r.index === i && counted(r)); // unfinished or empty period → "–"
     const values = {};
     for (const k of REF_VALUES) {
-      values[k] = !avg || !baseline || baseline[k] === 0 ? null : (avg[k] - baseline[k]) / baseline[k];
+      values[k] = !row || !baseline || baseline[k] === 0 ? null : (row[k] - baseline[k]) / baseline[k];
     }
-    change.push({ first, last: REF_PERIOD_COUNT, values, average: avg });
+    change.push({ first: i, last: i, values, average: row ?? null });
   }
 
   // Average of all counted periods after the date, and its change from the baseline
