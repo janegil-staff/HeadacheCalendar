@@ -8,6 +8,7 @@ import { AcuteIcon, AuraIcon, ClusterIcon, MigraineIcon } from "@/components/hea
 import LogModal from "@/components/headache/LogModal";
 import ReferenceModal from "@/components/headache/ReferenceModal";
 import Hit6Card from "@/components/headache/Hit6Card";
+import SummaryModal from "@/components/headache/SummaryModal";
 
 const MONTH_COUNT = 4; // current month + the three before it
 const WEEK_PERIODS = 4; // in week view: four lines…
@@ -234,13 +235,14 @@ function PeriodSwitch({ value, onChange, t }) {
   );
 }
 
-// "Summary" in the right sidebar: the last four months (or weeks), as a table or as copyable text
+// "Summary" in the right sidebar: four buttons; the summary table (last four months or weeks) opens in a modal
 export default function SummaryCard({ patient }) {
   const { t, locale } = useHeadacheText();
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   const [copied, setCopied] = useState(false);
   const [logOpen, setLogOpen] = useState(false);
   const [refOpen, setRefOpen] = useState(false);
+  const [summaryOpen, setSummaryOpen] = useState(false);
 
   // Remember the doctor's choices in this browser
   useEffect(() => {
@@ -310,10 +312,9 @@ export default function SummaryCard({ patient }) {
     } catch {}
   };
 
-  return (
-    <section className="rounded-3xl border border-white/70 bg-white/65 p-4 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:px-6 sm:py-5">
-      <h2 className="mb-4 text-center font-serif text-xl font-bold text-[#4f7cc0]">{t.SUM_TITLE}</h2>
-
+  // The summary box and its options – shown in the Summary modal
+  const summaryBody = (
+    <>
       <div className="rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)] sm:p-4">
         {options.textView ? (
           <>
@@ -421,6 +422,29 @@ export default function SummaryCard({ patient }) {
           {t.SUM_SHOW_CLUSTER}
         </Checkbox>
       </div>
+    </>
+  );
+
+  return (
+    <section className="rounded-3xl border border-white/70 bg-white/65 p-4 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:px-6 sm:py-5">
+      <h2 className="mb-4 text-center font-serif text-xl font-bold text-[#4f7cc0]">{t.SUM_TITLE}</h2>
+
+      {/* The summary itself lives only in the modal; the sidebar shows just the four buttons */}
+      {/* Opens the whole summary in a big modal – label follows the period switch ("Last 16 weeks" / "Last 4 months") */}
+      <button
+        type="button"
+        onClick={() => setSummaryOpen(true)}
+        aria-haspopup="dialog"
+        className="flex w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 text-start shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)] transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#6a9be0]/40"
+      >
+        <span className="flex-1 text-xs font-bold uppercase tracking-[0.14em] text-[#4f7cc0]">
+          {period === "weeks" ? fill(t.SUM_LAST_WEEKS, { n: WEEK_COUNT }) : fill(t.SUM_LAST_MONTHS, { n: MONTH_COUNT })}
+        </span>
+        <svg className="h-3.5 w-3.5 text-[#6a9be0] rtl:-scale-x-100" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l9-7z" />
+        </svg>
+      </button>
+
       {/* Before / after a reference date – opens ReferenceModal, same look as Show log / HIT-6 */}
       <button
         type="button"
@@ -454,6 +478,9 @@ export default function SummaryCard({ patient }) {
       <Hit6Card patient={patient} />
 
       <LogModal open={logOpen} onClose={() => setLogOpen(false)} patient={patient} />
+      <SummaryModal open={summaryOpen} onClose={() => setSummaryOpen(false)}>
+        {summaryBody}
+      </SummaryModal>
       <ReferenceModal open={refOpen} onClose={() => setRefOpen(false)} patient={patient} />
     </section>
   );
