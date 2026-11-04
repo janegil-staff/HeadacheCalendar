@@ -10,21 +10,24 @@ import ReferenceModal from "@/components/headache/ReferenceModal";
 import Hit6Card from "@/components/headache/Hit6Card";
 
 const MONTH_COUNT = 4; // current month + the three before it
-const WEEK_COUNT = 4; // current week + the three before it (weeks start on Monday, like the calendar)
+const WEEK_PERIODS = 4; // in week view: four lines…
+const WEEKS_PER_LINE = 4; // …of four weeks each, the last line ending with the current week (weeks start on Monday)
+const WEEK_COUNT = WEEK_PERIODS * WEEKS_PER_LINE;
 const OPTIONS_KEY = "headache-summary-options";
 const DEFAULT_OPTIONS = { period: "months", textView: false, migraine: false, aura: false, cluster: false };
 
-// Per-month (or per-week) numbers for the chosen period, oldest first
+// Per-month (or per-four-weeks) numbers for the chosen period, oldest first
 function summaryRows(byDate, period) {
   const now = new Date();
   const weeks = period === "weeks";
   const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7));
   const rows = [];
-  for (let i = (weeks ? WEEK_COUNT : MONTH_COUNT) - 1; i >= 0; i--) {
+  for (let i = (weeks ? WEEK_PERIODS : MONTH_COUNT) - 1; i >= 0; i--) {
+    // Week view: d is the Monday the four-week block starts on
     const d = weeks
-      ? new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - 7 * i)
+      ? new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - 7 * (WEEKS_PER_LINE * i + WEEKS_PER_LINE - 1))
       : new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const s = weeks ? rangeStats(byDate, d, 7) : monthStats(byDate, d.getFullYear(), d.getMonth());
+    const s = weeks ? rangeStats(byDate, d, 7 * WEEKS_PER_LINE) : monthStats(byDate, d.getFullYear(), d.getMonth());
     const [, mild, moderate, strong, extreme] = s.intensity;
     rows.push({
       key: weeks ? `w-${d.toDateString()}` : `${d.getFullYear()}-${d.getMonth()}`,
@@ -58,17 +61,20 @@ function monthLabel(locale, year, month, short = false) {
   return name.charAt(0).toLocaleUpperCase(loc) + name.slice(1);
 }
 
-// "20.–26. okt." for the week starting on `start`
+// Last day (Sunday) of the four-week block starting on `start`
+const blockEnd = (start) => new Date(start.getFullYear(), start.getMonth(), start.getDate() + 7 * WEEKS_PER_LINE - 1);
+
+// "12. okt.–8. nov." for the four-week block starting on `start`
 function weekRange(locale, start) {
-  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 6);
+  const end = blockEnd(start);
   const fmt = new Intl.DateTimeFormat(intlLocale(locale), { day: "numeric", month: "short" });
   return fmt.formatRange ? fmt.formatRange(start, end) : `${fmt.format(start)} – ${fmt.format(end)}`;
 }
 
-// Row heading: the month name, or "Week 43" with its dates
+// Row heading: the month name, or "Week 42–45" with its dates
 function rowLabel(t, locale, r, short = false) {
   if (!r.weeks) return monthLabel(locale, r.year, r.month, short);
-  const week = fill(t.SUM_WEEK, { n: isoWeek(r.start) });
+  const week = fill(t.SUM_WEEK_RANGE, { from: isoWeek(r.start), to: isoWeek(blockEnd(r.start)) });
   return short ? week : `${week} (${weekRange(locale, r.start)})`;
 }
 
