@@ -430,7 +430,7 @@ export default function SummaryCard({ patient }) {
       <h2 className="mb-4 text-center font-serif text-xl font-bold text-[#4f7cc0]">{t.SUM_TITLE}</h2>
 
       {/* The summary itself lives only in the modal; the sidebar shows just the four buttons */}
-      {/* Opens the whole summary in a big modal – label follows the period switch ("Last 16 weeks" / "Last 4 months") */}
+      {/* Opens the whole summary in a big modal – label follows the period switch ("Summary last 16 weeks" / "Summary last 4 months") */}
       <button
         type="button"
         onClick={() => setSummaryOpen(true)}
@@ -438,7 +438,7 @@ export default function SummaryCard({ patient }) {
         className="flex w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3 text-start shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)] transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#6a9be0]/40"
       >
         <span className="flex-1 text-xs font-bold uppercase tracking-[0.14em] text-[#4f7cc0]">
-          {period === "weeks" ? fill(t.SUM_LAST_WEEKS, { n: WEEK_COUNT }) : fill(t.SUM_LAST_MONTHS, { n: MONTH_COUNT })}
+          {period === "weeks" ? fill(t.SUM_OPEN_WEEKS, { n: WEEK_COUNT }) : fill(t.SUM_OPEN_MONTHS, { n: MONTH_COUNT })}
         </span>
         <svg className="h-3.5 w-3.5 text-[#6a9be0] rtl:-scale-x-100" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M8 5v14l9-7z" />
