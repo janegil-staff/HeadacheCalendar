@@ -166,7 +166,9 @@ export default function HeadacheCalendar({
               <div
                 key={i}
                 className="relative h-8 rounded-md p-[3px]"
-                style={r?.hasPeriod ? { backgroundColor: COLORS.period } : undefined}
+                // Menstruation: a thick, strong pink frame – 3px padding plus a 1px ring outside the tile.
+                // The ring is a box-shadow, so the day keeps its size; days in a row join into one pink band.
+                style={r?.hasPeriod ? { backgroundColor: COLORS.periodStrong, boxShadow: `0 0 0 1px ${COLORS.periodStrong}` } : undefined}
               >
                 <button
                   type="button"

@@ -18,6 +18,7 @@ export const COLORS = {
   extreme: "#b53b31",
   today: "#6b93d1",
   period: "#fde6ee",
+  periodStrong: "#d63384", // thick frame around menstruation days in the calendar
   acute: "#e5484d",
   aura: "#f2c230",
   cluster: "#6b2fb3",

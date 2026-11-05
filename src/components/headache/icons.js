@@ -117,11 +117,11 @@ export function MigraineIcon({ size = 20 }) {
   );
 }
 
-// Pink square – menstruation (same pink as the tile behind a day)
+// Pink frame – menstruation (same strong pink as the frame around a day in the calendar)
 export function PeriodIcon({ size = 20 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" fill={COLORS.period} stroke="#f5b8cc" strokeWidth="1.2" />
+      <rect x="3" y="3" width="18" height="18" rx="4.5" fill={COLORS.period} stroke={COLORS.periodStrong} strokeWidth="4" />
     </svg>
   );
 }
