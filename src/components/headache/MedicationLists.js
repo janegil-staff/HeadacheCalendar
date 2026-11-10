@@ -34,7 +34,36 @@ function Thumb({ src, name }) {
   );
 }
 
-function Item({ m, name, detail }) {
+// "2026-10-13" → "13. okt. 2026" in the chosen language
+function useDateText() {
+  const { locale } = useHeadacheText();
+  const fmt = new Intl.DateTimeFormat(intlLocale(locale), { day: "numeric", month: "short", year: "numeric" });
+  return (key) => {
+    if (!key) return null;
+    const [y, m, d] = String(key).slice(0, 10).split("-").map(Number);
+    return y && m && d ? fmt.format(new Date(y, m - 1, d)) : null;
+  };
+}
+
+// Start date (and end date, when there is one) under the medicine name
+function Dates({ start, end, startLabel }) {
+  const { t } = useHeadacheText();
+  const date = useDateText();
+  return (
+    <span className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-slate-500">
+      <span>
+        {startLabel ?? t.CAL_START_DATE}: <span className="font-medium text-slate-600">{date(start) ?? "–"}</span>
+      </span>
+      {end && (
+        <span>
+          {t.CAL_END_DATE}: <span className="font-medium text-slate-600">{date(end)}</span>
+        </span>
+      )}
+    </span>
+  );
+}
+
+function Item({ m, name, detail, dates }) {
   const ingredients = (m?.ingredients ?? []).map((i) => (typeof i === "string" ? i : i?.name)).filter(Boolean);
   return (
     <li className="flex items-center gap-3 px-4 py-2.5">
@@ -46,6 +75,7 @@ function Item({ m, name, detail }) {
             {[ingredients.join(", "), m?.atcCode].filter(Boolean).join(" · ")}
           </span>
         )}
+        {dates}
       </span>
       {detail && <span className="shrink-0 text-end text-xs text-slate-500">{detail}</span>}
     </li>
@@ -87,16 +117,17 @@ function Subheading({ children }) {
 }
 
 export function MedicationDropdown({ patient }) {
-  const { t, locale } = useHeadacheText();
-  const dateFmt = new Intl.DateTimeFormat(intlLocale(locale), { day: "numeric", month: "short", year: "numeric" });
+  const { t } = useHeadacheText();
+  const fmt = useDateText();
 
   // Acute medicines actually used, with how often and when last
   const acute = useMemo(() => {
     const use = new Map();
     for (const r of patient?.records ?? []) {
       (r.acuteMedicines ?? []).forEach((id, i) => {
-        const u = use.get(id) ?? { times: 0, last: null };
+        const u = use.get(id) ?? { times: 0, first: null, last: null };
         u.times += r.acuteMedicinesUsedTimes?.[i] || 1;
+        if (!u.first || r.date < u.first) u.first = r.date;
         if (!u.last || r.date > u.last) u.last = r.date;
         use.set(id, u);
       });
@@ -110,10 +141,6 @@ export function MedicationDropdown({ patient }) {
   }, [patient]);
 
   const preventive = patient?.preventiveMedicines ?? [];
-  const fmt = (key) => {
-    const [y, m, d] = key.split("-").map(Number);
-    return dateFmt.format(new Date(y, m - 1, d));
-  };
 
   return (
     <Dropdown title={t.CAL_MEDICATION} count={preventive.length + acute.length}>
@@ -122,7 +149,13 @@ export function MedicationDropdown({ patient }) {
           <Subheading>{t.CAL_PREVENTIVE}</Subheading>
           <ul className="divide-y divide-slate-100">
             {preventive.map((m, i) => (
-              <Item key={`p${i}`} m={m} name={m?.name ?? String(m)} detail={m?.dose ? String(m.dose) : null} />
+              <Item
+                key={`p${i}`}
+                m={m}
+                name={m?.name ?? String(m)}
+                detail={m?.dose ? String(m.dose) : null}
+                dates={<Dates start={m?.startedUsage} end={m?.stoppedUsage} />}
+              />
             ))}
           </ul>
         </>
@@ -136,6 +169,8 @@ export function MedicationDropdown({ patient }) {
                 key={`a${a.id}`}
                 m={a.med}
                 name={a.name}
+                // The API has no start date for acute medicines – show the first day it was registered
+                dates={<Dates start={a.first} startLabel={t.CAL_FIRST_USED} />}
                 detail={
                   <>
                     <span className="block font-semibold text-slate-600">× {a.times}</span>
@@ -165,7 +200,7 @@ export function PreviousMedicationDropdown({ patient }) {
       {previous.length ? (
         <ul className="divide-y divide-slate-100">
           {previous.map((m, i) => (
-            <Item key={i} m={m} name={m?.name ?? String(m)} />
+            <Item key={i} m={m} name={m?.name ?? String(m)} dates={<Dates start={m?.startedUsage} end={m?.stoppedUsage} />} />
           ))}
         </ul>
       ) : (
