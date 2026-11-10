@@ -2,6 +2,7 @@
 // Texts for the headache calendar in all 35 languages (self-contained, independent of src/locales)
 export const TEXTS = {
   "ar": {
+    "CAL_INJECTIONS": "الحقن",
     "REF_NOTE": "يُحسب المتوسط قبل من الفترات التي فيها تسجيلات فقط. التغير = (المتوسط بعد − المتوسط قبل) ÷ المتوسط قبل. لا تُحتسب الفترات بعد التاريخ التي لم تنتهِ أو ليس فيها تسجيلات.",
     "REF_REGISTERED": "الأيام المسجلة",
     "REF_MOD_PLUS": "متوسط–شديد جدًا",
@@ -107,6 +108,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "التقويم"
   },
   "bg": {
+    "CAL_INJECTIONS": "Инжекции",
     "REF_NOTE": "Средното преди включва само периоди със записи. Промяна = (средно след − средно преди) ÷ средно преди. Периоди след датата, които не са приключили или нямат записи, не се включват.",
     "REF_REGISTERED": "Регистрирани дни",
     "REF_MOD_PLUS": "Умерено–крайно",
@@ -212,6 +214,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Календар"
   },
   "bs": {
+    "CAL_INJECTIONS": "Injekcije",
     "REF_NOTE": "Prosjek prije uključuje samo periode s unosima. Promjena = (prosjek poslije − prosjek prije) ÷ prosjek prije. Periodi nakon datuma koji nisu završeni ili nemaju unosa ne uračunavaju se.",
     "REF_REGISTERED": "Zabilježeni dani",
     "REF_MOD_PLUS": "Umjerena–ekstremna",
@@ -317,6 +320,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendar"
   },
   "ca": {
+    "CAL_INJECTIONS": "Injeccions",
     "REF_NOTE": "La mitjana abans només inclou períodes amb registres. Canvi = (mitjana després − mitjana abans) ÷ mitjana abans. No es compten els períodes posteriors a la data que no han acabat o que no tenen registres.",
     "REF_REGISTERED": "Dies registrats",
     "REF_MOD_PLUS": "Moderat–extrem",
@@ -422,6 +426,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendari"
   },
   "cs": {
+    "CAL_INJECTIONS": "Injekce",
     "REF_NOTE": "Průměr před zahrnuje jen období se záznamy. Změna = (průměr po − průměr před) ÷ průměr před. Období po datu, která ještě neskončila nebo nemají záznamy, se nezapočítávají.",
     "REF_REGISTERED": "Zaznamenané dny",
     "REF_MOD_PLUS": "Střední–extrémní",
@@ -527,6 +532,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendář"
   },
   "da": {
+    "CAL_INJECTIONS": "Injektioner",
     "REF_NOTE": "Gennemsnittet før beregnes kun af perioder med registreringer. Ændring = (gennemsnit efter − gennemsnit før) ÷ gennemsnit før. Perioder efter datoen, som ikke er afsluttet eller mangler registreringer, medregnes ikke.",
     "REF_REGISTERED": "Registrerede dage",
     "REF_MOD_PLUS": "Moderat–ekstrem",
@@ -632,6 +638,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "de": {
+    "CAL_INJECTIONS": "Injektionen",
     "REF_NOTE": "Der Durchschnitt vorher wird nur aus Zeiträumen mit Einträgen berechnet. Veränderung = (Durchschnitt nachher − Durchschnitt vorher) ÷ Durchschnitt vorher. Zeiträume nach dem Stichtag, die noch nicht abgeschlossen sind oder keine Einträge haben, werden nicht berücksichtigt.",
     "REF_REGISTERED": "Erfasste Tage",
     "REF_MOD_PLUS": "Mittel–extrem",
@@ -737,6 +744,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "el": {
+    "CAL_INJECTIONS": "Ενέσεις",
     "REF_NOTE": "Ο μέσος όρος πριν περιλαμβάνει μόνο περιόδους με καταγραφές. Μεταβολή = (μέσος όρος μετά − μέσος όρος πριν) ÷ μέσος όρος πριν. Οι περίοδοι μετά την ημερομηνία που δεν έχουν ολοκληρωθεί ή δεν έχουν καταγραφές δεν υπολογίζονται.",
     "REF_REGISTERED": "Καταγεγραμμένες ημέρες",
     "REF_MOD_PLUS": "Μέτριος–ακραίος",
@@ -842,6 +850,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Ημερολόγιο"
   },
   "en": {
+    "CAL_INJECTIONS": "Injections",
     "REF_NOTE": "The average before only includes periods with registrations. Change = (average after − average before) ÷ average before. Periods after the date that have not ended or have no registrations are not included.",
     "REF_REGISTERED": "Registered days",
     "REF_MOD_PLUS": "Moderate–extreme",
@@ -947,6 +956,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendar"
   },
   "es": {
+    "CAL_INJECTIONS": "Inyecciones",
     "REF_NOTE": "El promedio antes solo incluye periodos con registros. Cambio = (promedio después − promedio antes) ÷ promedio antes. No se incluyen los periodos posteriores a la fecha que no han terminado o no tienen registros.",
     "REF_REGISTERED": "Días registrados",
     "REF_MOD_PLUS": "Moderada–extrema",
@@ -1052,6 +1062,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendario"
   },
   "et": {
+    "CAL_INJECTIONS": "Süstid",
     "REF_NOTE": "Keskmine enne arvutatakse ainult perioodidest, kus on registreeringuid. Muutus = (keskmine pärast − keskmine enne) ÷ keskmine enne. Kuupäevajärgseid perioode, mis pole lõppenud või kus puuduvad registreeringud, ei arvestata.",
     "REF_REGISTERED": "Registreeritud päevad",
     "REF_MOD_PLUS": "Mõõdukas–äärmuslik",
@@ -1157,6 +1168,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "fi": {
+    "CAL_INJECTIONS": "Pistokset",
     "REF_NOTE": "Keskiarvo ennen lasketaan vain jaksoista, joilla on kirjauksia. Muutos = (keskiarvo jälkeen − keskiarvo ennen) ÷ keskiarvo ennen. Päivämäärän jälkeisiä jaksoja, jotka eivät ole päättyneet tai joilta puuttuu kirjauksia, ei lasketa mukaan.",
     "REF_REGISTERED": "Kirjatut päivät",
     "REF_MOD_PLUS": "Kohtalainen–äärimmäinen",
@@ -1262,6 +1274,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalenteri"
   },
   "fr": {
+    "CAL_INJECTIONS": "Injections",
     "REF_NOTE": "La moyenne avant ne prend en compte que les périodes comportant des enregistrements. Évolution = (moyenne après − moyenne avant) ÷ moyenne avant. Les périodes après la date qui ne sont pas terminées ou sans enregistrements ne sont pas prises en compte.",
     "REF_REGISTERED": "Jours enregistrés",
     "REF_MOD_PLUS": "Modérée–extrême",
@@ -1367,6 +1380,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendrier"
   },
   "he": {
+    "CAL_INJECTIONS": "זריקות",
     "REF_NOTE": "הממוצע לפני מחושב רק מתקופות עם רישומים. שינוי = (ממוצע אחרי − ממוצע לפני) ÷ ממוצע לפני. תקופות אחרי התאריך שטרם הסתיימו או שאין בהן רישומים אינן נכללות.",
     "REF_REGISTERED": "ימים שנרשמו",
     "REF_MOD_PLUS": "בינוני–קיצוני",
@@ -1472,6 +1486,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "לוח שנה"
   },
   "hr": {
+    "CAL_INJECTIONS": "Injekcije",
     "REF_NOTE": "Prosjek prije uključuje samo razdoblja s unosima. Promjena = (prosjek poslije − prosjek prije) ÷ prosjek prije. Razdoblja nakon datuma koja nisu završila ili nemaju unosa ne uračunavaju se.",
     "REF_REGISTERED": "Zabilježeni dani",
     "REF_MOD_PLUS": "Umjerena–ekstremna",
@@ -1577,6 +1592,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendar"
   },
   "hu": {
+    "CAL_INJECTIONS": "Injekciók",
     "REF_NOTE": "Az előtte számított átlag csak a bejegyzésekkel rendelkező időszakokat tartalmazza. Változás = (átlag utána − átlag előtte) ÷ átlag előtte. A dátum utáni, még le nem zárult vagy bejegyzés nélküli időszakok nem számítanak bele.",
     "REF_REGISTERED": "Rögzített napok",
     "REF_MOD_PLUS": "Közepes–extrém",
@@ -1682,6 +1698,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Naptár"
   },
   "is": {
+    "CAL_INJECTIONS": "Sprautur",
     "REF_NOTE": "Meðaltal fyrir er aðeins reiknað af tímabilum með skráningum. Breyting = (meðaltal eftir − meðaltal fyrir) ÷ meðaltal fyrir. Tímabil eftir dagsetninguna sem er ekki lokið eða vantar skráningar eru ekki talin með.",
     "REF_REGISTERED": "Skráðir dagar",
     "REF_MOD_PLUS": "Miðlungs–mjög mikill",
@@ -1787,6 +1804,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Dagatal"
   },
   "it": {
+    "CAL_INJECTIONS": "Iniezioni",
     "REF_NOTE": "La media prima include solo i periodi con registrazioni. Variazione = (media dopo − media prima) ÷ media prima. I periodi successivi alla data non ancora conclusi o senza registrazioni non vengono conteggiati.",
     "REF_REGISTERED": "Giorni registrati",
     "REF_MOD_PLUS": "Moderata–estrema",
@@ -1892,6 +1910,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendario"
   },
   "ja": {
+    "CAL_INJECTIONS": "注射",
     "REF_NOTE": "基準日前の平均は記録のある期間のみで計算します。変化 =（基準日後の平均 − 基準日前の平均）÷ 基準日前の平均。基準日後でまだ終了していない期間や記録のない期間は含みません。",
     "REF_REGISTERED": "記録日数",
     "REF_MOD_PLUS": "中等度〜極度",
@@ -1997,6 +2016,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "カレンダー"
   },
   "lt": {
+    "CAL_INJECTIONS": "Injekcijos",
     "REF_NOTE": "Vidurkis prieš skaičiuojamas tik iš laikotarpių su įrašais. Pokytis = (vidurkis po − vidurkis prieš) ÷ vidurkis prieš. Laikotarpiai po datos, kurie nesibaigė arba neturi įrašų, neįskaičiuojami.",
     "REF_REGISTERED": "Užregistruotos dienos",
     "REF_MOD_PLUS": "Vidutinis–ekstremalus",
@@ -2102,6 +2122,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendorius"
   },
   "lv": {
+    "CAL_INJECTIONS": "Injekcijas",
     "REF_NOTE": "Vidējo pirms aprēķina tikai no periodiem ar ierakstiem. Izmaiņas = (vidēji pēc − vidēji pirms) ÷ vidēji pirms. Periodi pēc datuma, kas nav beigušies vai kuros nav ierakstu, netiek ieskaitīti.",
     "REF_REGISTERED": "Reģistrētās dienas",
     "REF_MOD_PLUS": "Mērenas–ārkārtējas",
@@ -2207,6 +2228,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendārs"
   },
   "mk": {
+    "CAL_INJECTIONS": "Инјекции",
     "REF_NOTE": "Просекот пред ги опфаќа само периодите со записи. Промена = (просек по − просек пред) ÷ просек пред. Периодите по датумот што не завршиле или немаат записи не се сметаат.",
     "REF_REGISTERED": "Евидентирани денови",
     "REF_MOD_PLUS": "Умерена–екстремна",
@@ -2312,6 +2334,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Календар"
   },
   "nl": {
+    "CAL_INJECTIONS": "Injecties",
     "REF_NOTE": "Het gemiddelde vooraf wordt alleen berekend over perioden met registraties. Verandering = (gemiddelde erna − gemiddelde vooraf) ÷ gemiddelde vooraf. Perioden na de datum die nog niet voorbij zijn of geen registraties hebben, tellen niet mee.",
     "REF_REGISTERED": "Geregistreerde dagen",
     "REF_MOD_PLUS": "Matig–extreem",
@@ -2417,6 +2440,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "no": {
+    "CAL_INJECTIONS": "Injeksjoner",
     "REF_NOTE": "Gjennomsnittet før regnes bare av perioder med registreringer. Endring = (gjennomsnitt etter − gjennomsnitt før) ÷ gjennomsnitt før. Perioder etter datoen som ikke er avsluttet eller mangler registreringer, regnes ikke med.",
     "REF_REGISTERED": "Registrerte dager",
     "REF_MOD_PLUS": "Moderat–ekstrem",
@@ -2522,6 +2546,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "pl": {
+    "CAL_INJECTIONS": "Zastrzyki",
     "REF_NOTE": "Średnia przed obejmuje tylko okresy z wpisami. Zmiana = (średnia po − średnia przed) ÷ średnia przed. Okresy po dacie, które się nie zakończyły lub nie mają wpisów, nie są uwzględniane.",
     "REF_REGISTERED": "Zarejestrowane dni",
     "REF_MOD_PLUS": "Umiarkowany–skrajny",
@@ -2627,6 +2652,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendarz"
   },
   "pt-BR": {
+    "CAL_INJECTIONS": "Injeções",
     "REF_NOTE": "A média antes inclui apenas períodos com registros. Variação = (média depois − média antes) ÷ média antes. Períodos após a data que ainda não terminaram ou não têm registros não são contabilizados.",
     "REF_REGISTERED": "Dias registrados",
     "REF_MOD_PLUS": "Moderada–extrema",
@@ -2732,6 +2758,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendário"
   },
   "pt": {
+    "CAL_INJECTIONS": "Injeções",
     "REF_NOTE": "A média antes inclui apenas períodos com registos. Variação = (média depois − média antes) ÷ média antes. Os períodos após a data que ainda não terminaram ou não têm registos não são contabilizados.",
     "REF_REGISTERED": "Dias registados",
     "REF_MOD_PLUS": "Moderada–extrema",
@@ -2837,6 +2864,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendário"
   },
   "ro": {
+    "CAL_INJECTIONS": "Injecții",
     "REF_NOTE": "Media înainte include doar perioadele cu înregistrări. Schimbare = (media după − media înainte) ÷ media înainte. Perioadele de după dată care nu s-au încheiat sau nu au înregistrări nu sunt incluse.",
     "REF_REGISTERED": "Zile înregistrate",
     "REF_MOD_PLUS": "Moderată–extremă",
@@ -2942,6 +2970,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Calendar"
   },
   "ru": {
+    "CAL_INJECTIONS": "Инъекции",
     "REF_NOTE": "Среднее до учитывает только периоды с записями. Изменение = (среднее после − среднее до) ÷ среднее до. Периоды после даты, которые ещё не закончились или не содержат записей, не учитываются.",
     "REF_REGISTERED": "Дни с записями",
     "REF_MOD_PLUS": "Умеренная–крайняя",
@@ -3047,6 +3076,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Календарь"
   },
   "sk": {
+    "CAL_INJECTIONS": "Injekcie",
     "REF_NOTE": "Priemer pred zahŕňa len obdobia so záznamami. Zmena = (priemer po − priemer pred) ÷ priemer pred. Obdobia po dátume, ktoré sa ešte neskončili alebo nemajú záznamy, sa nezapočítavajú.",
     "REF_REGISTERED": "Zaznamenané dni",
     "REF_MOD_PLUS": "Stredná–extrémna",
@@ -3152,6 +3182,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalendár"
   },
   "sl": {
+    "CAL_INJECTIONS": "Injekcije",
     "REF_NOTE": "Povprečje pred vključuje le obdobja z vpisi. Sprememba = (povprečje po − povprečje pred) ÷ povprečje pred. Obdobja po datumu, ki se še niso končala ali nimajo vpisov, niso upoštevana.",
     "REF_REGISTERED": "Zabeleženi dnevi",
     "REF_MOD_PLUS": "Zmeren–izjemen",
@@ -3257,6 +3288,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Koledar"
   },
   "sr": {
+    "CAL_INJECTIONS": "Инјекције",
     "REF_NOTE": "Просек пре обухвата само периоде са уносима. Промена = (просек после − просек пре) ÷ просек пре. Периоди после датума који нису завршени или немају уносе се не урачунавају.",
     "REF_REGISTERED": "Забележени дани",
     "REF_MOD_PLUS": "Умерена–екстремна",
@@ -3362,6 +3394,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Календар"
   },
   "sv": {
+    "CAL_INJECTIONS": "Injektioner",
     "REF_NOTE": "Genomsnittet före räknas bara på perioder med registreringar. Förändring = (genomsnitt efter − genomsnitt före) ÷ genomsnitt före. Perioder efter datumet som inte är avslutade eller saknar registreringar räknas inte med.",
     "REF_REGISTERED": "Registrerade dagar",
     "REF_MOD_PLUS": "Måttlig–extrem",
@@ -3467,6 +3500,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Kalender"
   },
   "tr": {
+    "CAL_INJECTIONS": "Enjeksiyonlar",
     "REF_NOTE": "Önceki ortalama yalnızca kayıt bulunan dönemleri içerir. Değişim = (sonraki ortalama − önceki ortalama) ÷ önceki ortalama. Tarihten sonraki, henüz bitmemiş veya kaydı olmayan dönemler hesaba katılmaz.",
     "REF_REGISTERED": "Kayıtlı günler",
     "REF_MOD_PLUS": "Orta–aşırı",
@@ -3572,6 +3606,7 @@ export const TEXTS = {
     "TAB_CALENDAR": "Takvim"
   },
   "uk": {
+    "CAL_INJECTIONS": "Ін'єкції",
     "REF_NOTE": "Середнє до враховує лише періоди із записами. Зміна = (середнє після − середнє до) ÷ середнє до. Періоди після дати, які ще не завершилися або не мають записів, не враховуються.",
     "REF_REGISTERED": "Дні із записами",
     "REF_MOD_PLUS": "Помірний–надзвичайний",

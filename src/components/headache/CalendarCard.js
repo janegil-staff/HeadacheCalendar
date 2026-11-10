@@ -28,27 +28,30 @@ export default function CalendarCard({ patient }) {
   };
 
   return (
-    <section className="rounded-3xl border border-white/70 bg-white/65 p-4 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:px-5 sm:py-5">
-      <HeadacheCalendar
-        byDate={byDate}
-        year={view.year}
-        month={view.month}
-        canPrev={first ? idx(view) > idx(first) : false}
-        canNext={idx(view) < idx(current)}
-        onPrev={() => move(-1)}
-        onNext={() => move(1)}
-        selected={selected}
-        onSelect={(key) => setSelected((cur) => (cur === key ? null : key))}
-        showNotes={!!patient?.shareNotes}
-      />
-      <DayDetails
-        patient={patient}
-        dateKey={selected}
-        record={selected ? byDate.get(selected) : null}
-        onClose={() => setSelected(null)}
-      />
+    <section className="rounded-3xl border border-white/70 bg-[#eef3f9]/90 p-3 shadow-[0_10px_30px_-18px_rgba(60,100,160,0.35)] backdrop-blur sm:p-4">
+      {/* The calendar in its own white card, like in the app */}
+      <div className="rounded-2xl bg-white px-3 pb-4 pt-3 shadow-[0_4px_16px_-6px_rgba(60,100,160,0.35)] sm:px-4">
+        <HeadacheCalendar
+          byDate={byDate}
+          year={view.year}
+          month={view.month}
+          canPrev={first ? idx(view) > idx(first) : false}
+          canNext={idx(view) < idx(current)}
+          onPrev={() => move(-1)}
+          onNext={() => move(1)}
+          selected={selected}
+          onSelect={(key) => setSelected((cur) => (cur === key ? null : key))}
+          showNotes={!!patient?.shareNotes}
+        />
+        <DayDetails
+          patient={patient}
+          dateKey={selected}
+          record={selected ? byDate.get(selected) : null}
+          onClose={() => setSelected(null)}
+        />
+      </div>
 
-      {/* Monthly summary as a card inside the calendar card, following the month shown */}
+      {/* Monthly numbers under the calendar, following the month shown – laid out like the app */}
       <MonthlySummary patient={patient} byDate={byDate} year={view.year} month={view.month} />
 
       {/* Medication and previously used medication, as dropdowns */}

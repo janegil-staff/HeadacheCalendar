@@ -17,7 +17,7 @@ import {
 import { AcuteIcon, AuraIcon, ChevronIcon, ClusterIcon, NoteIcon } from "@/components/headache/icons";
 
 // Day icons: size in px, centred on the corner of the date box (the cell has 3 px padding)
-const DAY_ICON_SIZE = 18;
+const DAY_ICON_SIZE = 17;
 // How far the icons are moved from the corner towards the centre of the date (px)
 const ICON_INSET = 3;
 const ICON_OFFSET = 3 - DAY_ICON_SIZE / 2 + ICON_INSET;
@@ -28,6 +28,13 @@ const FILL = { 1: COLORS.mild, 2: COLORS.moderate, 3: COLORS.strong, 4: COLORS.e
 // registered shows – not intensity, medication, aura, cluster, period or notes
 const BLIND_BG = "#DCEBF7";
 const BLIND_TEXT = "#14324a";
+
+// Same look as the calendar in the app: rounded tiles with a grey outline, filled with the intensity colour
+const TILE = "flex h-full w-full items-center justify-center rounded-[9px] text-[15px] tabular-nums";
+const EMPTY = "border-[1.5px] border-[#c9d1dc] bg-white font-medium text-[#3b4757]";
+const FUTURE = "border-[1.5px] border-[#e3e8ef] bg-white/70 font-medium text-[#b7c0cc]";
+// Migraine: a red frame around the day, like in the app
+const MIGRAINE_FRAME = "#e8696b";
 
 export default function HeadacheCalendar({
   byDate,
@@ -66,17 +73,17 @@ export default function HeadacheCalendar({
   return (
     <div>
       {/* Month navigation */}
-      <div className="mx-auto mb-3 flex max-w-sm items-center justify-between">
+      <div className="mx-auto mb-4 flex max-w-sm items-center justify-between">
         <button
           type="button"
           onClick={onPrev}
           disabled={!canPrev}
           aria-label={t.CAL_PREV_MONTH}
-          className="rounded-full p-1.5 text-[#7aa3e2] transition hover:bg-blue-50 disabled:opacity-30 rtl:rotate-180"
+          className="rounded-full p-1.5 text-[#4f7cc0] transition hover:bg-blue-50 disabled:opacity-25 rtl:rotate-180"
         >
-          <ChevronIcon dir="left" size={16} />
+          <ChevronIcon dir="left" size={20} />
         </button>
-        <h2 className="font-serif text-lg font-bold capitalize text-[#4f7cc0]" aria-live="polite">
+        <h2 className="text-lg font-bold uppercase tracking-wide text-[#2c4a6e]" aria-live="polite">
           {title}
         </h2>
         <button
@@ -84,20 +91,20 @@ export default function HeadacheCalendar({
           onClick={onNext}
           disabled={!canNext}
           aria-label={t.CAL_NEXT_MONTH}
-          className="rounded-full p-1.5 text-[#7aa3e2] transition hover:bg-blue-50 disabled:opacity-30 rtl:rotate-180"
+          className="rounded-full p-1.5 text-[#4f7cc0] transition hover:bg-blue-50 disabled:opacity-25 rtl:rotate-180"
         >
-          <ChevronIcon dir="right" size={16} />
+          <ChevronIcon dir="right" size={20} />
         </button>
       </div>
 
       <div className="mx-auto max-w-sm">
-        <div className="grid grid-cols-7 gap-1 pb-1 text-center text-[11px] font-semibold uppercase text-slate-400">
+        <div className="grid grid-cols-7 gap-2 pb-2 text-center text-xs font-medium uppercase text-[#7d8899]">
           {weekdays.map((d, i) => (
             <div key={i}>{d}</div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-1" role="grid">
+        <div className="grid grid-cols-7 gap-x-2 gap-y-2.5" role="grid">
           {cells.map((day, i) => {
             if (!day) return <div key={i} />;
             const key = toDateKey(year, month, day);
@@ -115,18 +122,16 @@ export default function HeadacheCalendar({
                   key={i}
                   role="gridcell"
                   aria-label={`${longDate.format(new Date(year, month, day))}, ${r ? t.CAL_REGISTERED : t.CAL_NO_REGISTRATION}`}
-                  className="h-8 rounded-md p-[3px]"
+                  className="h-11 rounded-xl p-[3px]"
                 >
                   <span
-                    className={`flex h-full w-full items-center justify-center rounded-md text-xs font-semibold tabular-nums ${
+                    className={`${TILE} ${
                       r
-                        ? ""
-                        : isToday
-                          ? "ring-2 ring-[#6b93d1] ring-offset-1 text-slate-500"
-                          : isFuture
-                            ? "text-slate-300"
-                            : "border border-dashed border-slate-200 text-slate-400"
-                    }`}
+                        ? "font-semibold"
+                        : isFuture
+                          ? FUTURE
+                          : EMPTY
+                    } ${isToday ? "ring-2 ring-[#6b93d1] ring-offset-1" : ""}`}
                     style={r ? { backgroundColor: BLIND_BG, color: BLIND_TEXT } : undefined}
                   >
                     {day}
@@ -135,19 +140,32 @@ export default function HeadacheCalendar({
               );
             }
 
-            let box = "border border-dashed border-slate-200 text-slate-400"; // past, nothing registered
+            let box = EMPTY; // past, nothing registered – outlined like in the app
             let style;
             if (r && level > 0) {
-              box = "text-white";
+              box = "font-semibold text-white";
               style = { backgroundColor: FILL[level] };
             } else if (r) {
-              box = "border border-slate-300 bg-white text-slate-700";
+              box = "border-[1.5px] border-[#7ea6e6] bg-[#eef4fd] font-semibold text-[#3b5f94]"; // registered, no headache
             } else if (isToday) {
-              box = "text-white";
+              box = "font-semibold text-white";
               style = { backgroundColor: COLORS.today };
             } else if (isFuture) {
-              box = "text-slate-300";
+              box = FUTURE;
             }
+
+            // Frame around the day: menstruation fills the 3 px padding with strong pink,
+            // migraine adds a red line outside it (both can show at once)
+            const migraine = !!r?.isMigraine;
+            const frameStyle =
+              r?.hasPeriod || migraine
+                ? {
+                    backgroundColor: r?.hasPeriod ? COLORS.periodStrong : "#fff",
+                    boxShadow: migraine
+                      ? `0 0 0 1.5px ${MIGRAINE_FRAME}`
+                      : `0 0 0 1px ${COLORS.periodStrong}`,
+                  }
+                : undefined;
 
             const label = [
               longDate.format(new Date(year, month, day)),
@@ -165,10 +183,9 @@ export default function HeadacheCalendar({
             return (
               <div
                 key={i}
-                className="relative h-8 rounded-md p-[3px]"
-                // Menstruation: a thick, strong pink frame – 3px padding plus a 1px ring outside the tile.
-                // The ring is a box-shadow, so the day keeps its size; days in a row join into one pink band.
-                style={r?.hasPeriod ? { backgroundColor: COLORS.periodStrong, boxShadow: `0 0 0 1px ${COLORS.periodStrong}` } : undefined}
+                className="relative h-11 rounded-xl p-[3px]"
+                // The frame is padding plus a box-shadow ring, so the day keeps its size
+                style={frameStyle}
               >
                 <button
                   type="button"
@@ -176,7 +193,7 @@ export default function HeadacheCalendar({
                   onClick={() => onSelect(key)}
                   aria-label={label}
                   aria-pressed={isSelected}
-                  className={`relative flex h-full w-full items-center justify-center rounded-md text-xs font-semibold tabular-nums transition ${box} ${
+                  className={`relative ${TILE} transition ${box} ${
                     isSelected ? "ring-2 ring-[#9dbdee] ring-offset-1" : isToday && r ? "ring-2 ring-[#6b93d1] ring-offset-1" : ""
                   } ${isFuture ? "cursor-default" : "hover:brightness-95"}`}
                   style={style}

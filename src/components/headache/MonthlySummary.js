@@ -1,9 +1,9 @@
 // src/components/headache/MonthlySummary.js
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHeadacheText } from "@/components/headache/useHeadacheText";
-import { COLORS, INTENSITY, formatUnit, intlLocale, monthScore, monthStats } from "@/components/headache/data";
+import { COLORS, INTENSITY, formatDays, formatUnit, monthScore, monthStats } from "@/components/headache/data";
 import {
   AcuteIcon,
   AttacksIcon,
@@ -11,139 +11,105 @@ import {
   ClusterIcon,
   FaceIcon,
   HoursIcon,
+  InjectionIcon,
   MigraineIcon,
   NoteIcon,
   PeriodIcon,
 } from "@/components/headache/icons";
 
-const OPEN_KEY = "headache-monthly-summary-open";
+// Same blue as the numbers in the app
+const VALUE = "text-[#4a7fc1]";
+const CARD = "rounded-2xl bg-white shadow-[0_4px_16px_-6px_rgba(60,100,160,0.35)]";
 
-const LEVELS = [
-  { level: 1, key: "CAL_MILD", color: COLORS.mild },
-  { level: 2, key: "CAL_MODERATE", color: COLORS.moderate },
-  { level: 3, key: "CAL_STRONG", color: COLORS.strong },
-  { level: 4, key: "CAL_EXTREME", color: COLORS.extreme },
-];
-
-function Row({ icon, label, value, tone = "default" }) {
+function Row({ icon, label, value }) {
   if (!value || value === "0") return null; // rows with 0 are hidden
-  const alert = tone === "alert";
   return (
-    <li className="flex items-center gap-3 px-4 py-2">
-      <span className="flex w-5 shrink-0 justify-center">{icon}</span>
-      <span className={`min-w-0 flex-1 text-sm ${alert ? "text-red-600" : "text-slate-700"}`}>{label}</span>
-      <span className={`text-sm tabular-nums ${alert ? "font-bold text-red-600" : "font-semibold text-slate-700"}`}>{value}</span>
+    <li className="flex items-center gap-2.5 py-[7px]">
+      <span className="flex w-6 shrink-0 justify-center">{icon}</span>
+      <span className="min-w-0 flex-1 hyphens-auto text-[15px] leading-tight text-[#3b4757] [overflow-wrap:anywhere]">{label}</span>
+      <span className={`whitespace-nowrap text-[15px] font-medium tabular-nums ${VALUE}`}>{value}</span>
     </li>
   );
 }
 
-// Monthly numbers under the calendar, in the style of kolskalender's "Monthly summary"
+// Monthly numbers under the calendar, laid out like "Min dagbok" in the app:
+// a list on the left, month intensity and medication on the right
 export default function MonthlySummary({ patient, byDate, year, month }) {
   const { t, locale } = useHeadacheText();
   const [showHelp, setShowHelp] = useState(false);
-  const [open, setOpen] = useState(true);
-
-  // Remember open/closed in this browser
-  useEffect(() => {
-    try {
-      if (localStorage.getItem(OPEN_KEY) === "false") setOpen(false);
-    } catch {}
-  }, []);
-  const toggle = () =>
-    setOpen((v) => {
-      try {
-        localStorage.setItem(OPEN_KEY, String(!v));
-      } catch {}
-      return !v;
-    });
 
   const s = monthStats(byDate, year, month);
   const score = monthScore(patient, year, month);
-  const headacheDays = s.intensity[1] + s.intensity[2] + s.intensity[3] + s.intensity[4];
   const hours = Math.round((s.minutes / 60) * 10) / 10;
-  // Average intensity of the headache days (1–4), rounded – decides the smiley's colour and expression
-  const avgLevel = headacheDays
-    ? Math.min(4, Math.max(1, Math.round((s.intensity[1] + 2 * s.intensity[2] + 3 * s.intensity[3] + 4 * s.intensity[4]) / headacheDays)))
-    : 0;
-  const monthName = new Intl.DateTimeFormat(intlLocale(locale), { month: "long", year: "numeric" }).format(
-    new Date(year, month, 1)
-  );
-
-  // Intensity breakdown as a list under "Headache days" (only levels that occurred)
-  const breakdown = LEVELS.filter(({ level }) => s.intensity[level] > 0).map(({ level, key, color }) => (
-    <li key={level} className="flex items-center gap-3 py-1.5 pe-4 ps-12">
-      <span className="h-3 w-3 shrink-0 rounded-sm" style={{ backgroundColor: color }} />
-      <span className="flex-1 text-[13px] text-slate-600">{t[key]}</span>
-      <span className="text-[13px] font-semibold tabular-nums text-slate-600">{s.intensity[level]}</span>
-    </li>
-  ));
+  const days = (n) => (n ? formatDays(locale, n) : null);
+  const overuse = s.acuteDays >= 10; // ≥10 days/month: risk of medication-overuse headache
 
   return (
-    <section className="mt-4 overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_6px_18px_-8px_rgba(60,100,160,0.45)]">
-      {/* Click the heading to show or hide the numbers – same arrow as HIT-6 */}
-      <button
-        type="button"
-        onClick={toggle}
-        aria-expanded={open}
-        className={`flex w-full items-center gap-2 px-5 py-3 text-start transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#6a9be0]/40 ${open ? "border-b border-slate-100" : ""}`}
-      >
-        <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#4f7cc0]">{t.DASH_MONTHLY_SUMMARY}</span>
-        <span className="flex-1 text-xs capitalize text-slate-500">· {monthName}</span>
-        <svg
-          className={`h-3.5 w-3.5 shrink-0 text-[#6a9be0] transition-transform ${open ? "rotate-180" : ""}`}
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M5 8h14l-7 9z" />
-        </svg>
-      </button>
-
-      {open && (
-        <ul className="divide-y divide-slate-100">
-          <li className="flex items-center gap-3 px-4 py-2">
-            <span className="flex w-5 shrink-0 justify-center">
-              <span className="h-3.5 w-3.5 rounded-full" style={{ backgroundColor: COLORS.today }} />
-            </span>
-            <span className="flex flex-1 items-center gap-1.5 text-sm text-slate-700">
-              {t.CAL_MONTH_INTENSITY}
-              <button
-                type="button"
-                onClick={() => setShowHelp((v) => !v)}
-                aria-expanded={showHelp}
-                aria-label={t.CAL_MONTH_INTENSITY_HELP}
-                className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-300 text-[10px] font-bold text-white hover:bg-slate-400"
-              >
-                ?
-              </button>
-            </span>
-            <span className="text-sm font-bold tabular-nums text-slate-800">{score ?? "–"}</span>
-          </li>
-          {showHelp && <li className="px-4 py-2 text-xs leading-relaxed text-slate-500">{t.CAL_MONTH_INTENSITY_HELP}</li>}
-
-          <Row icon={<FaceIcon face={INTENSITY[avgLevel].face} size={18} />} label={t.DASH_HEADACHE_DAYS} value={headacheDays} />
-          {breakdown.length > 0 && (
-            <li className="bg-slate-50/60">
-              <ul className="divide-y divide-slate-100/70">{breakdown}</ul>
-            </li>
-          )}
-          <Row icon={<MigraineIcon size={18} />} label={t.CAL_MIGRAINE} value={s.migraine} />
-          <Row icon={<AttacksIcon size={18} />} label={t.CAL_ATTACKS} value={s.attacks} />
-          <Row icon={<HoursIcon size={18} />} label={t.CAL_HOURS_WITH_HEADACHE} value={hours ? formatUnit(locale, hours, "hour") : null} />
-          <Row
-            icon={<AcuteIcon size={18} />}
-            label={t.DASH_ACUTE_DAYS}
-            value={s.acuteDays}
-            tone={s.acuteDays >= 10 ? "alert" : "default"} // ≥10 days/month: risk of medication-overuse headache
-          />
-          <Row icon={<AuraIcon size={18} />} label={t.CAL_AURA} value={s.aura} />
-          <Row icon={<PeriodIcon size={18} />} label={t.CAL_PERIOD} value={s.period} />
-          <Row icon={<ClusterIcon size={18} />} label={t.CAL_CLUSTER} value={s.cluster} />
+    <div className="mt-4 grid grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] items-start gap-3">
+      {/* Numbers for the month */}
+      <section className={`${CARD} px-3.5 py-2`}>
+        <ul>
+          <Row icon={<AttacksIcon size={20} />} label={t.CAL_ATTACKS} value={s.attacks} />
+          <Row icon={<HoursIcon size={21} />} label={t.CAL_HOURS_WITH_HEADACHE} value={hours ? formatUnit(locale, hours, "hour") : null} />
+          {[1, 2, 3, 4].map((level) => (
+            <Row
+              key={level}
+              icon={<FaceIcon face={INTENSITY[level].face} size={20} />}
+              label={t[INTENSITY[level].key]}
+              value={days(s.intensity[level])}
+            />
+          ))}
+          <Row icon={<MigraineIcon size={19} />} label={t.CAL_MIGRAINE} value={days(s.migraine)} />
+          <Row icon={<AuraIcon size={20} />} label={t.CAL_AURA} value={days(s.aura)} />
+          <Row icon={<ClusterIcon size={20} />} label={t.CAL_CLUSTER} value={days(s.cluster)} />
+          <Row icon={<PeriodIcon size={19} />} label={t.CAL_PERIOD} value={days(s.period)} />
           {/* Days with a written note – only when the patient shares notes, like in the calendar */}
-          <Row icon={<NoteIcon size={18} />} label={t.CAL_NOTES} value={patient?.shareNotes ? s.notes : null} />
-          {s.registered === 0 && <li className="px-4 py-3 text-sm italic text-slate-400">{t.CAL_NO_REGISTRATION}</li>}
+          <Row icon={<NoteIcon size={20} />} label={t.CAL_NOTES} value={patient?.shareNotes ? days(s.notes) : null} />
         </ul>
-      )}
-    </section>
+        {s.registered === 0 && <p className="py-2 text-sm italic text-slate-400">{t.CAL_NO_REGISTRATION}</p>}
+      </section>
+
+      <div className="space-y-3">
+        {/* Month intensity */}
+        <section className={`${CARD} px-3 py-3 text-center`}>
+          <div className="flex items-center justify-center gap-1.5 text-[15px] leading-tight text-[#3b4757]">
+            <span>{t.CAL_MONTH_INTENSITY}</span>
+            <button
+              type="button"
+              onClick={() => setShowHelp((v) => !v)}
+              aria-expanded={showHelp}
+              aria-label={t.CAL_MONTH_INTENSITY_HELP}
+              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-300 text-[10px] font-bold text-white hover:bg-slate-400"
+            >
+              ?
+            </button>
+          </div>
+          <div className={`mt-2 text-3xl font-medium tabular-nums ${VALUE}`}>{score ?? "–"}</div>
+          {showHelp && <p className="mt-2 text-start text-xs leading-relaxed text-slate-500">{t.CAL_MONTH_INTENSITY_HELP}</p>}
+        </section>
+
+        {/* Medication: days with acute medication and days with an injection */}
+        <section className={`${CARD} px-3 py-3`}>
+          <h3 className="text-center text-[15px] text-[#3b4757]">{t.CAL_MEDICATION}</h3>
+          <ul className="mt-2 space-y-2">
+            <li className="flex items-center gap-2" title={t.CAL_ACUTE_MEDICATION}>
+              <AcuteIcon size={20} />
+              <span className="sr-only">{t.CAL_ACUTE_MEDICATION}:</span>
+              <span
+                className={`text-[15px] tabular-nums ${overuse ? "font-bold text-red-600" : `font-medium ${VALUE}`}`}
+                style={overuse ? { color: COLORS.acute } : undefined}
+              >
+                {formatDays(locale, s.acuteDays)}
+              </span>
+            </li>
+            <li className="flex items-center gap-2" title={t.CAL_INJECTIONS}>
+              <InjectionIcon size={20} />
+              <span className="sr-only">{t.CAL_INJECTIONS}:</span>
+              <span className={`text-[15px] font-medium tabular-nums ${VALUE}`}>{formatDays(locale, s.injectionDays)}</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
   );
 }

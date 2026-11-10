@@ -157,6 +157,10 @@ export function formatUnit(locale, value, unit) {
   }
 }
 
+// "3 dager" – Intl says "døgn" for Norwegian, the app says "dag" / "dager"
+export const formatDays = (locale, n) =>
+  locale === "no" ? `${n} ${n === 1 ? "dag" : "dager"}` : formatUnit(locale, n, "day");
+
 // ---------- Overview helpers for the dashboard sidebar ----------
 
 // Records in the last `days` days, counted back from today (inclusive)

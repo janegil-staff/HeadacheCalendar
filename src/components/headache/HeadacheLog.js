@@ -7,6 +7,7 @@ import {
   COLORS,
   EFFECT_KEYS,
   INTENSITY,
+  formatDays,
   formatUnit,
   hasAcute,
   indexRecords,
@@ -45,7 +46,7 @@ function durationText(t, locale, r) {
 }
 
 // "3 dager" – Intl writes "døgn" for Norwegian days, which reads oddly here
-const daysText = (locale, n) => (locale === "no" ? `${n} ${n === 1 ? "dag" : "dager"}` : formatUnit(locale, n, "day"));
+const daysText = formatDays;
 
 // Doses are only trusted when given as { medicineId, dose } (mg); plain numbers in that list are not reliable
 const acuteDose = (r, id) => {
