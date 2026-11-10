@@ -7,6 +7,7 @@ import FrontImage from "@/components/landing/FrontImage";
 import LanguagePicker from "@/components/landing/LanguagePicker";
 import ReadMoreButton from "@/components/landing/ReadMoreButton";
 import StoreLinks from "@/components/landing/StoreLinks";
+import VisitTracker from "@/components/landing/VisitTracker";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function LandingPage() {
@@ -15,6 +16,7 @@ export default function LandingPage() {
   return (
     <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 pb-28 pt-20 lg:pb-28 lg:pt-8">
       <Background />
+      <VisitTracker />
 
       {/* Phone/tablet: headline, text, card, read more (no image).
           Desktop (lg+), like kolskalender: headline + text top-left, the image under it with
