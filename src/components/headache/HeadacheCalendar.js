@@ -161,9 +161,8 @@ export default function HeadacheCalendar({
               r?.hasPeriod || migraine
                 ? {
                     backgroundColor: r?.hasPeriod ? COLORS.periodStrong : "#fff",
-                    boxShadow: migraine
-                      ? `0 0 0 1.5px ${MIGRAINE_FRAME}`
-                      : `0 0 0 1px ${COLORS.periodStrong}`,
+                    padding: r?.hasPeriod ? 2 : undefined, // a thinner pink band than the 3 px default
+                    boxShadow: migraine ? `0 0 0 1.5px ${MIGRAINE_FRAME}` : undefined,
                   }
                 : undefined;
 
