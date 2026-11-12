@@ -1,4 +1,4 @@
-// src/components/headache/HeadacheCalendar.js
+// HeadacheCalendar/src/components/headache/HeadacheCalendar.js
 "use client";
 
 import { useMemo } from "react";
@@ -16,11 +16,18 @@ import {
 } from "@/components/headache/data";
 import { AcuteIcon, AuraIcon, ChevronIcon, ClusterIcon, NoteIcon } from "@/components/headache/icons";
 
-// Day icons: size in px, centred on the corner of the date box (the cell has 3 px padding)
-const DAY_ICON_SIZE = 17;
+// Day icons (medication, aura, cluster, note): size in px, centred on the corner of the date box
+// (the cell has TILE_PAD px padding). Smaller so the period frame and migraine frame get more room –
+// those two are drawn on the cell frame itself and are NOT affected by this size.
+const DAY_ICON_SIZE = 13;
 // How far the icons are moved from the corner towards the centre of the date (px)
 const ICON_INSET = 3;
-const ICON_OFFSET = 3 - DAY_ICON_SIZE / 2 + ICON_INSET;
+// Space between the edge of the day cell and the day tile itself. Bigger = smaller tile,
+// which gives the menstruation band and the migraine frame more room.
+const TILE_PAD = 5;
+// Thickness of the red migraine frame (px)
+const MIGRAINE_RING = 2;
+const ICON_OFFSET = TILE_PAD - DAY_ICON_SIZE / 2 + ICON_INSET;
 
 const FILL = { 1: COLORS.mild, 2: COLORS.moderate, 3: COLORS.strong, 4: COLORS.extreme };
 
@@ -122,7 +129,8 @@ export default function HeadacheCalendar({
                   key={i}
                   role="gridcell"
                   aria-label={`${longDate.format(new Date(year, month, day))}, ${r ? t.CAL_REGISTERED : t.CAL_NO_REGISTRATION}`}
-                  className="h-11 rounded-xl p-[3px]"
+                  className="h-11 rounded-xl"
+                  style={{ padding: TILE_PAD }}
                 >
                   <span
                     className={`${TILE} ${
@@ -154,17 +162,18 @@ export default function HeadacheCalendar({
               box = FUTURE;
             }
 
-            // Frame around the day: menstruation fills the 3 px padding with strong pink,
+            // Frame around the day: menstruation fills the TILE_PAD padding with strong pink,
             // migraine adds a red line outside it (both can show at once)
             const migraine = !!r?.isMigraine;
-            const frameStyle =
-              r?.hasPeriod || migraine
+            const frameStyle = {
+              padding: TILE_PAD,
+              ...(r?.hasPeriod || migraine
                 ? {
                     backgroundColor: r?.hasPeriod ? COLORS.periodStrong : "#fff",
-                    padding: r?.hasPeriod ? 2 : undefined, // a thinner pink band than the 3 px default
-                    boxShadow: migraine ? `0 0 0 1.5px ${MIGRAINE_FRAME}` : undefined,
+                    boxShadow: migraine ? `0 0 0 ${MIGRAINE_RING}px ${MIGRAINE_FRAME}` : undefined,
                   }
-                : undefined;
+                : {}),
+            };
 
             const label = [
               longDate.format(new Date(year, month, day)),
@@ -182,7 +191,7 @@ export default function HeadacheCalendar({
             return (
               <div
                 key={i}
-                className="relative h-11 rounded-xl p-[3px]"
+                className="relative h-11 rounded-xl"
                 // The frame is padding plus a box-shadow ring, so the day keeps its size
                 style={frameStyle}
               >
